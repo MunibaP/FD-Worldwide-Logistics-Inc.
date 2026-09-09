@@ -1,42 +1,49 @@
+import { FaArrowRight } from "react-icons/fa";
+import "../Button/Button.css";
+
 function Button({
     children,
     href,
+    type = "button",
     variant = "primary",
-    ...props
+    icon = true,
+    onClick
 }) {
 
-    const className = `btn btn--${variant}`;
-
+    const className = `button button-${variant}`;
 
     if (href) {
-
         return (
-
             <a
                 href={href}
                 className={className}
-                {...props}
             >
-                {children}
+                <span>{children}</span>
+
+                {icon && (
+                    <span className="button-icon">
+                        <FaArrowRight />
+                    </span>
+                )}
             </a>
-
         );
-
     }
 
-
     return (
-
         <button
+            type={type}
             className={className}
-            {...props}
+            onClick={onClick}
         >
-            {children}
+            <span>{children}</span>
+
+            {icon && (
+                <span className="button-icon">
+                    <FaArrowRight />
+                </span>
+            )}
         </button>
-
     );
-
 }
-
 
 export default Button;

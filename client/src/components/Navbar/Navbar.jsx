@@ -1,16 +1,19 @@
-import { useState } from "react";
+import {
+    useEffect,
+    useState
+} from "react";
 
 import {
-    Menu,
-    X,
-    ArrowUpRight
-} from "lucide-react";
+    FaBars,
+    FaTimes,
+    FaArrowRight
+} from "react-icons/fa";
 
 import Button from "../Button/Button";
 
-import logo from "../../assets/logos/logo.jpg";
+import logo from "../../assets/logo/UpdatedLogo.png";
 
-import "./Navbar.css";
+import "../Navbar/Navbar.css";
 
 
 const navLinks = [
@@ -21,13 +24,13 @@ const navLinks = [
     },
 
     {
-        name: "About",
-        href: "#about"
+        name: "Solutions",
+        href: "#solutions"
     },
 
     {
-        name: "Industries",
-        href: "#industries"
+        name: "Tracking",
+        href: "#tracking"
     },
 
     {
@@ -36,13 +39,8 @@ const navLinks = [
     },
 
     {
-        name: "Network",
-        href: "#network"
-    },
-
-    {
-        name: "Contact",
-        href: "#contact"
+        name: "About",
+        href: "#about"
     }
 
 ];
@@ -50,25 +48,67 @@ const navLinks = [
 
 function Navbar() {
 
-    const [open, setOpen] = useState(false);
+    const [menuOpen, setMenuOpen] =
+        useState(false);
+
+    const [scrolled, setScrolled] =
+        useState(false);
+
+
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            setScrolled(
+                window.scrollY > 20
+            );
+
+        };
+
+
+        window.addEventListener(
+            "scroll",
+            handleScroll
+        );
+
+
+        return () => {
+
+            window.removeEventListener(
+                "scroll",
+                handleScroll
+            );
+
+        };
+
+    }, []);
 
 
     const closeMenu = () => {
 
-        setOpen(false);
+        setMenuOpen(false);
 
     };
 
 
     return (
 
-        <header className="navbar">
+        <header
+            className={`navbar ${
+                scrolled
+                    ? "navbar--scrolled"
+                    : ""
+            }`}
+        >
 
-            <div className="nav-shell">
+            <div className="navbar__shell">
+
+
+                {/* LOGO */}
 
                 <a
                     href="#top"
-                    className="nav-logo"
+                    className="navbar__logo"
                     onClick={closeMenu}
                 >
 
@@ -80,24 +120,29 @@ function Navbar() {
                 </a>
 
 
-                <nav
-                    className={`nav-links ${
-                        open ? "nav-links--open" : ""
-                    }`}
-                >
+                {/* DESKTOP NAV */}
+
+                <nav className="navbar__links">
 
                     {navLinks.map((link) => (
 
                         <a
                             key={link.name}
                             href={link.href}
-                            onClick={closeMenu}
                         >
+
                             {link.name}
+
                         </a>
 
                     ))}
 
+                </nav>
+
+
+                {/* DESKTOP CTA */}
+
+                <div className="navbar__cta">
 
                     <Button
                         href="#quote"
@@ -106,25 +151,76 @@ function Navbar() {
 
                         Request a Quote
 
-                        <ArrowUpRight size={16} />
+                        <FaArrowRight />
 
                     </Button>
 
-                </nav>
+                </div>
 
+
+                {/* MOBILE BUTTON */}
 
                 <button
-                    className="nav-toggle"
-                    onClick={() => setOpen(!open)}
-                    aria-label="Toggle navigation"
+                    className="navbar__toggle"
+                    type="button"
+                    aria-label={
+                        menuOpen
+                            ? "Close navigation"
+                            : "Open navigation"
+                    }
+                    onClick={() =>
+                        setMenuOpen(
+                            !menuOpen
+                        )
+                    }
                 >
 
-                    {open
-                        ? <X size={22} />
-                        : <Menu size={22} />
+                    {menuOpen
+                        ? <FaTimes />
+                        : <FaBars />
                     }
 
                 </button>
+
+            </div>
+
+
+            {/* MOBILE MENU */}
+
+            <div
+                className={`navbar__mobile ${
+                    menuOpen
+                        ? "navbar__mobile--open"
+                        : ""
+                }`}
+            >
+
+                {navLinks.map((link) => (
+
+                    <a
+                        key={link.name}
+                        href={link.href}
+                        onClick={closeMenu}
+                    >
+
+                        {link.name}
+
+                    </a>
+
+                ))}
+
+
+                <Button
+                    href="#quote"
+                    variant="primary"
+                    onClick={closeMenu}
+                >
+
+                    Request a Quote
+
+                    <FaArrowRight />
+
+                </Button>
 
             </div>
 

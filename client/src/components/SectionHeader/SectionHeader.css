@@ -1,0 +1,111 @@
+.section-header {
+
+    max-width: 720px;
+
+    margin-bottom: 55px;
+
+}
+
+
+.section-header--center {
+
+    margin-inline: auto;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.section-header__eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 17px;
+
+    color:
+        var(--color-steel);
+
+    font-size: 0.7rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+.section-header__eyebrow span {
+
+    width: 26px;
+
+    height: 2px;
+
+    background:
+        var(--color-red);
+
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.section-header h2 {
+
+    margin:
+        0 0 18px;
+
+    color:
+        var(--color-navy);
+
+    font-size:
+        clamp(
+            2.25rem,
+            4vw,
+            4rem
+        );
+
+    line-height:
+        1.04;
+
+    letter-spacing:
+        -0.045em;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.section-header p {
+
+    max-width: 650px;
+
+    margin: 0;
+
+    color:
+        var(--color-muted);
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.8;
+
+}
+
+
+.section-header--center p {
+
+    margin-inline: auto;
+
+}
