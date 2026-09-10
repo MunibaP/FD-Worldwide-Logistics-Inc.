@@ -7,11 +7,33 @@
 
     padding: 155px 0 90px;
 
-    background:
+    /* background:
         linear-gradient(
             135deg,
             #f8fbff 0%,
             #edf4fa 55%,
+            #ffffff 100%
+        ); */
+
+    background:
+        radial-gradient(
+            ellipse at 82% 38%,
+            rgba(47, 93, 140, 0.14) 0%,
+            rgba(47, 93, 140, 0.06) 30%,
+            transparent 58%
+        ),
+
+        radial-gradient(
+            ellipse at 8% 80%,
+            rgba(201, 54, 44, 0.045) 0%,
+            transparent 42%
+        ),
+
+        linear-gradient(
+            125deg,
+            #f8fbfe 0%,
+            #edf4fa 48%,
+            #f5f8fb 72%,
             #ffffff 100%
         );
 }
