@@ -1,5 +1,4 @@
 import "./HeroScene.css";
-
 import heroBackground from "../../assets/hero/UpdatedFDHero.png";
 import plane from "../../assets/hero/UpdatedPlane.png";
 import ship from "../../assets/hero/UpdatedShip.png";
@@ -11,8 +10,6 @@ function HeroScene() {
         <div className="hero-scene">
 
             <div className="hero-scene-canvas">
-
-
 
                 {/* Main background artwork */}
                 <img
