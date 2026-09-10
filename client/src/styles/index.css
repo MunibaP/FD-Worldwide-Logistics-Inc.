@@ -83,6 +83,22 @@
     --transition:
         280ms cubic-bezier(0.22, 1, 0.36, 1);
 
+
+    /* -----------------------------------------------------
+        COMPONENT ALIASES
+    ----------------------------------------------------- */
+
+    --navy: var(--color-navy);
+    --steel: var(--color-steel);
+    --red: var(--color-red);
+
+    --white: var(--color-white);
+    --light: var(--color-light);
+
+    --text: var(--color-text);
+    --muted: var(--color-muted);
+
+    --border: var(--color-border);
 }
 
 

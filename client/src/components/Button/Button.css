@@ -100,3 +100,20 @@
         height: 34px;
     }
 }
+
+.button.button-outline .button-icon {
+    color: #d72638 !important;
+}
+
+.button.button-outline .button-icon svg {
+    color: #d72638 !important;
+    fill: #d72638 !important;
+}
+
+.button.button-outline {
+    gap: 7px;
+}
+
+.button.button-outline .button-icon {
+    margin-left: 0;
+}
