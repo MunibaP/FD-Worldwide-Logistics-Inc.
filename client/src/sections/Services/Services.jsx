@@ -159,6 +159,13 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import "./Services.css";
 
+import groundFreightImg from "../../assets/services/GroundFreight.jpg";
+import airFreightImg from "../../assets/services/AirFreight.png";
+import oceanFreightImg from "../../assets/services/OceanFreight.png";
+import finalMileImg from "../../assets/services/FinalMile.png";
+import warehousingImg from "../../assets/services/3PLWarehousing&Fulfillment.png";
+import ecommerceImg from "../../assets/services/Ecommerce.png";
+
 
 const services = [
     {
@@ -167,8 +174,8 @@ const services = [
         title: "Ground Freight",
         description:
             "Reliable North American freight solutions for scheduled, dedicated and time-sensitive shipments.",
+        image: groundFreightImg,
         tags: ["LTL", "FTL", "Scheduled"],
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
     },
     {
         id: "air",
@@ -176,8 +183,8 @@ const services = [
         title: "Air Freight",
         description:
             "Fast air cargo solutions designed for urgent, high-value and international shipments.",
+        image: airFreightImg,
         tags: ["Priority", "International", "Express"],
-        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80",
     },
     {
         id: "ocean",
@@ -185,8 +192,8 @@ const services = [
         title: "Ocean Freight",
         description:
             "Flexible ocean shipping for containerized cargo and global supply-chain movement.",
+        image: oceanFreightImg,
         tags: ["FCL", "LCL", "Global"],
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80",
     },
     {
         id: "final-mile",
@@ -194,17 +201,17 @@ const services = [
         title: "Final Mile",
         description:
             "Dependable final-mile delivery built for retail, e-commerce and business operations.",
+        image: finalMileImg,
         tags: ["Same Day", "Scheduled", "B2B"],
-        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1400&q=80",
     },
     {
         id: "warehousing",
         number: "05",
-        title: "Warehousing & Fulfillment",
+        title: "3PL Warehousing & Fulfillment",
         description:
-            "Scalable storage, sorting and fulfillment support designed around your operation.",
-        tags: ["Storage", "Sorting", "Fulfillment"],
-        image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1400&q=80",
+            "Flexible contract warehousing, inventory management, order fulfillment and distribution solutions designed to keep your supply chain moving efficiently.",
+        image: warehousingImg,
+        tags: ["Contract Warehousing", "Inventory", "Fulfillment"],
     },
     {
         id: "ecommerce",
@@ -212,8 +219,8 @@ const services = [
         title: "E-Commerce Logistics",
         description:
             "End-to-end parcel logistics for online retailers, order fulfillment and returns.",
+        image: ecommerceImg,
         tags: ["Parcel", "Returns", "E-Commerce"],
-        image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1400&q=80",
     },
 ];
 

@@ -7,6 +7,8 @@
 
     overflow: hidden;
 
+    padding-top: 65px;
+
     background:
         linear-gradient(
             180deg,
@@ -226,6 +228,8 @@
 
     border-radius: 28px;
 
+    top: -50px;
+
     background: #dfe8f1;
 
     box-shadow:
@@ -259,12 +263,26 @@
 
     inset: 0;
 
-    background:
+    /* background:
         linear-gradient(
             90deg,
             rgba(10, 35, 66, 0.85) 0%,
             rgba(10, 35, 66, 0.50) 45%,
             rgba(10, 35, 66, 0.08) 100%
+        ); */
+
+        background:
+        linear-gradient(
+            90deg,
+            rgba(7, 27, 50, 0.72) 0%,
+            rgba(7, 27, 50, 0.45) 35%,
+            rgba(7, 27, 50, 0.12) 68%,
+            rgba(7, 27, 50, 0.05) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(7, 27, 50, 0.50) 0%,
+            transparent 48%
         );
 }
 
@@ -371,9 +389,9 @@
 
     gap: 30px;
 
-    margin-top: 45px;
+    margin-top: -20px;
 
-    padding-top: 24px;
+    padding-top: 20px;
 
     border-top:
         1px solid rgba(10, 35, 66, 0.10);
@@ -492,6 +510,7 @@
 
     .services-stage {
         min-height: 500px;
+        top: 0;
     }
 }
 
@@ -550,11 +569,93 @@
         font-size: 1rem;
     }
 
-
     .services-stage {
-        min-height: 420px;
+        min-height: 0;
+        height: auto;
 
         border-radius: 22px;
+
+        overflow: hidden;
+
+        background: var(--navy);
+    }
+
+
+    .service-stage-content {
+        position: relative;
+
+        inset: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: auto;
+    }
+
+
+    .service-stage-content img {
+        position: relative;
+
+        inset: auto;
+
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 8 / 5;
+
+        object-fit: cover;
+        object-position: center;
+
+        transform: none;
+    }
+
+
+    .service-stage-overlay {
+        display: none;
+    }
+
+
+    .service-stage-copy {
+        position: relative;
+
+        left: auto;
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+        max-width: none;
+
+        padding: 24px 22px 26px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0A2342,
+                #12375f
+            );
+    }
+
+
+    .service-stage-copy h3 {
+        font-size: 2rem;
+    }
+
+    .services.section {
+        padding-top: 40px;
+    }
+
+    /* this comment out is for the image overlay design just like in the desktop version but the image is being croped*/
+
+    /* .services-stage {
+        min-height: 460px;
+
+        border-radius: 22px;
+    }
+
+    .service-stage-content img {
+        object-fit: cover;
+        object-position: center;
     }
 
 
@@ -578,7 +679,7 @@
 
     .service-stage-copy h3 {
         font-size: 2rem;
-    }
+    } */
 
 
     .services-industries {
@@ -596,4 +697,8 @@
         gap: 12px 18px;
     }
 
+}
+
+.services.section {
+    padding-top: 55px;
 }
