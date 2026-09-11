@@ -1,159 +1,3 @@
-// import {
-//     Truck,
-//     Plane,
-//     Ship,
-//     Warehouse,
-//     Boxes,
-//     MapPin
-// } from "lucide-react";
-
-// import "./Services.css";
-
-
-// const services = [
-
-//     {
-//         number: "01",
-//         title: "Ground Freight",
-//         text:
-//             "Reliable North American transportation for LTL and full truckload shipments.",
-//         icon: Truck
-//     },
-
-//     {
-//         number: "02",
-//         title: "Air & Ocean Freight",
-//         text:
-//             "International forwarding built around timing, destination and budget.",
-//         icon: Plane
-//     },
-
-//     {
-//         number: "03",
-//         title: "Warehousing",
-//         text:
-//             "Secure storage and organized inventory management for growing operations.",
-//         icon: Warehouse
-//     },
-
-//     {
-//         number: "04",
-//         title: "E-Commerce Fulfillment",
-//         text:
-//             "Pick, pack and ship operations that help online businesses scale.",
-//         icon: Boxes
-//     },
-
-//     {
-//         number: "05",
-//         title: "3PL Contract Warehousing",
-//         text:
-//             "Outsource storage, inventory and distribution to a dedicated logistics partner.",
-//         icon: Ship
-//     },
-
-//     {
-//         number: "06",
-//         title: "Final-Mile Delivery",
-//         text:
-//             "Local and regional delivery solutions that complete the customer journey.",
-//         icon: MapPin
-//     }
-
-// ];
-
-
-// function Services() {
-
-//     return (
-
-//         <section
-//             className="services section-pad"
-//             id="services"
-//         >
-
-//             <div className="container">
-
-//                 <div className="section-heading">
-
-//                     <span className="eyebrow">
-//                         WHAT WE MOVE
-//                     </span>
-
-//                     <h2>
-//                         One logistics partner.
-//                         <br />
-//                         Multiple ways to move forward.
-//                     </h2>
-
-//                     <p>
-//                         From North American freight to
-//                         global forwarding, warehousing and
-//                         final-mile delivery.
-//                     </p>
-
-//                 </div>
-
-
-//                 <div className="service-grid">
-
-//                     {services.map(
-//                         ({
-//                             number,
-//                             title,
-//                             text,
-//                             icon: Icon
-//                         }) => (
-
-//                             <article
-//                                 className="service-card"
-//                                 key={title}
-//                             >
-
-//                                 <div className="service-top">
-
-//                                     <span>
-//                                         {number}
-//                                     </span>
-
-//                                     <Icon />
-
-//                                 </div>
-
-
-//                                 <h3>
-//                                     {title}
-//                                 </h3>
-
-
-//                                 <p>
-//                                     {text}
-//                                 </p>
-
-
-//                                 <a href="#quote">
-//                                     Explore service
-//                                     <span>↗</span>
-//                                 </a>
-
-//                             </article>
-
-//                         )
-//                     )}
-
-//                 </div>
-
-//             </div>
-
-//         </section>
-
-//     );
-
-// }
-
-
-// export default Services;
-
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -173,7 +17,7 @@ const services = [
         number: "01",
         title: "Ground Freight",
         description:
-            "Reliable North American freight solutions for scheduled, dedicated and time-sensitive shipments.",
+            "Reliable ground freight across North America, with flexible transportation options for scheduled, dedicated and time-sensitive shipments.",
         image: groundFreightImg,
         tags: ["LTL", "FTL", "Scheduled"],
     },
@@ -182,16 +26,16 @@ const services = [
         number: "02",
         title: "Air Freight",
         description:
-            "Fast air cargo solutions designed for urgent, high-value and international shipments.",
+            "Fast, dependable air freight solutions for time-sensitive cargo, connecting businesses to destinations across North America and international markets.",
         image: airFreightImg,
-        tags: ["Priority", "International", "Express"],
+        tags: ["Express", "Priority", "Global"],
     },
     {
         id: "ocean",
         number: "03",
         title: "Ocean Freight",
         description:
-            "Flexible ocean shipping for containerized cargo and global supply-chain movement.",
+            "Flexible ocean freight solutions for international cargo, with dependable coordination for containerized shipments moving through global trade networks.",
         image: oceanFreightImg,
         tags: ["FCL", "LCL", "Global"],
     },
@@ -200,16 +44,16 @@ const services = [
         number: "04",
         title: "Final Mile",
         description:
-            "Dependable final-mile delivery built for retail, e-commerce and business operations.",
+            "Reliable final-mile delivery from distribution point to destination, helping businesses reach customers with timely, professional and dependable service.",
         image: finalMileImg,
-        tags: ["Same Day", "Scheduled", "B2B"],
+        tags: ["B2B", "B2C", "Scheduled"],
     },
     {
         id: "warehousing",
         number: "05",
         title: "3PL Warehousing & Fulfillment",
         description:
-            "Flexible contract warehousing, inventory management, order fulfillment and distribution solutions designed to keep your supply chain moving efficiently.",
+            "End-to-end third-party logistics support for storage, inventory management, order fulfillment and distribution—all coordinated around your business needs.",
         image: warehousingImg,
         tags: ["Contract Warehousing", "Inventory", "Fulfillment"],
     },
@@ -218,7 +62,7 @@ const services = [
         number: "06",
         title: "E-Commerce Logistics",
         description:
-            "End-to-end parcel logistics for online retailers, order fulfillment and returns.",
+            "Scalable e-commerce logistics supporting the journey from order fulfillment and parcel processing through shipping and final delivery to your customers.",
         image: ecommerceImg,
         tags: ["Parcel", "Returns", "E-Commerce"],
     },
@@ -306,49 +150,118 @@ function Services() {
                                 className="service-stage-content"
 
                                 initial={{
-                                    opacity: 0,
-                                    y: 18
+                                    opacity: 0
                                 }}
 
                                 animate={{
-                                    opacity: 1,
-                                    y: 0
+                                    opacity: 1
                                 }}
 
                                 exit={{
-                                    opacity: 0,
-                                    y: -12
+                                    opacity: 0
                                 }}
 
                                 transition={{
-                                    duration: 0.35
+                                    duration: 0.38,
+                                    ease: [0.22, 1, 0.36, 1]
                                 }}
                             >
 
-                                <img
+                                {/* IMAGE */}
+                                <motion.img
                                     src={activeService.image}
                                     alt={activeService.title}
+
+                                    initial={{
+                                        scale: 1.045
+                                    }}
+
+                                    animate={{
+                                        scale: 1
+                                    }}
+
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }}
                                 />
 
+
+                                {/* OVERLAY */}
                                 <div className="service-stage-overlay"></div>
 
 
-                                <div className="service-stage-copy">
+                                {/* CONTENT */}
+                                <motion.div
+                                    className="service-stage-copy"
 
-                                    <span className="service-stage-number">
+                                    initial={{
+                                        opacity: 0,
+                                        y: 16
+                                    }}
+
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0
+                                    }}
+
+                                    transition={{
+                                        duration: 0.45,
+                                        delay: 0.12,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }}
+                                >
+
+                                    <motion.span
+                                        className="service-stage-number"
+
+                                        initial={{
+                                            opacity: 0,
+                                            x: -8
+                                        }}
+
+                                        animate={{
+                                            opacity: 1,
+                                            x: 0
+                                        }}
+
+                                        transition={{
+                                            duration: 0.35,
+                                            delay: 0.15
+                                        }}
+                                    >
                                         {activeService.number}
-                                    </span>
+                                    </motion.span>
+
 
                                     <h3>
                                         {activeService.title}
                                     </h3>
+
 
                                     <p>
                                         {activeService.description}
                                     </p>
 
 
-                                    <div className="service-tags">
+                                    <motion.div
+                                        className="service-tags"
+
+                                        initial={{
+                                            opacity: 0,
+                                            y: 8
+                                        }}
+
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0
+                                        }}
+
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: 0.22
+                                        }}
+                                    >
 
                                         {activeService.tags.map((tag) => (
                                             <span key={tag}>
@@ -356,11 +269,12 @@ function Services() {
                                             </span>
                                         ))}
 
-                                    </div>
+                                    </motion.div>
 
-                                </div>
+                                </motion.div>
 
                             </motion.div>
+
 
                         </AnimatePresence>
 

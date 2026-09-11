@@ -9,7 +9,25 @@
 
     padding-top: 65px;
 
-    background:
+    /* simple background gradient*/
+
+    /* background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f5f8fb 45%,
+            #edf3f8 100%
+        ); */
+
+        /* background with glow effect near the display card*/
+
+        background:
+        radial-gradient(
+            circle at 78% 42%,
+            rgba(47, 93, 140, 0.08) 0%,
+            rgba(47, 93, 140, 0.03) 28%,
+            transparent 52%
+        ),
         linear-gradient(
             180deg,
             #ffffff 0%,
@@ -126,6 +144,8 @@
 
 
 .service-nav-item {
+    position: relative;
+
     width: 100%;
 
     display: grid;
@@ -158,6 +178,33 @@
         padding 0.25s ease,
         color 0.25s ease,
         background 0.25s ease;
+}
+
+/* ACTIVE RED INDICATOR */
+
+.service-nav-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 3px;
+    height: 0;
+
+    border-radius: 999px;
+
+    background: var(--red);
+
+    transform: translateY(-50%);
+
+    transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.service-nav-item.active::before {
+    height: 55%;
 }
 
 
@@ -254,7 +301,7 @@
 
     object-fit: cover;
 
-    transform: scale(1.02);
+    /* transform: scale(1.02); */
 }
 
 
