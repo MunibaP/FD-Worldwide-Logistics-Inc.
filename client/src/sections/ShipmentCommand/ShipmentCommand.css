@@ -1,0 +1,963 @@
+/* =========================================
+   SHIPMENT COMMAND CENTER
+========================================= */
+
+.shipment-command {
+    position: relative;
+
+    overflow: hidden;
+
+    /* background:
+        radial-gradient(
+            circle at 78% 35%,
+            rgba(47, 93, 140, 0.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #edf3f8 0%,
+            #f8fbfe 48%,
+            #ffffff 100%
+        ); */
+
+        /*noticeable blue tone background*/
+        /* background:
+        radial-gradient(
+            circle at 78% 35%,
+            rgba(47, 93, 140, 0.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #e8f0f7 0%,
+            #f3f7fb 48%,
+            #ffffff 100%
+        ); */
+
+        background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(47, 93, 140, 0.06),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fafc 0%,
+            #f4f8fb 55%,
+            #ffffff 100%
+        );
+}
+
+/* Give highlighted line for divided section*/
+.shipment-command::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: min(1260px, 86%);
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(10, 35, 66, 0.10),
+            transparent
+        );
+}
+
+.shipment-command.section {
+    padding-top: 55px;
+}
+
+
+.shipment-command-container {
+    width: min(1320px, 92%);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.shipment-command-heading {
+    max-width: 760px;
+
+    margin-bottom: 48px;
+}
+
+
+.shipment-command-kicker {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: var(--steel);
+
+    font-size: 0.72rem;
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+}
+
+
+.shipment-command-kicker span {
+    width: 28px;
+    height: 3px;
+
+    background: var(--red);
+
+    border-radius: 999px;
+}
+
+
+.shipment-command-heading h2 {
+    margin: 0 0 20px;
+
+    color: var(--navy);
+
+    font-size:
+        clamp(3rem, 5vw, 5rem);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+
+.shipment-command-heading h2 em {
+    color: var(--red);
+
+    font-style: normal;
+}
+
+
+.shipment-command-heading p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 1.02rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   MAIN PANEL
+========================================= */
+
+.shipment-command-panel {
+    position: relative;
+
+    padding: 26px 34px 38px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(10, 35, 66, 0.10);
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+.shipment-command-tabs {
+    display: inline-flex;
+
+    gap: 6px;
+
+    padding: 5px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(10, 35, 66, 0.055);
+
+    margin-bottom: 42px;
+}
+
+
+.shipment-tab {
+    border: 0;
+
+    padding: 11px 18px;
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+    font-weight: 900;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.shipment-tab:hover {
+    color: var(--navy);
+}
+
+
+.shipment-tab.active {
+    background: var(--navy);
+
+    color: white;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(10, 35, 66, 0.15);
+}
+
+
+/* =========================================
+   ROUTE
+========================================= */
+
+.shipment-route {
+    position: relative;
+
+    height: 110px;
+
+    margin-bottom: 34px;
+}
+
+.route-line,
+.route-progress {
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+
+    top: 36px;
+
+    height: 3px;
+
+    border-radius: 999px;
+}
+
+
+.route-line {
+    background:
+        rgba(10, 35, 66, 0.10);
+}
+
+
+.route-progress {
+    right: auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--steel),
+            var(--red)
+        );
+
+    box-shadow:
+        0 0 18px rgba(201, 54, 44, 0.16);
+}
+
+
+.route-stop {
+    position: absolute;
+
+    top: 22px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+
+.route-stop-1 {
+    left: 8%;
+}
+
+
+.route-stop-2 {
+    left: 36%;
+}
+
+
+.route-stop-3 {
+    left: 64%;
+}
+
+
+.route-stop-4 {
+    left: 92%;
+}
+
+
+.route-stop span {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+
+    margin: 0 auto 10px;
+
+    border:
+        7px solid white;
+
+    border-radius: 50%;
+
+    background:
+        #cbd6e0;
+
+    box-shadow:
+        0 0 0 1px rgba(10, 35, 66, 0.10);
+}
+
+
+.route-stop.active span {
+    background:
+        var(--steel);
+}
+
+
+.route-stop.current span {
+    background:
+        var(--red);
+
+    box-shadow:
+        0 0 0 1px rgba(201, 54, 44, 0.18),
+        0 0 0 8px rgba(201, 54, 44, 0.08);
+
+    animation:
+        routePulse 2.2s ease-in-out infinite;
+}
+
+
+.route-stop small {
+    color: var(--muted);
+
+    font-size: 0.67rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+}
+
+
+@keyframes routePulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 1px rgba(201, 54, 44, 0.18),
+            0 0 0 6px rgba(201, 54, 44, 0.07);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 1px rgba(201, 54, 44, 0.22),
+            0 0 0 12px rgba(201, 54, 44, 0.02);
+    }
+
+}
+
+/* =========================================
+   TOOL CONTENT
+========================================= */
+
+.shipment-command-content {
+    display: grid;
+
+    grid-template-columns:
+        minmax(280px, 0.7fr)
+        minmax(0, 1.3fr);
+
+    gap: 44px;
+
+    align-items: end;
+
+    padding-top: 28px;
+
+    border-top:
+        1px solid rgba(10, 35, 66, 0.09);
+}
+
+
+.shipment-tool-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--red);
+
+    font-size: 0.68rem;
+    font-weight: 900;
+
+    letter-spacing: 0.15em;
+}
+
+
+.shipment-tool-copy h3 {
+    margin: 0 0 15px;
+
+    color: var(--navy);
+
+    font-size:
+        clamp(2rem, 3vw, 3.2rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+}
+
+
+.shipment-tool-copy p {
+    max-width: 440px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   TRACKING INPUT
+========================================= */
+
+.tracking-input-wrap {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 9px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 30px rgba(10, 35, 66, 0.06);
+}
+
+
+.tracking-input-wrap input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: 0;
+
+    padding: 14px 14px;
+
+    outline: none;
+
+    color: var(--navy);
+
+    background: transparent;
+}
+
+
+.tracking-input-wrap button,
+.estimate-next {
+    border: 0;
+
+    border-radius: 12px;
+
+    padding: 14px 18px;
+
+    background: var(--red);
+
+    color: white;
+
+    font-weight: 900;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.tracking-input-wrap button:hover,
+.estimate-next:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(201, 54, 44, 0.20);
+}
+
+
+/* =========================================
+   ESTIMATE
+========================================= */
+
+.estimate-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.estimate-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.estimate-field label {
+    color: var(--navy);
+
+    font-size: 0.7rem;
+
+    font-weight: 900;
+}
+
+
+.estimate-field input {
+    width: 100%;
+
+    padding: 15px 14px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.11);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: white;
+
+    color: var(--navy);
+}
+
+
+.estimate-next {
+    margin-top: 14px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .shipment-command-content {
+        grid-template-columns: 1fr;
+
+        gap: 26px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+/* @media (max-width: 600px) {
+
+    .shipment-command-heading {
+        text-align: center;
+
+        margin-bottom: 34px;
+    }
+
+
+    .shipment-command-kicker {
+        justify-content: center;
+    }
+
+
+    .shipment-command-panel {
+        padding: 20px 18px 26px;
+
+        border-radius: 24px;
+    }
+
+
+    .shipment-command-tabs {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        width: 100%;
+
+        margin-bottom: 32px;
+    }
+
+    .shipment-command-content {
+        padding-top: 16px;
+    }
+
+
+    .shipment-tab {
+        padding: 10px 8px;
+
+        font-size: 0.72rem;
+    }
+
+
+    .shipment-route {
+        height: 225px;
+
+        margin-bottom: 0;
+    }
+
+
+    .route-line,
+    .route-progress {
+        left: 20px;
+
+        right: auto;
+
+        top: 15px;
+
+        width: 3px;
+        height: 186px;
+
+        transform: translateX(-50%);
+    }
+
+
+    .route-progress {
+        width: 3px !important;
+
+        height: 130px;
+
+        background:
+            linear-gradient(
+                180deg,
+                var(--steel),
+                var(--red)
+            );
+    }
+
+
+    .route-stop {
+        left: 20px !important;
+
+        transform: translateX(-50%);
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+
+    .route-stop-1 {
+        top: 0;
+    }
+
+
+    .route-stop-2 {
+        top: 62px;
+    }
+
+
+    .route-stop-3 {
+        top: 124px;
+    }
+
+
+    .route-stop-4 {
+        top: 186px;
+    }
+
+
+    .route-stop span {
+        margin: 0;
+    }
+
+
+    .route-stop small {
+        white-space: nowrap;
+
+        font-size: 0.72rem;
+    }
+
+
+    .tracking-input-wrap {
+        flex-direction: column;
+    }
+
+
+    .tracking-input-wrap button {
+        justify-content: center;
+    }
+
+
+    .estimate-grid {
+        grid-template-columns: 1fr;
+    }
+
+} */
+
+@media (max-width: 600px) {
+
+    .shipment-route {
+        position: relative;
+
+        height: 220px;
+        margin-bottom: 8px;
+
+        padding-left: 8px;
+    }
+
+
+    /* MAIN VERTICAL LINE */
+
+    .route-line {
+        position: absolute;
+
+        left: 18px;
+        top: 18px;
+
+        width: 3px;
+        height: 170px;
+
+        border-radius: 999px;
+
+        background:
+            rgba(10, 35, 66, 0.12);
+    }
+
+
+    /* ACTIVE PROGRESS */
+
+    .route-progress {
+        position: absolute;
+
+        left: 18px;
+        top: 18px;
+
+        width: 3px !important;
+        height: 112px;
+
+        border-radius: 999px;
+
+        background:
+            linear-gradient(
+                180deg,
+                var(--steel),
+                var(--red)
+            );
+
+        transform: none;
+    }
+
+
+    /* EACH STOP */
+
+    .route-stop {
+        position: absolute;
+
+        left: 18px !important;
+
+        transform: none;
+
+        display: flex;
+        align-items: center;
+
+        gap: 16px;
+
+        width: max-content;
+
+        text-align: left;
+    }
+
+
+    .route-stop-1 {
+        top: 4px;
+    }
+
+    .route-stop-2 {
+        top: 62px;
+    }
+
+    .route-stop-3 {
+        top: 120px;
+    }
+
+    .route-stop-4 {
+        top: 178px;
+    }
+
+
+    /* DOT */
+
+    .route-stop span {
+        position: relative;
+
+        width: 30px;
+        height: 30px;
+
+        margin: 0;
+
+        flex-shrink: 0;
+
+        transform: translateX(-14px);
+
+        border:
+            7px solid white;
+
+        border-radius: 50%;
+
+        background: #cbd6e0;
+
+        box-shadow:
+            0 0 0 1px rgba(10, 35, 66, 0.10);
+    }
+
+
+    .route-stop.active span {
+        background: var(--steel);
+    }
+
+
+    .route-stop.current span {
+        background: var(--red);
+    }
+
+
+    /* LABEL */
+
+    .route-stop small {
+        margin-left: -8px;
+
+        color: var(--muted);
+
+        font-size: 0.72rem;
+        font-weight: 800;
+
+        white-space: nowrap;
+
+        letter-spacing: 0.02em;
+    }
+
+
+    /* CONTENT BELOW ROUTE */
+
+    .shipment-command-content {
+        padding-top: 18px;
+    }
+
+    .tracking-input-wrap {
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+
+        /* remove the large outer white box */
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .tracking-input-wrap input {
+        width: 100%;
+        min-width: 0;
+
+        padding: 17px 18px;
+
+        border: 1px solid rgba(10, 35, 66, 0.12);
+        border-radius: 14px;
+
+        background: #fff;
+
+        box-shadow:
+            0 8px 22px rgba(10, 35, 66, 0.05);
+    }
+
+    .tracking-input-wrap button {
+        width: 100%;
+
+        justify-content: center;
+
+        padding: 15px 18px;
+
+        border-radius: 14px;
+    }
+
+    .shipment-tool-copy {
+        text-align: center;
+    }
+
+    .shipment-tool-copy p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .estimate-next {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 12px;
+
+        min-width: 165px;
+
+        margin: 18px auto 0;
+        padding: 14px 22px;
+
+        border-radius: 12px;
+
+        font-size: 0.95rem;
+        font-weight: 800;
+    }
+
+    .shipment-command.section {
+        padding-top: 45px;
+    }
+
+    .shipment-command-heading {
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+    }
+    
+}
