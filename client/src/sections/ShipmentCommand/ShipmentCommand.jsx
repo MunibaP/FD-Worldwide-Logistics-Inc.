@@ -3,9 +3,92 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "./ShipmentCommand.css";
 
+/* Mock Data for tracking*/
+const mockShipments = {
+    FD12345: {
+        trackingNumber: "FD12345",
+        status: "In Transit",
+        currentLocation: "Toronto, ON",
+        estimatedDelivery: "Sep 14",
+        origin: "Mississauga, ON",
+        destination: "Ottawa, ON",
+        progress: 3,
+    },
+
+    FD67890: {
+        trackingNumber: "FD67890",
+        status: "Delivered",
+        currentLocation: "Ottawa, ON",
+        estimatedDelivery: "Delivered Sep 11",
+        origin: "Mississauga, ON",
+        destination: "Ottawa, ON",
+        progress: 4,
+    },
+
+    FD24680: {
+        trackingNumber: "FD24680",
+        status: "Picked Up",
+        currentLocation: "Mississauga, ON",
+        estimatedDelivery: "Sep 15",
+        origin: "Mississauga, ON",
+        destination: "Montreal, QC",
+        progress: 1,
+    },
+
+    FD13579: {
+        trackingNumber: "FD13579",
+        status: "At Hub",
+        currentLocation: "Toronto Distribution Hub, ON",
+        estimatedDelivery: "Sep 16",
+        origin: "Mississauga, ON",
+        destination: "Kingston, ON",
+        progress: 2,
+    },
+};
+
 
 function ShipmentCommand() {
     const [mode, setMode] = useState("track");
+
+    const [trackingNumber, setTrackingNumber] = useState("");
+    const [trackingResult, setTrackingResult] = useState(null);
+    const [trackingError, setTrackingError] = useState("");
+
+    
+    const handleTracking = () => {
+        const cleanedNumber =
+            trackingNumber.trim().toUpperCase();
+
+        if (!cleanedNumber) {
+            setTrackingError(
+                "Please enter a tracking number."
+            );
+
+            setTrackingResult(null);
+
+            return;
+        }
+
+        const shipment =
+            mockShipments[cleanedNumber];
+
+        if (!shipment) {
+            setTrackingError(
+                "We couldn't find that tracking number."
+            );
+
+            setTrackingResult(null);
+
+            return;
+        }
+
+        setTrackingResult(shipment);
+        setTrackingError("");
+    };
+
+    const routeProgress =
+    trackingResult?.progress ?? 0;
+
 
     return (
         <section
@@ -72,13 +155,60 @@ function ShipmentCommand() {
 
                         <div className="route-line"></div>
 
-                        <motion.div
+                        {/* <motion.div
                             className="route-progress"
                             animate={{
                                 width:
                                     mode === "track"
-                                        ? "62%"
+                                        ? routeProgress === 0
+                                            ? "0%"
+                                            : routeProgress === 1
+                                            ? "2%"
+                                            : routeProgress === 2
+                                            ? "36%"
+                                            : routeProgress === 3
+                                            ? "58%"
+                                            : "84%"
                                         : "32%"
+                            }}
+                            transition={{
+                                duration: 0.8,
+                                ease: [0.22, 1, 0.36, 1]
+                            }}
+                        ></motion.div> */}
+
+
+                       <motion.div
+                            className="route-progress"
+                            style={{
+                                "--desktop-progress":
+                                    mode === "track"
+                                        ? routeProgress === 0
+                                            ? "0%"
+                                            : routeProgress === 1
+                                            ? "2%"
+                                            : routeProgress === 2
+                                            ? "36%"
+                                            : routeProgress === 3
+                                            ? "64%"
+                                            : "84%"
+                                        : "32%",
+
+                                "--mobile-progress":
+                                    mode === "track"
+                                        ? routeProgress === 0
+                                            ? "0px"
+                                            : routeProgress === 1
+                                            ? "0px"
+                                            : routeProgress === 2
+                                            ? "58px"
+                                            : routeProgress === 3
+                                            ? "116px"
+                                            : "174px"
+                                        : "58px"
+                            }}
+                            animate={{
+                                width: "var(--desktop-progress)"
                             }}
                             transition={{
                                 duration: 0.8,
@@ -87,32 +217,46 @@ function ShipmentCommand() {
                         ></motion.div>
 
 
-                        <div className="route-stop route-stop-1 active">
+                        <div
+                            className={`route-stop route-stop-1 ${
+                                routeProgress >= 1 ? "active" : ""
+                            } ${
+                                routeProgress === 1 ? "current" : ""
+                            }`}
+                        >
                             <span></span>
                             <small>Origin</small>
                         </div>
 
-                        <div className="route-stop route-stop-2 active">
+                        <div
+                            className={`route-stop route-stop-2 ${
+                                routeProgress >= 2 ? "active" : ""
+                            } ${
+                                routeProgress === 2 ? "current" : ""
+                            }`}
+                        >
                             <span></span>
                             <small>Hub</small>
                         </div>
 
                         <div
                             className={`route-stop route-stop-3 ${
-                                mode === "track"
-                                    ? "active current"
-                                    : ""
+                                routeProgress >= 3 ? "active" : ""
+                            } ${
+                                routeProgress === 3 ? "current" : ""
                             }`}
                         >
                             <span></span>
-                            <small>
-                                {mode === "track"
-                                    ? "In Transit"
-                                    : "Shipment"}
-                            </small>
+                            <small>In Transit</small>
                         </div>
 
-                        <div className="route-stop route-stop-4">
+                        <div
+                            className={`route-stop route-stop-4 ${
+                                routeProgress >= 4 ? "active" : ""
+                            } ${
+                                routeProgress === 4 ? "current" : ""
+                            }`}
+                        >
                             <span></span>
                             <small>Destination</small>
                         </div>
@@ -167,20 +311,131 @@ function ShipmentCommand() {
 
                                 </div>
 
-
                                 <div className="tracking-input-wrap">
 
                                     <input
                                         type="text"
                                         placeholder="Enter tracking number"
+                                        value={trackingNumber}
+                                        onChange={(event) =>
+                                            setTrackingNumber(event.target.value)
+                                        }
+                                        onKeyDown={(event) => {
+                                            if (event.key === "Enter") {
+                                                handleTracking();
+                                            }
+                                        }}
                                     />
 
-                                    <button>
+                                    <button
+                                        type="button"
+                                        onClick={handleTracking}
+                                    >
                                         Track Shipment
                                         <span>→</span>
                                     </button>
 
                                 </div>
+
+                                {trackingError && (
+                                    <p className="tracking-error">
+                                        {trackingError}
+                                    </p>
+                                )}
+
+                                <AnimatePresence>
+
+                                    {trackingResult && (
+
+                                        <motion.div
+                                            className="tracking-result"
+
+                                            initial={{
+                                                opacity: 0,
+                                                y: 16
+                                            }}
+
+                                            animate={{
+                                                opacity: 1,
+                                                y: 0
+                                            }}
+
+                                            exit={{
+                                                opacity: 0,
+                                                y: 10
+                                            }}
+
+                                            transition={{
+                                                duration: 0.4,
+                                                ease: [0.22, 1, 0.36, 1]
+                                            }}
+                                        >
+
+                                            <div className="tracking-result-top">
+
+                                                <div>
+                                                    <span className="tracking-result-label">
+                                                        CURRENT STATUS
+                                                    </span>
+
+                                                    <h4>
+                                                        {trackingResult.status}
+                                                    </h4>
+                                                </div>
+
+
+                                                <span className="tracking-result-number">
+                                                    {trackingResult.trackingNumber}
+                                                </span>
+
+                                            </div>
+
+
+                                            <div className="tracking-result-grid">
+
+                                                <div>
+                                                    <span>Current location</span>
+
+                                                    <strong>
+                                                        {trackingResult.currentLocation}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Estimated delivery</span>
+
+                                                    <strong>
+                                                        {trackingResult.estimatedDelivery}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Origin</span>
+
+                                                    <strong>
+                                                        {trackingResult.origin}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Destination</span>
+
+                                                    <strong>
+                                                        {trackingResult.destination}
+                                                    </strong>
+                                                </div>
+
+                                            </div>
+
+                                        </motion.div>
+
+                                    )}
+
+                                </AnimatePresence>
+                                
 
                             </motion.div>
 
