@@ -795,6 +795,190 @@
     margin-top: 18px;
 }
 
+.shipment-map-wrap {
+    width: 100%;
+    height: 260px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+}
+
+
+.shipment-map {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   CUSTOM MAP MARKERS
+========================================= */
+
+.custom-map-marker {
+    background: transparent;
+    border: 0;
+}
+
+
+.map-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 3px solid #fff;
+
+    box-shadow:
+        0 6px 16px rgba(10, 35, 66, 0.20);
+}
+
+
+.map-marker-origin {
+    width: 28px;
+    height: 28px;
+
+    background: var(--steel);
+}
+
+
+.map-marker-origin span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+
+.map-marker-destination {
+    width: 28px;
+    height: 28px;
+
+    background: var(--navy);
+}
+
+
+.map-marker-destination span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+
+.map-marker-delivered {
+    width: 30px;
+    height: 30px;
+
+    background: var(--red);
+
+    color: #fff;
+
+    font-size: 0.82rem;
+    font-weight: 900;
+
+    border: 2px solid #fff;
+
+    box-shadow:
+        0 5px 12px rgba(10, 35, 66, 0.16);
+}
+
+.shipment-parcel-simple {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    border: 2px solid var(--red);
+
+    font-size: 1.45rem;
+
+    line-height: 1;
+
+    box-shadow:
+        0 4px 10px rgba(10, 35, 66, 0.18),
+        0 0 0 3px rgba(201, 54, 44, 0.08);
+}
+
+.shipment-delivered-marker {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    border: 2px solid var(--red);
+
+    color: var(--red);
+
+    font-size: 1rem;
+    font-weight: 900;
+
+    box-shadow:
+        0 4px 10px rgba(10, 35, 66, 0.18),
+        0 0 0 3px rgba(201, 54, 44, 0.08);
+}
+/*Shipment Legend*/
+
+.shipment-map-legend {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+
+    margin-top: 14px;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+.legend-origin {
+    background: var(--steel);
+}
+
+.legend-destination {
+    background: var(--navy);
+}
+
+.legend-parcel {
+    font-style: normal;
+    font-size: 0.95rem;
+}
+
 /* =========================================
    ESTIMATE
 ========================================= */
@@ -1287,8 +1471,18 @@
     }
 
 
-    .shipment-map-placeholder {
-        min-height: 220px;
+    .shipment-map-wrap {
+        width: 100%;
+        height: 260px;
+
+        overflow: hidden;
+
+        border-radius: 18px;
+    }
+
+    .shipment-map {
+        width: 100%;
+        height: 100%;
     }
 
 
@@ -1333,6 +1527,26 @@
         margin-left: auto;
         margin-right: auto;
 
+        text-align: center;
+    }
+
+    .shipment-command-kicker {
+        justify-content: center;
+    }
+
+    .tracking-details-panel {
+        text-align: center;
+    }
+
+    .shipment-map-legend {
+        gap: 12px;
+    }
+
+    .tracking-panel-kicker {
+        text-align: center;
+    }
+
+    .shipment-location-current {
         text-align: center;
     }
     

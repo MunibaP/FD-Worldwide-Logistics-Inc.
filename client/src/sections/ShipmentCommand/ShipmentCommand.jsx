@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import ShipmentMap from "./ShipmentMap";
 import "./ShipmentCommand.css";
 
 /* Mock Data for tracking*/
@@ -13,6 +14,23 @@ const mockShipments = {
         origin: "Mississauga, ON",
         destination: "Ottawa, ON",
         progress: 3,
+
+        /*Mock Coordinates for map display*/
+
+        originCoordinates: {
+            lat: 43.5890,
+            lng: -79.6441,
+        },
+
+        currentCoordinates: {
+            lat: 43.6532,
+            lng: -79.3832,
+        },
+
+        destinationCoordinates: {
+            lat: 45.4215,
+            lng: -75.6972,
+        },
     },
 
     FD67890: {
@@ -23,6 +41,21 @@ const mockShipments = {
         origin: "Mississauga, ON",
         destination: "Ottawa, ON",
         progress: 4,
+
+        originCoordinates: {
+            lat: 43.5890,
+            lng: -79.6441,
+        },
+
+        currentCoordinates: {
+            lat: 45.4215,
+            lng: -75.6972,
+        },
+
+        destinationCoordinates: {
+            lat: 45.4215,
+            lng: -75.6972,
+        },
     },
 
     FD24680: {
@@ -33,6 +66,21 @@ const mockShipments = {
         origin: "Mississauga, ON",
         destination: "Montreal, QC",
         progress: 1,
+
+        originCoordinates: {
+            lat: 43.5890,
+            lng: -79.6441,
+        },
+
+        currentCoordinates: {
+            lat: 43.5890,
+            lng: -79.6441,
+        },
+
+        destinationCoordinates: {
+            lat: 45.5019,
+            lng: -73.5674,
+        },
     },
 
     FD13579: {
@@ -43,6 +91,21 @@ const mockShipments = {
         origin: "Mississauga, ON",
         destination: "Kingston, ON",
         progress: 2,
+
+        originCoordinates: {
+            lat: 43.5890,
+            lng: -79.6441,
+        },
+
+        currentCoordinates: {
+            lat: 43.6532,
+            lng: -79.3832,
+        },
+
+        destinationCoordinates: {
+            lat: 44.2312,
+            lng: -76.4860,
+        },
     },
 };
 
@@ -599,12 +662,27 @@ function ShipmentCommand() {
                                                     SHIPMENT LOCATION
                                                 </span>
 
-                                                <div className="shipment-map-placeholder">
+                                                <div className="shipment-map-wrap">
 
-                                                    <span>
-                                                        Map will appear here
+                                                    <ShipmentMap shipment={trackingResult} />
+
+                                                </div>
+
+                                                <div className="shipment-map-legend">
+                                                    <span className="legend-item">
+                                                        <i className="legend-dot legend-origin"></i>
+                                                        Origin
                                                     </span>
 
+                                                    <span className="legend-item">
+                                                        <i className="legend-parcel">📦</i>
+                                                        Current
+                                                    </span>
+
+                                                    <span className="legend-item">
+                                                        <i className="legend-dot legend-destination"></i>
+                                                        Destination
+                                                    </span>
                                                 </div>
 
 
