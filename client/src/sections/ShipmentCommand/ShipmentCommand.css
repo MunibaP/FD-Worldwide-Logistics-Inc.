@@ -161,6 +161,8 @@
 .shipment-command-panel {
     position: relative;
 
+    top: -30px;
+
     padding: 26px 34px 38px;
 
     border:
@@ -464,6 +466,11 @@
 
     box-shadow:
         0 12px 30px rgba(10, 35, 66, 0.06);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    
 }
 
 
@@ -567,9 +574,51 @@
     color: var(--navy);
 }
 
+/*Input Focus State*/
+
+.estimate-field input:focus {
+    border-color: rgba(47, 93, 140, 0.55);
+
+    box-shadow:
+        0 0 0 4px rgba(47, 93, 140, 0.08);
+
+    outline: none;
+}
+
+.tracking-input-wrap:focus-within {
+    border-color: rgba(47, 93, 140, 0.45);
+
+    box-shadow:
+        0 0 0 4px rgba(47, 93, 140, 0.08),
+        0 14px 34px rgba(10, 35, 66, 0.08);
+}
+
+
+/* .estimate-next {
+    margin-top: 18px;
+
+    min-width: 180px;
+
+    justify-content: center;
+
+    justify-self: center;
+} */
 
 .estimate-next {
-    margin-top: 14px;
+    align-self: center;
+
+    margin-top: 18px;
+
+    min-width: 170px;
+
+    justify-content: center;
+}
+
+.estimate-form-wrap {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
 }
 
 
@@ -929,7 +978,7 @@
         margin-right: auto;
     }
 
-        .estimate-next {
+    .estimate-next {
         display: inline-flex;
         align-items: center;
         justify-content: center;

@@ -230,7 +230,7 @@ function ShipmentCommand() {
                                 </div>
 
 
-                                <div className="estimate-grid">
+                                {/* <div className="estimate-grid">
 
                                     <div className="estimate-field">
                                         <label>From</label>
@@ -257,8 +257,41 @@ function ShipmentCommand() {
                                 <button className="estimate-next">
                                     Continue
                                     <span>→</span>
-                                </button>
+                                </button> */}
 
+                                <div className="estimate-form-wrap">
+
+                                    <div className="estimate-grid">
+
+                                        <div className="estimate-field">
+                                            <label>From</label>
+
+                                            <input
+                                                type="text"
+                                                placeholder="Toronto, ON"
+                                            />
+                                        </div>
+
+
+                                        <div className="estimate-field">
+                                            <label>To</label>
+
+                                            <input
+                                                type="text"
+                                                placeholder="Vancouver, BC"
+                                            />
+                                        </div>
+
+                                    </div>
+
+
+                                    <button className="estimate-next">
+                                        Continue
+                                        <span>→</span>
+                                    </button>
+
+                                </div>
+                                
                             </motion.div>
 
                         )}
