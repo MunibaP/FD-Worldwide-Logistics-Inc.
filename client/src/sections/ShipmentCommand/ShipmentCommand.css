@@ -541,7 +541,7 @@
    TRACKING RESULT
 ========================================= */
 
-.tracking-result {
+/* .tracking-result {
     margin-top: 22px;
 
     padding: 22px;
@@ -637,8 +637,163 @@
     color: var(--navy);
 
     font-size: 0.9rem;
+} */
+
+/* =========================================
+   TRACKING RESULT
+========================================= */
+
+.tracking-result {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 0.85fr)
+        minmax(0, 1.15fr);
+
+    width: 100%;
+
+    margin-top: 26px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    box-shadow:
+        0 18px 42px rgba(10, 35, 66, 0.07);
 }
 
+
+/* LEFT SIDE */
+
+.tracking-details-panel {
+    padding: 28px;
+}
+
+
+.tracking-panel-kicker {
+    display: block;
+
+    margin-bottom: 24px;
+
+    /* color: var(--red); */
+    color: var(--steel);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+}
+
+
+.tracking-detail-main {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    padding-bottom: 22px;
+
+    border-bottom:
+        1px solid rgba(10, 35, 66, 0.08);
+}
+
+
+.tracking-detail-main span,
+.tracking-detail-list span,
+.shipment-location-current span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+
+.tracking-detail-main strong,
+.tracking-detail-list strong,
+.shipment-location-current strong {
+    color: var(--navy);
+
+    font-size: 1rem;
+
+    font-weight: 700;
+}
+
+
+.tracking-status-value {
+    color: var(--red) !important;
+
+    font-size: 1.35rem !important;
+}
+
+
+.tracking-detail-list {
+    display: grid;
+
+    gap: 20px;
+
+    padding-top: 22px;
+}
+
+
+/* RIGHT SIDE */
+
+.shipment-location-panel {
+    padding: 28px;
+
+    border-left:
+        1px solid rgba(10, 35, 66, 0.08);
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fbfd 0%,
+            #f2f7fa 100%
+        );
+}
+
+
+.shipment-map-placeholder {
+    min-height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(47, 93, 140, 0.08),
+            rgba(10, 35, 66, 0.03)
+        );
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+.shipment-location-current {
+    margin-top: 18px;
+}
 
 /* =========================================
    ESTIMATE
@@ -1048,6 +1203,8 @@
         padding-top: 18px;
     }
 
+    /*TRACKING Section*/
+
     .tracking-input-wrap {
         display: flex;
         flex-direction: column;
@@ -1091,20 +1248,52 @@
         text-align: center;
     }
 
+    /* New TRACKING RESULT with Map*/
+
     .tracking-result {
-        padding: 18px;
-    }
-
-
-    .tracking-result-top {
-        flex-direction: column;
-
-        gap: 8px;
-    }
-
-
-    .tracking-result-grid {
         grid-template-columns: 1fr;
+
+        padding: 0;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+    }
+
+
+    .tracking-details-panel,
+    .shipment-location-panel {
+        padding: 20px 18px;
+    }
+
+
+    .shipment-location-panel {
+        border-left: 0;
+
+        border-top:
+            1px solid rgba(10, 35, 66, 0.08);
+    }
+
+
+    .tracking-detail-main {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+
+    .tracking-detail-list {
+        gap: 18px;
+    }
+
+
+    .shipment-map-placeholder {
+        min-height: 220px;
+    }
+
+
+    .shipment-location-current {
+        margin-top: 16px;
     }
 
     .shipment-tool-copy {

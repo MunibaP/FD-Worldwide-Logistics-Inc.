@@ -343,7 +343,7 @@ function ShipmentCommand() {
                                     </p>
                                 )}
 
-                                <AnimatePresence>
+                                {/* <AnimatePresence>
 
                                     {trackingResult && (
 
@@ -434,6 +434,194 @@ function ShipmentCommand() {
 
                                     )}
 
+                                </AnimatePresence> */}
+
+
+                                <AnimatePresence>
+                                    {trackingResult && (
+                                        <motion.div
+                                            className="tracking-result"
+
+                                            initial={{
+                                                opacity: 0,
+                                                y: 16
+                                            }}
+
+                                            animate={{
+                                                opacity: 1,
+                                                y: 0
+                                            }}
+
+                                            exit={{
+                                                opacity: 0,
+                                                y: 10
+                                            }}
+
+                                            transition={{
+                                                duration: 0.4,
+                                                ease: [0.22, 1, 0.36, 1]
+                                            }}
+                                        >
+
+                                            {/* <div className="tracking-result-header">
+
+                                                <div>
+                                                    <span className="tracking-result-label">
+                                                        CURRENT STATUS
+                                                    </span>
+
+                                                    <h4>
+                                                        {trackingResult.status}
+                                                    </h4>
+                                                </div>
+
+                                                <span className="tracking-result-number">
+                                                    {trackingResult.trackingNumber}
+                                                </span>
+
+                                            </div>
+
+
+                                            <div className="tracking-result-route">
+
+                                                <div className="tracking-route-location">
+                                                    <span>Origin</span>
+
+                                                    <strong>
+                                                        {trackingResult.origin}
+                                                    </strong>
+                                                </div>
+
+                                                <div className="tracking-route-connector">
+                                                    <span></span>
+                                                    <div className="tracking-route-arrow">
+                                                        →
+                                                    </div>
+                                                </div>
+
+                                                <div className="tracking-route-location destination">
+                                                    <span>Destination</span>
+
+                                                    <strong>
+                                                        {trackingResult.destination}
+                                                    </strong>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div className="tracking-result-details">
+
+                                                <div>
+                                                    <span>Current location</span>
+
+                                                    <strong>
+                                                        {trackingResult.currentLocation}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Estimated delivery</span>
+
+                                                    <strong>
+                                                        {trackingResult.estimatedDelivery}
+                                                    </strong>
+                                                </div>
+
+                                            </div> */}
+
+                                            <div className="tracking-details-panel">
+
+                                                <span className="tracking-panel-kicker">
+                                                    TRACKING DETAILS
+                                                </span>
+
+
+                                                <div className="tracking-detail-main">
+
+                                                    <div>
+                                                        <span>Current status</span>
+
+                                                        <strong className="tracking-status-value">
+                                                            {trackingResult.status}
+                                                        </strong>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <span>Tracking number</span>
+
+                                                        <strong>
+                                                            {trackingResult.trackingNumber}
+                                                        </strong>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div className="tracking-detail-list">
+
+                                                    <div>
+                                                        <span>Origin</span>
+
+                                                        <strong>
+                                                            {trackingResult.origin}
+                                                        </strong>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <span>Destination</span>
+
+                                                        <strong>
+                                                            {trackingResult.destination}
+                                                        </strong>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <span>Estimated delivery</span>
+
+                                                        <strong>
+                                                            {trackingResult.estimatedDelivery}
+                                                        </strong>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div className="shipment-location-panel">
+
+                                                <span className="tracking-panel-kicker">
+                                                    SHIPMENT LOCATION
+                                                </span>
+
+                                                <div className="shipment-map-placeholder">
+
+                                                    <span>
+                                                        Map will appear here
+                                                    </span>
+
+                                                </div>
+
+
+                                                <div className="shipment-location-current">
+
+                                                    <span>Current location</span>
+
+                                                    <strong>
+                                                        {trackingResult.currentLocation}
+                                                    </strong>
+
+                                                </div>
+
+                                            </div>
+
+                                        </motion.div>
+                                    )}
                                 </AnimatePresence>
                                 
 
