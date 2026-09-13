@@ -117,6 +117,26 @@ function ShipmentCommand() {
     const [trackingResult, setTrackingResult] = useState(null);
     const [trackingError, setTrackingError] = useState("");
 
+    const [estimateStep, setEstimateStep] = useState(1);
+
+    const [estimateData, setEstimateData] = useState({
+        from: "",
+        to: "",
+        
+        weightUnit: "kg",
+        dimensionUnit: "cm",
+
+        packages: [
+            {
+                id: 1,
+                type: "parcel",
+                weight: "",
+                length: "",
+                width: "",
+                height: "",
+            },
+        ],
+    });
     
     const handleTracking = () => {
         const cleanedNumber =
@@ -151,6 +171,88 @@ function ShipmentCommand() {
 
     const routeProgress =
     trackingResult?.progress ?? 0;
+
+    /*calculator funtion*/
+    const handleEstimateChange = (event) => {
+        const { name, value } = event.target;
+
+        setEstimateData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handlePackageChange = (id, field, value) => {
+        setEstimateData((prev) => ({
+            ...prev,
+
+            packages: prev.packages.map((pkg) =>
+                pkg.id === id
+                    ? {
+                        ...pkg,
+                        [field]: value,
+                    }
+                    : pkg
+            ),
+        }));
+    };
+
+    const addPackage = () => {
+        setEstimateData((prev) => ({
+            ...prev,
+
+            packages: [
+                ...prev.packages,
+                {
+                    id: Date.now(),
+                    type: "parcel",
+                    weight: "",
+                    length: "",
+                    width: "",
+                    height: "",
+                },
+            ],
+        }));
+    };
+
+
+    const removePackage = (id) => {
+        setEstimateData((prev) => ({
+            ...prev,
+
+            packages: prev.packages.filter(
+                (pkg) => pkg.id !== id
+            ),
+        }));
+    };
+
+    const packagesAreValid =
+        estimateData.packages.every((pkg) =>
+            pkg.type &&
+            pkg.weight &&
+            pkg.length &&
+            pkg.width &&
+            pkg.height
+        );
+
+        const getShipmentItemLabel = () => {
+            switch (estimateData.shipmentType) {
+                case "pallet":
+                    return "Pallet";
+
+                case "crate":
+                    return "Crate";
+
+                case "freight":
+                    return "Cargo Item";
+
+                case "documents":
+                    return "Document";
+
+                default:
+                    return "Package";
+            }
+        };
 
 
     return (
@@ -782,34 +884,295 @@ function ShipmentCommand() {
 
                                 <div className="estimate-form-wrap">
 
-                                    <div className="estimate-grid">
+                                    {/* STEP 1 */}
+                                    {estimateStep === 1 && (
+                                        <>
 
-                                        <div className="estimate-field">
-                                            <label>From</label>
+                                            <div className="estimate-grid">
 
-                                            <input
-                                                type="text"
-                                                placeholder="Toronto, ON"
-                                            />
+                                                <div className="estimate-field">
+                                                    <label>From</label>
+
+                                                    <input
+                                                        type="text"
+                                                        name="from"
+                                                        placeholder="Toronto, ON"
+                                                        value={estimateData.from}
+                                                        onChange={handleEstimateChange}
+                                                    />
+                                                </div>
+
+
+                                                <div className="estimate-field">
+                                                    <label>To</label>
+
+                                                    <input
+                                                        type="text"
+                                                        name="to"
+                                                        placeholder="Vancouver, BC"
+                                                        value={estimateData.to}
+                                                        onChange={handleEstimateChange}
+                                                    />
+                                                </div>
+
+                                            </div>
+
+
+                                            <button 
+                                                type="button"
+                                                className="estimate-next"
+                                                onClick={() => setEstimateStep(2)}
+                                                disabled={
+                                                    !estimateData.from.trim() ||
+                                                    !estimateData.to.trim()
+                                                }
+                                            >
+                                                Continue
+                                                <span>→</span>
+                                            </button>
+                                        </>
+                                    )}
+
+                                    {estimateStep === 2 && (
+                                        <div className="estimate-step-two">
+
+                                            {/* <div className="estimate-field">
+                                                <label>Shipment type</label>
+
+                                                <select
+                                                    name="shipmentType"
+                                                    value={estimateData.shipmentType}
+                                                    onChange={handleEstimateChange}
+                                                >
+                                                    <option value="">
+                                                        Select shipment type
+                                                    </option>
+
+                                                    <option value="documents">
+                                                        Documents
+                                                    </option>
+
+                                                    <option value="parcel">
+                                                        Parcel / Package
+                                                    </option>
+
+                                                    <option value="pallet">
+                                                        Pallet
+                                                    </option>
+
+                                                    <option value="crate">
+                                                        Crate
+                                                    </option>
+
+                                                    <option value="freight">
+                                                        Freight / Cargo
+                                                    </option>
+                                                </select>
+                                            </div> */}
+
+
+                                            <div className="estimate-packages">
+
+                                                {estimateData.packages.map((pkg, index) => (
+
+                                                    <div
+                                                        className="estimate-package"
+                                                        key={pkg.id}
+                                                    >
+
+                                                        <div className="estimate-package-header">
+
+                                                            <h4>
+                                                                {getShipmentItemLabel()} {index + 1}
+                                                            </h4>
+
+                                                            {estimateData.packages.length > 1 && (
+                                                                <button
+                                                                    type="button"
+                                                                    className="remove-package"
+                                                                    onClick={() =>
+                                                                        removePackage(pkg.id)
+                                                                    }
+                                                                >
+                                                                    Remove
+                                                                </button>
+                                                            )}
+
+                                                        </div>
+
+                                                        <div className="estimate-field">
+                                                            <label>Item type</label>
+
+                                                            <select
+                                                                value={pkg.type}
+                                                                onChange={(event) =>
+                                                                    handlePackageChange(
+                                                                        pkg.id,
+                                                                        "type",
+                                                                        event.target.value
+                                                                    )
+                                                                }
+                                                            >
+                                                                <option value="documents">
+                                                                    Documents
+                                                                </option>
+
+                                                                <option value="parcel">
+                                                                    Parcel / Package
+                                                                </option>
+
+                                                                <option value="pallet">
+                                                                    Pallet
+                                                                </option>
+
+                                                                <option value="crate">
+                                                                    Crate
+                                                                </option>
+
+                                                                <option value="freight">
+                                                                    Freight / Cargo
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div className="estimate-field">
+
+                                                            <label>Weight</label>
+
+                                                            <div className="estimate-input-unit">
+
+                                                                <input
+                                                                    type="number"
+                                                                    min="0"
+                                                                    placeholder="5"
+                                                                    value={pkg.weight}
+                                                                    onChange={(event) =>
+                                                                        handlePackageChange(
+                                                                            pkg.id,
+                                                                            "weight",
+                                                                            event.target.value
+                                                                        )
+                                                                    }
+                                                                />
+
+                                                                <select
+                                                                    name="weightUnit"
+                                                                    value={estimateData.weightUnit}
+                                                                    onChange={handleEstimateChange}
+                                                                >
+                                                                    <option value="kg">kg</option>
+                                                                    <option value="lb">lb</option>
+                                                                </select>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <label className="estimate-dimension-label">
+                                                            Dimensions
+                                                        </label>
+
+                                                        <div className="estimate-dimensions-row">
+
+                                                            <input
+                                                                type="number"
+                                                                min="0"
+                                                                placeholder="L"
+                                                                value={pkg.length}
+                                                                onChange={(event) =>
+                                                                    handlePackageChange(
+                                                                        pkg.id,
+                                                                        "length",
+                                                                        event.target.value
+                                                                    )
+                                                                }
+                                                            />
+
+                                                            <span>×</span>
+
+                                                            <input
+                                                                type="number"
+                                                                min="0"
+                                                                placeholder="W"
+                                                                value={pkg.width}
+                                                                onChange={(event) =>
+                                                                    handlePackageChange(
+                                                                        pkg.id,
+                                                                        "width",
+                                                                        event.target.value
+                                                                    )
+                                                                }
+                                                            />
+
+                                                            <span>×</span>
+
+                                                            <input
+                                                                type="number"
+                                                                min="0"
+                                                                placeholder="H"
+                                                                value={pkg.height}
+                                                                onChange={(event) =>
+                                                                    handlePackageChange(
+                                                                        pkg.id,
+                                                                        "height",
+                                                                        event.target.value
+                                                                    )
+                                                                }
+                                                            />
+
+                                                            <select
+                                                                name="dimensionUnit"
+                                                                value={estimateData.dimensionUnit}
+                                                                onChange={handleEstimateChange}
+                                                            >
+                                                                <option value="cm">cm</option>
+                                                                <option value="in">in</option>
+                                                            </select>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                ))}
+
+                                            </div>
+
+                                            <button
+                                                type="button"
+                                                className="add-package"
+                                                onClick={addPackage}
+                                            >
+                                                <span>+</span>
+                                                Add another {getShipmentItemLabel().toLowerCase()}
+                                            </button>
+
+
+                                            <div className="estimate-step-actions">
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-back"
+                                                    onClick={() => setEstimateStep(1)}
+                                                >
+                                                    ← Back
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-next"
+                                                    onClick={() => setEstimateStep(3)}
+                                                    disabled={!packagesAreValid}
+                                                >
+                                                    Continue
+                                                    <span>→</span>
+                                                </button>
+
+                                            </div>
+
                                         </div>
-
-
-                                        <div className="estimate-field">
-                                            <label>To</label>
-
-                                            <input
-                                                type="text"
-                                                placeholder="Vancouver, BC"
-                                            />
-                                        </div>
-
-                                    </div>
-
-
-                                    <button className="estimate-next">
-                                        Continue
-                                        <span>→</span>
-                                    </button>
+                                    )}
 
                                 </div>
                                 
