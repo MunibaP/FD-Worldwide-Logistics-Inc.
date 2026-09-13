@@ -153,6 +153,8 @@ function ShipmentCommand() {
         weightUnit: "kg",
         dimensionUnit: "cm",
 
+        shippingMethod: "",
+
         items: [
             {
                 id: 1,
@@ -761,6 +763,7 @@ function ShipmentCommand() {
                                         </>
                                     )}
 
+                                    {/*STEP 2*/}
                                     {estimateStep === 2 && (
                                         <div className="estimate-step-two">
 
@@ -961,6 +964,141 @@ function ShipmentCommand() {
                                                     className="estimate-next"
                                                     onClick={() => setEstimateStep(3)}
                                                     disabled={!itemsAreValid}
+                                                >
+                                                    Continue
+                                                    <span>→</span>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    )}
+
+                                    
+                                    {/* STEP 3 */}
+                                    {estimateStep === 3 && (
+                                        <div className="estimate-step-three">
+
+                                            <span className="estimate-step-label">
+                                                SHIPPING METHOD
+                                            </span>
+
+                                            <div className="shipping-method-list">
+
+                                                <label className="shipping-option">
+
+                                                    <input
+                                                        type="radio"
+                                                        name="shippingMethod"
+                                                        value="ground"
+                                                        checked={
+                                                            estimateData.shippingMethod === "ground"
+                                                        }
+                                                        onChange={handleEstimateChange}
+                                                    />
+
+                                                    <div>
+                                                        <strong>Ground</strong>
+
+                                                        <span>
+                                                            Best for road freight and shipments
+                                                            moving across North America.
+                                                        </span>
+                                                    </div>
+
+                                                </label>
+
+
+                                                <label className="shipping-option">
+
+                                                    <input
+                                                        type="radio"
+                                                        name="shippingMethod"
+                                                        value="air"
+                                                        checked={
+                                                            estimateData.shippingMethod === "air"
+                                                        }
+                                                        onChange={handleEstimateChange}
+                                                    />
+
+                                                    <div>
+                                                        <strong>Air</strong>
+
+                                                        <span>
+                                                            Faster option for international and
+                                                            time-sensitive shipments.
+                                                        </span>
+                                                    </div>
+
+                                                </label>
+
+
+                                                <label className="shipping-option">
+
+                                                    <input
+                                                        type="radio"
+                                                        name="shippingMethod"
+                                                        value="ocean"
+                                                        checked={
+                                                            estimateData.shippingMethod === "ocean"
+                                                        }
+                                                        onChange={handleEstimateChange}
+                                                    />
+
+                                                    <div>
+                                                        <strong>Ocean</strong>
+
+                                                        <span>
+                                                            Best for larger cargo and shipments
+                                                            where transit time is more flexible.
+                                                        </span>
+                                                    </div>
+
+                                                </label>
+
+
+                                                <label className="shipping-option">
+
+                                                    <input
+                                                        type="radio"
+                                                        name="shippingMethod"
+                                                        value="recommend"
+                                                        checked={
+                                                            estimateData.shippingMethod === "recommend"
+                                                        }
+                                                        onChange={handleEstimateChange}
+                                                    />
+
+                                                    <div>
+                                                        <strong>Recommend for me</strong>
+
+                                                        <span>
+                                                            Let FastDrop suggest the most suitable
+                                                            shipping method for your shipment.
+                                                        </span>
+                                                    </div>
+
+                                                </label>
+
+                                            </div>
+
+
+                                            <div className="estimate-step-actions">
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-back"
+                                                    onClick={() => setEstimateStep(2)}
+                                                >
+                                                    ← Back
+                                                </button>
+
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-next"
+                                                    onClick={() => setEstimateStep(4)}
+                                                    disabled={!estimateData.shippingMethod}
                                                 >
                                                     Continue
                                                     <span>→</span>

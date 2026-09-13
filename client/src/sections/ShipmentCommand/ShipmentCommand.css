@@ -1324,6 +1324,86 @@
 }
 
 /* =========================================
+   ESTIMATE STEP 3
+========================================= */
+
+.estimate-step-three {
+    display: grid;
+    gap: 18px;
+}
+
+
+.estimate-step-label {
+    color: var(--steel);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+}
+
+
+.shipping-method-list {
+    display: grid;
+
+    border-top:
+        1px solid rgba(10, 35, 66, 0.08);
+}
+
+
+.shipping-option {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 16px 4px;
+
+    border-bottom:
+        1px solid rgba(10, 35, 66, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.shipping-option:hover {
+    background:
+        rgba(47, 93, 140, 0.035);
+}
+
+
+.shipping-option input {
+    margin-top: 4px;
+
+    accent-color: var(--steel);
+}
+
+
+.shipping-option strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--navy);
+
+    font-size: 0.95rem;
+}
+
+
+.shipping-option span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+}
+
+/* =========================================
    TABLET
 ========================================= */
 
@@ -1341,146 +1421,6 @@
 /* =========================================
    MOBILE
 ========================================= */
-
-/* @media (max-width: 600px) {
-
-    .shipment-command-heading {
-        text-align: center;
-
-        margin-bottom: 34px;
-    }
-
-
-    .shipment-command-kicker {
-        justify-content: center;
-    }
-
-
-    .shipment-command-panel {
-        padding: 20px 18px 26px;
-
-        border-radius: 24px;
-    }
-
-
-    .shipment-command-tabs {
-        display: grid;
-
-        grid-template-columns: 1fr 1fr;
-
-        width: 100%;
-
-        margin-bottom: 32px;
-    }
-
-    .shipment-command-content {
-        padding-top: 16px;
-    }
-
-
-    .shipment-tab {
-        padding: 10px 8px;
-
-        font-size: 0.72rem;
-    }
-
-
-    .shipment-route {
-        height: 225px;
-
-        margin-bottom: 0;
-    }
-
-
-    .route-line,
-    .route-progress {
-        left: 20px;
-
-        right: auto;
-
-        top: 15px;
-
-        width: 3px;
-        height: 186px;
-
-        transform: translateX(-50%);
-    }
-
-
-    .route-progress {
-        width: 3px !important;
-
-        height: 130px;
-
-        background:
-            linear-gradient(
-                180deg,
-                var(--steel),
-                var(--red)
-            );
-    }
-
-
-    .route-stop {
-        left: 20px !important;
-
-        transform: translateX(-50%);
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-    }
-
-
-    .route-stop-1 {
-        top: 0;
-    }
-
-
-    .route-stop-2 {
-        top: 62px;
-    }
-
-
-    .route-stop-3 {
-        top: 124px;
-    }
-
-
-    .route-stop-4 {
-        top: 186px;
-    }
-
-
-    .route-stop span {
-        margin: 0;
-    }
-
-
-    .route-stop small {
-        white-space: nowrap;
-
-        font-size: 0.72rem;
-    }
-
-
-    .tracking-input-wrap {
-        flex-direction: column;
-    }
-
-
-    .tracking-input-wrap button {
-        justify-content: center;
-    }
-
-
-    .estimate-grid {
-        grid-template-columns: 1fr;
-    }
-
-} */
 
 @media (max-width: 600px) {
 
@@ -1834,5 +1774,30 @@
 
     .add-package {
         width: 100%;
+    }
+
+    /*STEP 3 SHIPMENT FORM*/
+    
+    .estimate-step-three {
+        gap: 16px;
+    }
+
+
+    .shipping-option {
+        gap: 12px;
+
+        padding: 15px 2px;
+    }
+
+
+    .shipping-option strong {
+        font-size: 0.9rem;
+    }
+
+
+    .shipping-option span {
+        font-size: 0.78rem;
+
+        line-height: 1.5;
     }
 }
