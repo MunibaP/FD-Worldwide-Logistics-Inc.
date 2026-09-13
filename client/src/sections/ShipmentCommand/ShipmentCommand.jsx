@@ -156,7 +156,7 @@ function ShipmentCommand() {
         items: [
             {
                 id: 1,
-                type: "parcel",
+                type: "",
                 weight: "",
                 length: "",
                 width: "",
@@ -258,7 +258,7 @@ function ShipmentCommand() {
                 ...prev.items,
                 {
                     id: Date.now(),
-                    type: "parcel",
+                    type: "",
                     weight: "",
                     length: "",
                     width: "",
@@ -806,6 +806,10 @@ function ShipmentCommand() {
                                                                     )
                                                                 }
                                                             >
+                                                                <option value="">
+                                                                    Select item type
+                                                                </option>
+
                                                                 <option value="documents">
                                                                     Documents
                                                                 </option>
