@@ -4,7 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import ShipmentMap from "./ShipmentMap";
 import "./ShipmentCommand.css";
 
-/* Mock Data for tracking*/
+/* =========================================
+    Mock Data for tracking
+========================================= */
+
 const mockShipments = {
     FD12345: {
         trackingNumber: "FD12345",
@@ -109,15 +112,39 @@ const mockShipments = {
     },
 };
 
+/* =========================================
+    MODE SWITCH
+    Controls Track Shipment / Plan a Shipment
+ ========================================= */
 
 function ShipmentCommand() {
     const [mode, setMode] = useState("track");
+
+    /* =========================================
+       TRACKING STATE
+       Stores the entered tracking number,
+       returned shipment, and validation error.
+    ========================================= */
 
     const [trackingNumber, setTrackingNumber] = useState("");
     const [trackingResult, setTrackingResult] = useState(null);
     const [trackingError, setTrackingError] = useState("");
 
+    /* =========================================
+       CALCULATOR STEP
+       Controls which calculator screen is shown.
+       Step 1 = route
+       Step 2 = shipment items
+       Step 3 = shipping method
+    ========================================= */
+
     const [estimateStep, setEstimateStep] = useState(1);
+
+    /* =========================================
+       CALCULATOR DATA
+       Stores route, measurement units,
+       and each individual shipment item.
+    ========================================= */
 
     const [estimateData, setEstimateData] = useState({
         from: "",
@@ -126,7 +153,7 @@ function ShipmentCommand() {
         weightUnit: "kg",
         dimensionUnit: "cm",
 
-        packages: [
+        items: [
             {
                 id: 1,
                 type: "parcel",
@@ -138,6 +165,12 @@ function ShipmentCommand() {
         ],
     });
     
+    /* =========================================
+        TRACKING LOOKUP
+        Finds the mock shipment for the entered
+        tracking number.
+    ========================================= */
+
     const handleTracking = () => {
         const cleanedNumber =
             trackingNumber.trim().toUpperCase();
@@ -169,10 +202,21 @@ function ShipmentCommand() {
         setTrackingError("");
     };
 
+    /* =========================================
+        TRACKING ROUTE PROGRESS
+        Uses shipment progress to control the
+        active route dots and progress line.
+    ========================================= */
+
     const routeProgress =
     trackingResult?.progress ?? 0;
 
-    /*calculator funtion*/
+    /* =========================================
+        CALCULATOR funtion - GENERAL FIELD CHANGE
+        Handles fields such as From, To,
+        weightUnit, and dimensionUnit.
+    ========================================= */
+
     const handleEstimateChange = (event) => {
         const { name, value } = event.target;
 
@@ -182,27 +226,36 @@ function ShipmentCommand() {
         }));
     };
 
-    const handlePackageChange = (id, field, value) => {
+    /* =========================================
+        CALCULATOR - ITEM FIELD CHANGE
+        Updates a specific shipment item.
+    ========================================= */
+
+    const handleItemChange = (id, field, value) => {
         setEstimateData((prev) => ({
             ...prev,
 
-            packages: prev.packages.map((pkg) =>
-                pkg.id === id
+            items: prev.items.map((item) =>
+                item.id === id
                     ? {
-                        ...pkg,
+                        ...item,
                         [field]: value,
                     }
-                    : pkg
+                    : item
             ),
         }));
     };
 
-    const addPackage = () => {
+    /* =========================================
+        CALCULATOR - ADD ITEM
+    ========================================= */
+
+    const addItem = () => {
         setEstimateData((prev) => ({
             ...prev,
 
-            packages: [
-                ...prev.packages,
+            items: [
+                ...prev.items,
                 {
                     id: Date.now(),
                     type: "parcel",
@@ -215,44 +268,34 @@ function ShipmentCommand() {
         }));
     };
 
+    /* =========================================
+        CALCULATOR - REMOVE ITEM
+    ========================================= */
 
-    const removePackage = (id) => {
+    const removeItem = (id) => {
         setEstimateData((prev) => ({
             ...prev,
 
-            packages: prev.packages.filter(
-                (pkg) => pkg.id !== id
+            items: prev.items.filter(
+                (item) => item.id !== id
             ),
         }));
     };
 
-    const packagesAreValid =
-        estimateData.packages.every((pkg) =>
-            pkg.type &&
-            pkg.weight &&
-            pkg.length &&
-            pkg.width &&
-            pkg.height
+    /* =========================================
+        CALCULATOR VALIDATION
+        Continue is enabled only when every
+        item has type, weight, and dimensions.
+    ========================================= */
+
+    const itemsAreValid =
+        estimateData.items.every((item) =>
+            item.type &&
+            item.weight &&
+            item.length &&
+            item.width &&
+            item.height
         );
-
-        const getShipmentItemLabel = () => {
-            switch (estimateData.shipmentType) {
-                case "pallet":
-                    return "Pallet";
-
-                case "crate":
-                    return "Crate";
-
-                case "freight":
-                    return "Cargo Item";
-
-                case "documents":
-                    return "Document";
-
-                default:
-                    return "Package";
-            }
-        };
 
 
     return (
@@ -319,29 +362,6 @@ function ShipmentCommand() {
                     <div className="shipment-route">
 
                         <div className="route-line"></div>
-
-                        {/* <motion.div
-                            className="route-progress"
-                            animate={{
-                                width:
-                                    mode === "track"
-                                        ? routeProgress === 0
-                                            ? "0%"
-                                            : routeProgress === 1
-                                            ? "2%"
-                                            : routeProgress === 2
-                                            ? "36%"
-                                            : routeProgress === 3
-                                            ? "58%"
-                                            : "84%"
-                                        : "32%"
-                            }}
-                            transition={{
-                                duration: 0.8,
-                                ease: [0.22, 1, 0.36, 1]
-                            }}
-                        ></motion.div> */}
-
 
                        <motion.div
                             className="route-progress"
@@ -508,100 +528,6 @@ function ShipmentCommand() {
                                     </p>
                                 )}
 
-                                {/* <AnimatePresence>
-
-                                    {trackingResult && (
-
-                                        <motion.div
-                                            className="tracking-result"
-
-                                            initial={{
-                                                opacity: 0,
-                                                y: 16
-                                            }}
-
-                                            animate={{
-                                                opacity: 1,
-                                                y: 0
-                                            }}
-
-                                            exit={{
-                                                opacity: 0,
-                                                y: 10
-                                            }}
-
-                                            transition={{
-                                                duration: 0.4,
-                                                ease: [0.22, 1, 0.36, 1]
-                                            }}
-                                        >
-
-                                            <div className="tracking-result-top">
-
-                                                <div>
-                                                    <span className="tracking-result-label">
-                                                        CURRENT STATUS
-                                                    </span>
-
-                                                    <h4>
-                                                        {trackingResult.status}
-                                                    </h4>
-                                                </div>
-
-
-                                                <span className="tracking-result-number">
-                                                    {trackingResult.trackingNumber}
-                                                </span>
-
-                                            </div>
-
-
-                                            <div className="tracking-result-grid">
-
-                                                <div>
-                                                    <span>Current location</span>
-
-                                                    <strong>
-                                                        {trackingResult.currentLocation}
-                                                    </strong>
-                                                </div>
-
-
-                                                <div>
-                                                    <span>Estimated delivery</span>
-
-                                                    <strong>
-                                                        {trackingResult.estimatedDelivery}
-                                                    </strong>
-                                                </div>
-
-
-                                                <div>
-                                                    <span>Origin</span>
-
-                                                    <strong>
-                                                        {trackingResult.origin}
-                                                    </strong>
-                                                </div>
-
-
-                                                <div>
-                                                    <span>Destination</span>
-
-                                                    <strong>
-                                                        {trackingResult.destination}
-                                                    </strong>
-                                                </div>
-
-                                            </div>
-
-                                        </motion.div>
-
-                                    )}
-
-                                </AnimatePresence> */}
-
-
                                 <AnimatePresence>
                                     {trackingResult && (
                                         <motion.div
@@ -627,74 +553,6 @@ function ShipmentCommand() {
                                                 ease: [0.22, 1, 0.36, 1]
                                             }}
                                         >
-
-                                            {/* <div className="tracking-result-header">
-
-                                                <div>
-                                                    <span className="tracking-result-label">
-                                                        CURRENT STATUS
-                                                    </span>
-
-                                                    <h4>
-                                                        {trackingResult.status}
-                                                    </h4>
-                                                </div>
-
-                                                <span className="tracking-result-number">
-                                                    {trackingResult.trackingNumber}
-                                                </span>
-
-                                            </div>
-
-
-                                            <div className="tracking-result-route">
-
-                                                <div className="tracking-route-location">
-                                                    <span>Origin</span>
-
-                                                    <strong>
-                                                        {trackingResult.origin}
-                                                    </strong>
-                                                </div>
-
-                                                <div className="tracking-route-connector">
-                                                    <span></span>
-                                                    <div className="tracking-route-arrow">
-                                                        →
-                                                    </div>
-                                                </div>
-
-                                                <div className="tracking-route-location destination">
-                                                    <span>Destination</span>
-
-                                                    <strong>
-                                                        {trackingResult.destination}
-                                                    </strong>
-                                                </div>
-
-                                            </div>
-
-
-                                            <div className="tracking-result-details">
-
-                                                <div>
-                                                    <span>Current location</span>
-
-                                                    <strong>
-                                                        {trackingResult.currentLocation}
-                                                    </strong>
-                                                </div>
-
-
-                                                <div>
-                                                    <span>Estimated delivery</span>
-
-                                                    <strong>
-                                                        {trackingResult.estimatedDelivery}
-                                                    </strong>
-                                                </div>
-
-                                            </div> */}
 
                                             <div className="tracking-details-panel">
 
@@ -852,36 +710,6 @@ function ShipmentCommand() {
 
                                 </div>
 
-
-                                {/* <div className="estimate-grid">
-
-                                    <div className="estimate-field">
-                                        <label>From</label>
-
-                                        <input
-                                            type="text"
-                                            placeholder="Toronto, ON"
-                                        />
-                                    </div>
-
-
-                                    <div className="estimate-field">
-                                        <label>To</label>
-
-                                        <input
-                                            type="text"
-                                            placeholder="Vancouver, BC"
-                                        />
-                                    </div>
-
-                                </div>
-
-
-                                <button className="estimate-next">
-                                    Continue
-                                    <span>→</span>
-                                </button> */}
-
                                 <div className="estimate-form-wrap">
 
                                     {/* STEP 1 */}
@@ -936,62 +764,27 @@ function ShipmentCommand() {
                                     {estimateStep === 2 && (
                                         <div className="estimate-step-two">
 
-                                            {/* <div className="estimate-field">
-                                                <label>Shipment type</label>
-
-                                                <select
-                                                    name="shipmentType"
-                                                    value={estimateData.shipmentType}
-                                                    onChange={handleEstimateChange}
-                                                >
-                                                    <option value="">
-                                                        Select shipment type
-                                                    </option>
-
-                                                    <option value="documents">
-                                                        Documents
-                                                    </option>
-
-                                                    <option value="parcel">
-                                                        Parcel / Package
-                                                    </option>
-
-                                                    <option value="pallet">
-                                                        Pallet
-                                                    </option>
-
-                                                    <option value="crate">
-                                                        Crate
-                                                    </option>
-
-                                                    <option value="freight">
-                                                        Freight / Cargo
-                                                    </option>
-                                                </select>
-                                            </div> */}
-
-
                                             <div className="estimate-packages">
 
-                                                {estimateData.packages.map((pkg, index) => (
+                                                {estimateData.items.map((item, index) => (
 
                                                     <div
                                                         className="estimate-package"
-                                                        key={pkg.id}
+                                                        key={item.id}
                                                     >
 
                                                         <div className="estimate-package-header">
 
                                                             <h4>
-                                                                {getShipmentItemLabel()} {index + 1}
+                                                                Item {index + 1}
                                                             </h4>
 
-                                                            {estimateData.packages.length > 1 && (
+                                                            {estimateData.items.length > 1 && (
                                                                 <button
                                                                     type="button"
                                                                     className="remove-package"
                                                                     onClick={() =>
-                                                                        removePackage(pkg.id)
+                                                                        removeItem(item.id)
                                                                     }
                                                                 >
                                                                     Remove
@@ -1004,10 +797,10 @@ function ShipmentCommand() {
                                                             <label>Item type</label>
 
                                                             <select
-                                                                value={pkg.type}
+                                                                value={item.type}
                                                                 onChange={(event) =>
-                                                                    handlePackageChange(
-                                                                        pkg.id,
+                                                                    handleItemChange(
+                                                                        item.id,
                                                                         "type",
                                                                         event.target.value
                                                                     )
@@ -1046,10 +839,10 @@ function ShipmentCommand() {
                                                                     type="number"
                                                                     min="0"
                                                                     placeholder="5"
-                                                                    value={pkg.weight}
+                                                                    value={item.weight}
                                                                     onChange={(event) =>
-                                                                        handlePackageChange(
-                                                                            pkg.id,
+                                                                        handleItemChange(
+                                                                            item.id,
                                                                             "weight",
                                                                             event.target.value
                                                                         )
@@ -1080,10 +873,10 @@ function ShipmentCommand() {
                                                                 type="number"
                                                                 min="0"
                                                                 placeholder="L"
-                                                                value={pkg.length}
+                                                                value={item.length}
                                                                 onChange={(event) =>
-                                                                    handlePackageChange(
-                                                                        pkg.id,
+                                                                    handleItemChange(
+                                                                        item.id,
                                                                         "length",
                                                                         event.target.value
                                                                     )
@@ -1096,10 +889,10 @@ function ShipmentCommand() {
                                                                 type="number"
                                                                 min="0"
                                                                 placeholder="W"
-                                                                value={pkg.width}
+                                                                value={item.width}
                                                                 onChange={(event) =>
-                                                                    handlePackageChange(
-                                                                        pkg.id,
+                                                                    handleItemChange(
+                                                                        item.id,
                                                                         "width",
                                                                         event.target.value
                                                                     )
@@ -1112,10 +905,10 @@ function ShipmentCommand() {
                                                                 type="number"
                                                                 min="0"
                                                                 placeholder="H"
-                                                                value={pkg.height}
+                                                                value={item.height}
                                                                 onChange={(event) =>
-                                                                    handlePackageChange(
-                                                                        pkg.id,
+                                                                    handleItemChange(
+                                                                        item.id,
                                                                         "height",
                                                                         event.target.value
                                                                     )
@@ -1142,10 +935,10 @@ function ShipmentCommand() {
                                             <button
                                                 type="button"
                                                 className="add-package"
-                                                onClick={addPackage}
+                                                onClick={addItem}
                                             >
                                                 <span>+</span>
-                                                Add another {getShipmentItemLabel().toLowerCase()}
+                                                Add another item
                                             </button>
 
 
@@ -1163,7 +956,7 @@ function ShipmentCommand() {
                                                     type="button"
                                                     className="estimate-next"
                                                     onClick={() => setEstimateStep(3)}
-                                                    disabled={!packagesAreValid}
+                                                    disabled={!itemsAreValid}
                                                 >
                                                     Continue
                                                     <span>→</span>
