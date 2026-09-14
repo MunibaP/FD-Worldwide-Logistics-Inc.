@@ -150,8 +150,7 @@ function ShipmentCommand() {
         from: "",
         to: "",
         
-        weightUnit: "kg",
-        dimensionUnit: "cm",
+        measurementSystem: "metric",
 
         shippingMethod: "",
 
@@ -216,7 +215,7 @@ function ShipmentCommand() {
     /* =========================================
         CALCULATOR funtion - GENERAL FIELD CHANGE
         Handles fields such as From, To,
-        weightUnit, and dimensionUnit.
+        measurementSystem, and shippingMethod.
     ========================================= */
 
     const handleEstimateChange = (event) => {
@@ -291,13 +290,180 @@ function ShipmentCommand() {
     ========================================= */
 
     const itemsAreValid =
-        estimateData.items.every((item) =>
-            item.type &&
-            item.weight &&
-            item.length &&
-            item.width &&
-            item.height
-        );
+    estimateData.items.every((item) =>
+        item.type &&
+        item.weight &&
+        item.length &&
+        item.width &&
+        item.height
+    );
+
+    /* =========================================
+        CALCULATOR - SHIPMENT TOTALS
+        Calculates the number of shipment items
+        and their combined weight.
+    ========================================= */
+
+    const totalItems = estimateData.items.length;
+
+    const totalWeight = estimateData.items.reduce(
+        (total, item) =>
+            total + (Number(item.weight) || 0),
+        0
+    );
+
+    /* =========================================
+        CALCULATOR - ITEM TYPE LABEL
+        Converts stored item values into
+        customer-friendly names.
+    ========================================= */
+
+    const getItemTypeLabel = (type) => {
+        switch (type) {
+            case "documents":
+                return "Documents";
+
+            case "parcel":
+                return "Parcel / Package";
+
+            case "pallet":
+                return "Pallet";
+
+            case "crate":
+                return "Crate";
+
+            case "freight":
+                return "Freight / Cargo";
+
+            default:
+                return "Item";
+        }
+    };
+
+
+    /* =========================================
+        CALCULATOR - SHIPPING METHOD LABEL
+    ========================================= */
+
+    const getShippingMethodLabel = (method) => {
+        switch (method) {
+            case "ground":
+                return "Ground";
+
+            case "air":
+                return "Air";
+
+            case "ocean":
+                return "Ocean";
+
+            case "recommend":
+                return "Recommend for me";
+
+            default:
+                return "";
+        }
+    };
+
+    /* =========================================
+        CALCULATOR (STEP 2) - MEASUREMENT UNITS
+    ========================================= */
+
+    const weightUnit =
+        estimateData.measurementSystem === "metric"
+            ? "kg"
+            : "lb";
+
+    const dimensionUnit =
+        estimateData.measurementSystem === "metric"
+            ? "cm"
+            : "in";
+
+    /* =========================================
+        CALCULATOR - MEASUREMENT SYSTEM CHANGE
+        Converts all existing item values when
+        switching between Metric and Imperial.
+    ========================================= */
+
+    const handleMeasurementSystemChange = (event) => {
+        const newSystem = event.target.value;
+
+        if (newSystem === estimateData.measurementSystem) {
+            return;
+        }
+
+        setEstimateData((prev) => ({
+            ...prev,
+
+            measurementSystem: newSystem,
+
+            items: prev.items.map((item) => {
+                const weight = Number(item.weight);
+                const length = Number(item.length);
+                const width = Number(item.width);
+                const height = Number(item.height);
+
+                const convertValue = (value, converter) => {
+                    if (!value && value !== 0) {
+                            return "";
+                    }
+
+                    return Number(
+                        converter(value).toFixed(2)
+                    );
+                };
+
+                if (newSystem === "imperial") {
+                    return {
+                        ...item,
+
+                        weight: convertValue(
+                            weight,
+                            (value) => value * 2.20462
+                        ),
+
+                        length: convertValue(
+                            length,
+                            (value) => value / 2.54
+                        ),
+
+                        width: convertValue(
+                            width,
+                            (value) => value / 2.54
+                        ),
+
+                        height: convertValue(
+                             height,
+                            (value) => value / 2.54
+                        ),
+                    };
+                }
+
+                return {
+                    ...item,
+
+                    weight: convertValue(
+                        weight,
+                        (value) => value / 2.20462
+                    ),
+
+                    length: convertValue(
+                        length,
+                        (value) => value * 2.54
+                    ),
+
+                    width: convertValue(
+                        width,
+                        (value) => value * 2.54
+                    ),
+
+                    height: convertValue(
+                        height,
+                        (value) => value * 2.54
+                    ),
+                };
+            }),
+        }));
+    };
 
 
     return (
@@ -671,7 +837,7 @@ function ShipmentCommand() {
 
                             <motion.div
                                 key="estimate"
-                                className="shipment-command-content"
+                                className={`shipment-command-content estimate-content estimate-step-${estimateStep}`}
 
                                 initial={{
                                     opacity: 0,
@@ -767,6 +933,57 @@ function ShipmentCommand() {
                                     {estimateStep === 2 && (
                                         <div className="estimate-step-two">
 
+                                            <div className="estimate-measurement-system">
+
+                                                <span className="estimate-dimension-label">
+                                                    Measurement system
+                                                </span>
+
+                                                <div className="measurement-options">
+
+                                                    <label className="measurement-option">
+
+                                                        <input
+                                                            type="radio"
+                                                            name="measurementSystem"
+                                                            value="metric"
+                                                            checked={
+                                                                estimateData.measurementSystem === "metric"
+                                                            }
+                                                            onChange={handleMeasurementSystemChange}
+                                                        />
+
+                                                        <div>
+                                                            <strong>Metric</strong>
+                                                            <span>kg / cm</span>
+                                                        </div>
+
+                                                    </label>
+
+
+                                                    <label className="measurement-option">
+
+                                                        <input
+                                                            type="radio"
+                                                            name="measurementSystem"
+                                                            value="imperial"
+                                                            checked={
+                                                                estimateData.measurementSystem === "imperial"
+                                                            }
+                                                            onChange={handleMeasurementSystemChange}
+                                                        />
+
+                                                        <div>
+                                                            <strong>Imperial</strong>
+                                                            <span>lb / in</span>
+                                                        </div>
+
+                                                    </label>
+
+                                                </div>
+
+                                            </div>
+
                                             <div className="estimate-packages">
 
                                                 {estimateData.items.map((item, index) => (
@@ -856,14 +1073,9 @@ function ShipmentCommand() {
                                                                     }
                                                                 />
 
-                                                                <select
-                                                                    name="weightUnit"
-                                                                    value={estimateData.weightUnit}
-                                                                    onChange={handleEstimateChange}
-                                                                >
-                                                                    <option value="kg">kg</option>
-                                                                    <option value="lb">lb</option>
-                                                                </select>
+                                                                <span className="estimate-unit">
+                                                                    {weightUnit}
+                                                                </span>
 
                                                             </div>
 
@@ -922,14 +1134,9 @@ function ShipmentCommand() {
                                                                 }
                                                             />
 
-                                                            <select
-                                                                name="dimensionUnit"
-                                                                value={estimateData.dimensionUnit}
-                                                                onChange={handleEstimateChange}
-                                                            >
-                                                                <option value="cm">cm</option>
-                                                                <option value="in">in</option>
-                                                            </select>
+                                                            <span className="estimate-unit">
+                                                                {dimensionUnit}
+                                                            </span>
 
                                                         </div>
 
@@ -1107,6 +1314,187 @@ function ShipmentCommand() {
                                             </div>
 
                                         </div>
+                                    )}
+
+
+                                    {/* =========================================
+                                        STEP 4 - SHIPMENT ESTIMATE
+                                    ========================================= */}
+
+                                    {estimateStep === 4 && (
+
+                                        <div className="estimate-step-four">
+
+                                            <span className="estimate-step-label">
+                                                SHIPMENT ESTIMATE
+                                            </span>
+
+
+                                            {/* ROUTE */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Route
+                                                </span>
+
+                                                <div className="estimate-summary-route">
+
+                                                    <strong>
+                                                        {estimateData.from}
+                                                    </strong>
+
+                                                    <span>→</span>
+
+                                                    <strong>
+                                                        {estimateData.to}
+                                                    </strong>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {/* SHIPPING METHOD */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Shipping method
+                                                </span>
+
+                                                <strong className="estimate-summary-value">
+                                                    {getShippingMethodLabel(
+                                                        estimateData.shippingMethod
+                                                    )}
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* SHIPMENT TOTALS */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Shipment
+                                                </span>
+
+                                                <strong className="estimate-summary-value">
+                                                    {totalItems}{" "}
+                                                    {totalItems === 1 ? "item" : "items"}
+                                                    {" • "}
+                                                    {totalWeight} {weightUnit}
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* ITEM BREAKDOWN */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Items
+                                                </span>
+
+                                                <div className="estimate-summary-items">
+
+                                                    {estimateData.items.map((item, index) => (
+
+                                                        <div
+                                                            className="estimate-summary-item"
+                                                            key={item.id}
+                                                        >
+
+                                                            <div>
+                                                                <strong>
+                                                                    Item {index + 1}
+                                                                </strong>
+
+                                                                <span>
+                                                                    {getItemTypeLabel(item.type)}
+                                                                </span>
+                                                            </div>
+
+
+                                                            <div>
+                                                                <span>
+                                                                    {item.weight}{" "}
+                                                                    {weightUnit}
+                                                                </span>
+
+                                                                <span>
+                                                                    {item.length} ×{" "}
+                                                                    {item.width} ×{" "}
+                                                                    {item.height}{" "}
+                                                                    {dimensionUnit}
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+
+                                                    ))}
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {/* ESTIMATED COST */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Estimated cost
+                                                </span>
+
+                                                <strong className="estimate-rate-pending">
+                                                    Live rate calculation coming soon
+                                                </strong>
+
+                                                <p className="estimate-summary-note">
+                                                    Final pricing is based on current rates,
+                                                    shipment details, service availability and
+                                                    applicable surcharges.
+                                                </p>
+
+                                            </div>
+
+
+                                            {/* TRANSIT TIME */}
+                                            <div className="estimate-summary-section">
+
+                                                <span className="estimate-summary-label">
+                                                    Estimated transit
+                                                </span>
+
+                                                <strong className="estimate-rate-pending">
+                                                    Calculated with live rate
+                                                </strong>
+
+                                            </div>
+
+
+                                            {/* FINAL ACTIONS */}
+                                            <div className="estimate-step-actions">
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-back"
+                                                    onClick={() => setEstimateStep(3)}
+                                                >
+                                                    ← Edit Shipment
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-next"
+                                                    onClick={() => setEstimateStep(5)}
+                                                >
+                                                    Request Final Quote
+                                                    <span>→</span>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
                                     )}
 
                                 </div>
