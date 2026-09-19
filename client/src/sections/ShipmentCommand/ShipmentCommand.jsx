@@ -936,7 +936,7 @@ function ShipmentCommand() {
                                             <div className="estimate-measurement-system">
 
                                                 <span className="estimate-dimension-label">
-                                                    Measurement system
+                                                    Measurement System
                                                 </span>
 
                                                 <div className="measurement-options">
@@ -1163,7 +1163,8 @@ function ShipmentCommand() {
                                                     className="estimate-back"
                                                     onClick={() => setEstimateStep(1)}
                                                 >
-                                                    ← Back
+                                                    <span className="back-arrow">←</span>
+                                                    Back
                                                 </button>
 
                                                 <button
@@ -1297,7 +1298,8 @@ function ShipmentCommand() {
                                                     className="estimate-back"
                                                     onClick={() => setEstimateStep(2)}
                                                 >
-                                                    ← Back
+                                                    <span className="back-arrow">←</span>
+                                                    Back
                                                 </button>
 
 
@@ -1479,7 +1481,8 @@ function ShipmentCommand() {
                                                     className="estimate-back"
                                                     onClick={() => setEstimateStep(3)}
                                                 >
-                                                    ← Edit Shipment
+                                                    <span className="back-arrow">←</span>
+                                                    Edit Shipment
                                                 </button>
 
                                                 <button
