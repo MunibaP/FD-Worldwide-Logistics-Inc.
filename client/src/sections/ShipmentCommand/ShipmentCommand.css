@@ -1351,7 +1351,7 @@
     font-weight: 800;
 
     cursor: pointer;
-    
+
 /*color change for back button arrow*/
     transition:
         color 0.25s ease,
@@ -1568,20 +1568,67 @@
     cursor: pointer;
 
     transition:
-        background 0.2s ease;
+        background 0.2s ease,
+        padding-left 0.2s ease;
 }
 
 
 .shipping-option:hover {
-    background:
-        rgba(47, 93, 140, 0.035);
+    background: rgba(47, 93, 140, 0.035);
+    padding-left: 10px;
 }
 
 
-.shipping-option input {
-    margin-top: 4px;
+.shipping-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
 
-    accent-color: var(--steel);
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+
+    margin-top: 3px;
+
+    border: 2px solid rgba(10, 35, 66, 0.32);
+    border-radius: 50%;
+
+    background: #fff;
+
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.shipping-option input[type="radio"]::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    transform: scale(0);
+
+    transition: transform 0.2s ease;
+}
+
+.shipping-option input[type="radio"]:checked {
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 0 4px rgba(201, 54, 44, 0.08);
+}
+
+.shipping-option input[type="radio"]:checked::before {
+    transform: scale(1);
 }
 
 
@@ -1621,17 +1668,18 @@
 
     color: var(--steel);
 
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     font-weight: 900;
 
-    letter-spacing: 0.12em;
+    letter-spacing: 0.01em;
+    text-align: center;
 }
 
 
 /* EACH SUMMARY SECTION */
 
 .estimate-summary-section {
-    padding: 18px 0;
+    padding: 20px 0;
 
     border-bottom:
         1px solid rgba(10, 35, 66, 0.08);
@@ -1647,14 +1695,14 @@
 .estimate-summary-label {
     display: block;
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 
     color: var(--muted);
 
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-size: 0.76rem;
+    font-weight: 800;
 
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
 }
 
 
@@ -1679,14 +1727,15 @@
 
 
 .estimate-summary-route strong {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    font-weight: 900;
 }
 
 
 .estimate-summary-route > span {
     color: var(--red);
 
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
 }
 
@@ -1728,6 +1777,7 @@
 
 .estimate-summary-item > div:last-child {
     text-align: right;
+    justify-items: end;
 }
 
 
@@ -1735,6 +1785,7 @@
     color: var(--navy);
 
     font-size: 0.92rem;
+    font-weight: 900;
 }
 
 
@@ -1742,6 +1793,25 @@
     color: var(--muted);
 
     font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.estimate-summary-item > div:last-child span:first-child {
+    color: var(--navy);
+    font-weight: 800;
+}
+
+/*Shipment Estimate: makes the number of items bold*/
+
+.estimate-summary-item > div:last-child span:last-child {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/*Shipping method*/
+
+.estimate-summary-method {
+    color: var(--red);
 }
 
 
@@ -2155,7 +2225,38 @@
     }
 
 
+    /* MOBILE - DIMENSION FIELDS */
     .estimate-dimensions-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto
+            minmax(0, 1fr)
+            auto
+            minmax(0, 1fr);
+
+        justify-content: center;
+        gap: 8px;
+    }
+
+    /* Dimension input size */
+    .estimate-dimensions-row input {
+        width: 74px;
+        height: 46px;
+    }
+
+    /* Give the Height field room for cm / in */
+    .estimate-dimensions-row input:last-of-type {
+        padding-left: 12px;
+        padding-right: 36px;
+    }
+
+    /* Position cm / in inside Height field */
+    .estimate-dimensions-row .estimate-unit {
+        right: 18px;
+        font-size: 0.68rem;
+    }
+
+    /* .estimate-dimensions-row {
         grid-template-columns:
             1fr auto 1fr auto 1fr;
     }
@@ -2165,7 +2266,19 @@
         grid-column: 1 / -1;
 
         width: 100%;
+    } */
+
+    /* Measurement System: fixed the overlapping issue for height # and "cm" */
+
+    /* Keep cm / in from overlapping Height value */
+    /* .estimate-dimensions-row input:last-of-type {
+        padding-right: 48px;
     }
+
+    .estimate-dimensions-row .estimate-unit {
+        right: 14px;
+        font-size: 0.72rem;
+    } */
 
 
     .estimate-step-actions {
@@ -2246,5 +2359,89 @@
         width: 100%;
 
         text-align: center;
+    }
+}
+
+/* =========================================
+   EXTRA SMALL MOBILE / FOLD PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    /* Give the main panel more usable width */
+    .shipment-command-panel {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    /* Slightly reduce the Plan a Shipment heading */
+    .shipment-tool-copy h3 {
+        font-size: 1.85rem;
+        line-height: 1.05;
+    }
+
+    /* Measurement system */
+    .measurement-options {
+        gap: 26px;
+    }
+
+    /* Item card */
+    .estimate-package {
+        padding: 16px 14px;
+    }
+
+    /* =====================================
+       DIMENSIONS
+    ===================================== */
+
+    .estimate-dimensions-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto
+            minmax(0, 1fr)
+            auto
+            minmax(0, 1fr);
+
+        gap: 6px;
+        width: 100%;
+    }
+
+    .estimate-dimensions-row input {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    /* Reserve space for cm / in in Height */
+    .estimate-dimensions-row input:last-of-type {
+        padding-right: 29px;
+    }
+
+    .estimate-dimensions-row .estimate-unit {
+        right: 8px;
+
+        font-size: 0.64rem;
+    }
+
+    /* Smaller multiplication symbols */
+    .estimate-dimensions-row > span:not(.estimate-unit) {
+        font-size: 0.8rem;
+    }
+
+    /* Bottom buttons */
+    .estimate-step-actions {
+        gap: 8px;
+    }
+
+    .estimate-back {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .estimate-step-actions .estimate-next {
+        min-width: 150px;
     }
 }

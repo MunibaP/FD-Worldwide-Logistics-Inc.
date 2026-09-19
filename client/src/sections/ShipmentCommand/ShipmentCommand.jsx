@@ -1363,7 +1363,7 @@ function ShipmentCommand() {
                                                     Shipping method
                                                 </span>
 
-                                                <strong className="estimate-summary-value">
+                                                <strong className="estimate-summary-value estimate-summary-method">
                                                     {getShippingMethodLabel(
                                                         estimateData.shippingMethod
                                                     )}
