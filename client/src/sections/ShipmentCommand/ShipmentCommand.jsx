@@ -221,6 +221,27 @@ function ShipmentCommand() {
     trackingResult?.progress ?? 0;
 
     /* =========================================
+        CALCULATOR - PLANNING PROGRESS
+        Converts the six calculator steps into
+        four planning milestones.
+
+        Step 1 = Route
+        Step 2 = Shipment
+        Step 3 = Service
+        Steps 4-6 = Quote
+    ========================================= */
+
+    // const planningProgress =
+    //     estimateStep === 1
+    //         ? 1
+    //         : estimateStep === 2
+    //         ? 2
+    //         : estimateStep === 3
+    //         ? 3
+    //         : 4;
+    const planningProgress = estimateStep;
+
+    /* =========================================
         CALCULATOR funtion - GENERAL FIELD CHANGE
         Handles fields such as From, To,
         measurementSystem, and shippingMethod.
@@ -611,7 +632,15 @@ function ShipmentCommand() {
                                             : routeProgress === 3
                                             ? "64%"
                                             : "84%"
-                                        : "32%",
+                                        : planningProgress === 1
+                                        ? "2%"
+                                        : planningProgress === 2
+                                        ? "31%"
+                                        : planningProgress === 3
+                                        ? "60%"
+                                        : planningProgress === 4
+                                        ? "72%"
+                                        : "84%",
 
                                 "--mobile-progress":
                                     mode === "track"
@@ -624,7 +653,13 @@ function ShipmentCommand() {
                                             : routeProgress === 3
                                             ? "116px"
                                             : "174px"
-                                        : "58px"
+                                        : planningProgress === 1
+                                        ? "0px"
+                                        : planningProgress === 2
+                                        ? "58px"
+                                        : planningProgress === 3
+                                        ? "116px"
+                                        : "174px"
                             }}
                             animate={{
                                 width: "var(--desktop-progress)"
@@ -635,49 +670,124 @@ function ShipmentCommand() {
                             }}
                         ></motion.div>
 
-
+                        {/* STOP 1 */}
                         <div
                             className={`route-stop route-stop-1 ${
-                                routeProgress >= 1 ? "active" : ""
+                                mode === "track"
+                                    ? routeProgress >= 1 
+                                        ? "active" 
+                                        : ""
+                                    : planningProgress >= 1
+                                    ? "active"
+                                    : ""
                             } ${
-                                routeProgress === 1 ? "current" : ""
+                                mode === "track"
+                                ? routeProgress === 1 
+                                    ? "current" 
+                                    : ""
+                                : planningProgress === 1
+                                ? "current"
+                                : ""
                             }`}
                         >
                             <span></span>
-                            <small>Origin</small>
+
+                            <small>
+                                {mode === "track" ? "Origin" : "Route"}
+                            </small>
+
                         </div>
+                        
+                        {/* STOP 2 */}
 
                         <div
                             className={`route-stop route-stop-2 ${
-                                routeProgress >= 2 ? "active" : ""
+                                mode === "track"
+                                    ? routeProgress >= 2 
+                                        ? "active" 
+                                        : ""
+                                    : planningProgress >= 2
+                                    ? "active"
+                                    : ""
                             } ${
-                                routeProgress === 2 ? "current" : ""
+                                mode === "track"
+                                ? routeProgress === 2 
+                                    ? "current" 
+                                    : ""
+                                : planningProgress === 2
+                                ? "current"
+                                : ""
                             }`}
                         >
                             <span></span>
-                            <small>Hub</small>
+
+                            <small>
+                                {mode === "track" ? "Hub" : "Shipment"}
+                            </small>
+
                         </div>
+                        
+                        { /* STOP 3 */}
 
                         <div
                             className={`route-stop route-stop-3 ${
-                                routeProgress >= 3 ? "active" : ""
+                                mode === "track"
+                                    ? routeProgress >= 3 
+                                        ? "active" 
+                                        : ""
+                                    : planningProgress >= 3
+                                    ? "active"
+                                    : ""
+
                             } ${
-                                routeProgress === 3 ? "current" : ""
+                                mode === "track"
+                                    ? routeProgress === 3 
+                                        ? "current" 
+                                        : ""
+                                    : planningProgress === 3
+                                    ? "current"
+                                    : ""
                             }`}
                         >
                             <span></span>
-                            <small>In Transit</small>
+
+                            <small>
+                                {mode === "track"
+                                    ? "In Transit"
+                                    : "Service"}
+                            </small>
+
                         </div>
+
+                        { /* STOP 4 */}
 
                         <div
                             className={`route-stop route-stop-4 ${
-                                routeProgress >= 4 ? "active" : ""
+                                mode === "track"
+                                    ? routeProgress >= 4 
+                                        ? "active" 
+                                        : ""
+                                    : planningProgress >= 5
+                                    ? "active"
+                                    : ""
                             } ${
-                                routeProgress === 4 ? "current" : ""
+                                mode === "track"
+                                    ? routeProgress === 4 
+                                        ? "current" 
+                                        : ""
+                                    : planningProgress === 5
+                                    ? "current"
+                                    : ""
                             }`}
                         >
                             <span></span>
-                            <small>Destination</small>
+
+                            <small>
+                                {mode === "track"
+                                    ? "Destination"
+                                    : "Quote"}
+                            </small>
+
                         </div>
 
                     </div>
