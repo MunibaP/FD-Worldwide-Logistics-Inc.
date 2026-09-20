@@ -1870,6 +1870,294 @@
 }
 
 /* =========================================
+   STEP 5 - REQUEST FINAL QUOTE
+========================================= */
+
+.estimate-step-five {
+    display: grid;
+    gap: 18px;
+}
+
+.estimate-step-five .estimate-step-label {
+    text-align: center;
+
+    color: var(--steel);
+
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+}
+
+/* Quote form intro */
+
+.quote-form-intro {
+    text-align: center;
+
+    margin-bottom: 4px;
+}
+
+.quote-form-intro strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 1.05rem;
+    font-weight: 900;
+
+    margin-bottom: 4px;
+}
+
+.quote-form-intro p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+/* Quote contact fields */
+
+.quote-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+.quote-form-grid .estimate-field {
+    min-width: 0;
+}
+
+.quote-form-grid .estimate-field label,
+.quote-notes-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--navy);
+
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.quote-form-grid .estimate-field label span,
+.quote-notes-field label span {
+    color: var(--muted);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.quote-form-grid input,
+.quote-notes-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.14);
+
+    border-radius: 12px;
+
+    background: #fff;
+
+    color: var(--navy);
+
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.quote-form-grid input {
+    height: 48px;
+
+    padding: 0 14px;
+}
+
+.quote-form-grid input::placeholder,
+.quote-notes-field textarea::placeholder {
+    color: rgba(10, 35, 66, 0.4);
+}
+
+.quote-form-grid input:focus,
+.quote-notes-field textarea:focus {
+    border-color: rgba(47, 93, 140, 0.55);
+
+    box-shadow:
+        0 0 0 4px rgba(47, 93, 140, 0.08);
+
+    outline: none;
+}
+
+/* Additional shipment details */
+
+.quote-notes-field {
+    margin-top: 2px;
+}
+
+.quote-notes-field textarea {
+    min-height: 105px;
+
+    padding: 13px 14px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+/* =========================================
+   STEP 6 - QUOTE REQUEST CONFIRMATION
+========================================= */
+
+.estimate-step-six {
+    display: grid;
+    gap: 20px;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.estimate-step-six .estimate-step-label {
+    color: var(--steel);
+
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+
+    text-align: center;
+}
+
+/* Success indicator */
+
+.quote-success-icon {
+    width: 54px;
+    height: 54px;
+
+    margin: 2px auto 0;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        2px solid rgba(201, 54, 44, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(201, 54, 44, 0.06);
+
+    color: var(--red);
+
+    font-size: 1.35rem;
+    font-weight: 900;
+}
+
+/* Confirmation message */
+
+.quote-success-copy {
+    max-width: 520px;
+
+    margin: 0 auto;
+}
+
+.quote-success-copy h4 {
+    margin: 0 0 8px;
+
+    color: var(--navy);
+
+    font-size: 1.25rem;
+    font-weight: 900;
+
+    line-height: 1.2;
+}
+
+.quote-success-copy p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+/* =========================================
+   CONFIRMATION SUMMARY
+========================================= */
+
+.quote-success-summary {
+    width: 100%;
+
+    margin-top: 4px;
+
+    border-top:
+        1px solid rgba(10, 35, 66, 0.08);
+
+    border-bottom:
+        1px solid rgba(10, 35, 66, 0.08);
+
+    text-align: left;
+}
+
+.quote-success-summary > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    padding: 14px 4px;
+
+    border-top:
+        1px solid rgba(10, 35, 66, 0.06);
+}
+
+.quote-success-summary > div:first-child {
+    border-top: 0;
+}
+
+.quote-success-summary > div > span {
+    flex-shrink: 0;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.quote-success-summary > div > strong {
+    color: var(--navy);
+
+    font-size: 0.88rem;
+    font-weight: 900;
+
+    text-align: right;
+}
+
+.quote-success-summary strong em {
+    margin: 0 8px;
+
+    color: var(--red);
+
+    font-style: normal;
+    font-weight: 900;
+}
+
+.quote-success-done {
+    justify-self: center;
+
+    margin-top: 4px;
+
+    min-width: 140px;
+}
+
+/* =========================================
    TABLET
 ========================================= */
 
@@ -1886,8 +2174,51 @@
         padding-top: 0;
     }
 
-}
+    /* Step 5: Request Final Quote*/
+    
+    .estimate-step-five {
+        width: 100%;
+    }
 
+    .quote-form-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .quote-form-grid input {
+        height: 48px;
+    }
+
+    .quote-notes-field textarea {
+        min-height: 100px;
+    }
+
+    .quote-form-intro {
+        margin-bottom: 2px;
+    }
+
+    /* =========================================
+        STEP 6 - TABLET
+    ========================================= */
+
+    .estimate-step-six {
+        width: 100%;
+    }
+
+    .quote-success-copy {
+        max-width: 500px;
+    }
+
+    .quote-success-summary {
+        max-width: 600px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
 
 /* =========================================
    MOBILE
@@ -2360,6 +2691,68 @@
 
         text-align: center;
     }
+
+    /* Step 5 - Quote form */
+
+    .quote-form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .quote-form-intro strong {
+        font-size: 1rem;
+    }
+
+    .quote-notes-field textarea {
+        min-height: 100px;
+    }
+
+    /* =========================================
+        STEP 6 - MOBILE
+    ========================================= */
+
+    .estimate-step-six {
+        gap: 18px;
+    }
+
+    .quote-success-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 1.2rem;
+    }
+
+    .quote-success-copy h4 {
+        font-size: 1.1rem;
+    }
+
+    .quote-success-copy p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .quote-success-summary > div {
+        gap: 16px;
+
+        padding: 13px 2px;
+    }
+
+    .quote-success-summary > div > span {
+        font-size: 0.74rem;
+    }
+
+    .quote-success-summary > div > strong {
+        font-size: 0.82rem;
+    }
+
+    .quote-success-summary strong em {
+        margin: 0 5px;
+    }
+
+    .quote-success-done {
+        min-width: 130px;
+    }
 }
 
 /* =========================================
@@ -2443,5 +2836,25 @@
 
     .estimate-step-actions .estimate-next {
         min-width: 150px;
+    }
+
+    /* =========================================
+        STEP 6 - EXTRA SMALL MOBILE
+    ========================================= */
+
+    .quote-success-copy h4 {
+        font-size: 1.05rem;
+    }
+
+    .quote-success-summary > div {
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .quote-success-summary > div > strong {
+        max-width: 68%;
+
+        line-height: 1.45;
     }
 }

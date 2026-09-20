@@ -154,6 +154,14 @@ function ShipmentCommand() {
 
         shippingMethod: "",
 
+        contact: {
+            fullName: "",
+            email: "",
+            phone: "",
+            company: "",
+            notes: "",
+        },
+
         items: [
             {
                 id: 1,
@@ -224,6 +232,25 @@ function ShipmentCommand() {
         setEstimateData((prev) => ({
             ...prev,
             [name]: value,
+        }));
+    };
+
+    /* =========================================
+        CALCULATOR - QUOTE CONTACT CHANGE
+        Updates customer information collected
+        during the final quote request step.
+    ========================================= */
+
+    const handleQuoteContactChange = (event) => {
+        const { name, value } = event.target;
+
+        setEstimateData((prev) => ({
+            ...prev,
+
+            contact: {
+                ...prev.contact,
+                [name]: value,
+            },
         }));
     };
 
@@ -464,6 +491,45 @@ function ShipmentCommand() {
             }),
         }));
     };
+
+    /* =========================================
+        CALCULATOR - RESET QUOTE
+        Clears the completed shipment request
+        and returns the calculator to Step 1.
+        ========================================= */
+
+        const resetQuoteRequest = () => {
+
+            setEstimateData({
+                from: "",
+                to: "",
+
+                measurementSystem: "metric",
+
+                shippingMethod: "",
+
+                contact: {
+                    fullName: "",
+                    email: "",
+                    phone: "",
+                    company: "",
+                    notes: "",
+                },
+
+                items: [
+                    {
+                        id: 1,
+                        type: "",
+                        weight: "",
+                        length: "",
+                        width: "",
+                        height: "",
+                    },
+                ],
+            });
+
+            setEstimateStep(1);
+        };
 
 
     return (
@@ -1495,6 +1561,226 @@ function ShipmentCommand() {
                                                 </button>
 
                                             </div>
+
+                                        </div>
+
+                                    )}
+
+                                    {/* =========================================
+                                        STEP 5 - REQUEST FINAL QUOTE
+                                    ========================================= */}
+
+                                    {estimateStep === 5 && (
+
+                                        <div className="estimate-step-five">
+
+                                            <span className="estimate-step-label">
+                                                REQUEST FINAL QUOTE
+                                            </span>
+
+                                            <div className="quote-form-intro">
+                                                <strong>Your shipment plan is ready.</strong>
+
+                                                <p>
+                                                    Tell us where to send your quote.
+                                                </p>
+                                            </div>
+
+
+                                            <div className="quote-form-grid">
+
+                                                <div className="estimate-field">
+                                                    <label htmlFor="quote-full-name">
+                                                        Full name
+                                                    </label>
+
+                                                    <input
+                                                        id="quote-full-name"
+                                                        type="text"
+                                                        name="fullName"
+                                                        placeholder="Your full name"
+                                                        value={estimateData.contact.fullName}
+                                                        onChange={handleQuoteContactChange}
+                                                    />
+                                                </div>
+
+
+                                                <div className="estimate-field">
+                                                    <label htmlFor="quote-email">
+                                                        Email
+                                                    </label>
+
+                                                    <input
+                                                        id="quote-email"
+                                                        type="email"
+                                                        name="email"
+                                                        placeholder="you@company.com"
+                                                        value={estimateData.contact.email}
+                                                        onChange={handleQuoteContactChange}
+                                                    />
+                                                </div>
+
+
+                                                <div className="estimate-field">
+                                                    <label htmlFor="quote-phone">
+                                                        Phone
+                                                    </label>
+
+                                                    <input
+                                                        id="quote-phone"
+                                                        type="tel"
+                                                        name="phone"
+                                                        placeholder="(000) 000-0000"
+                                                        value={estimateData.contact.phone}
+                                                        onChange={handleQuoteContactChange}
+                                                    />
+                                                </div>
+
+
+                                                <div className="estimate-field">
+                                                    <label htmlFor="quote-company">
+                                                        Company <span>(optional)</span>
+                                                    </label>
+
+                                                    <input
+                                                        id="quote-company"
+                                                        type="text"
+                                                        name="company"
+                                                        placeholder="Company name"
+                                                        value={estimateData.contact.company}
+                                                        onChange={handleQuoteContactChange}
+                                                    />
+                                                </div>
+
+                                            </div>
+
+
+                                            <div className="estimate-field quote-notes-field">
+
+                                                <label htmlFor="quote-notes">
+                                                    Additional details <span>(optional)</span>
+                                                </label>
+
+                                                <textarea
+                                                    id="quote-notes"
+                                                    name="notes"
+                                                    rows="4"
+                                                    placeholder="Tell us about timing, pickup requirements, special handling or anything else we should know."
+                                                    value={estimateData.contact.notes}
+                                                    onChange={handleQuoteContactChange}
+                                                />
+
+                                            </div>
+
+
+                                            <div className="estimate-step-actions">
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-back"
+                                                    onClick={() => setEstimateStep(4)}
+                                                >
+                                                    <span className="back-arrow">←</span>
+                                                    Back
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    className="estimate-next"
+                                                    onClick={() => setEstimateStep(6)}
+                                                    disabled={
+                                                        !estimateData.contact.fullName.trim() ||
+                                                        !estimateData.contact.email.trim() ||
+                                                        !estimateData.contact.phone.trim()
+                                                    }
+                                                >
+                                                    Request Quote
+                                                    <span>→</span>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+                                    )}
+
+                                    {/* =========================================
+                                        STEP 6 - QUOTE REQUEST CONFIRMATION
+                                    ========================================= */}
+
+                                    {estimateStep === 6 && (
+
+                                        <div className="estimate-step-six">
+
+                                            <span className="estimate-step-label">
+                                                QUOTE REQUEST RECEIVED
+                                            </span>
+
+                                            <div className="quote-success-icon">
+                                                ✓
+                                            </div>
+
+                                            <div className="quote-success-copy">
+
+                                                <h4>
+                                                    Thank you, {estimateData.contact.fullName}.
+                                                </h4>
+
+                                                <p>
+                                                    Your shipment request has been received.
+                                                    Our team will review the details and contact
+                                                    you with final pricing and availability.
+                                                </p>
+
+                                            </div>
+
+
+                                            <div className="quote-success-summary">
+
+                                                <div>
+                                                    <span>Route</span>
+
+                                                    <strong>
+                                                        {estimateData.from}
+                                                        <em>→</em>
+                                                        {estimateData.to}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Shipping method</span>
+
+                                                    <strong>
+                                                        {getShippingMethodLabel(
+                                                            estimateData.shippingMethod
+                                                        )}
+                                                    </strong>
+                                                </div>
+
+
+                                                <div>
+                                                    <span>Shipment</span>
+
+                                                    <strong>
+                                                        {totalItems}{" "}
+                                                        {totalItems === 1 ? "item" : "items"}
+                                                        {" • "}
+                                                        {totalWeight} {weightUnit}
+                                                    </strong>
+                                                </div>
+
+                                            </div>
+
+
+                                            <button
+                                                type="button"
+                                                className="estimate-next quote-success-done"
+                                                onClick={resetQuoteRequest}
+                                            >
+                                                Done
+                                                {/* <span>→</span> */}
+                                            </button>
 
                                         </div>
 
