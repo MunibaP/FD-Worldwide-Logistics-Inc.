@@ -574,6 +574,210 @@
     padding: 28px;
 }
 
+/* =========================================
+   TRACKING DETAILS - LOWER LAYOUT
+========================================= */
+
+.tracking-detail-bottom {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   TRACKING HISTORY
+========================================= */
+
+.tracking-history {
+    min-width: 0;
+
+    padding-left: 26px;
+    padding-top: 22px;
+
+    border-left:
+        1px solid rgba(10, 35, 66, 0.08);
+}
+
+
+.tracking-history > .tracking-panel-kicker {
+    display: block;
+
+    margin-bottom: 16px;
+}
+
+.tracking-history-list {
+    display: grid;
+    gap: 0;
+}
+
+
+.tracking-history-event {
+    display: grid;
+
+    grid-template-columns:
+        18px
+        minmax(0, 1fr);
+
+    gap: 10px;
+
+    min-height: 66px;
+}
+
+
+.tracking-history-marker {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.history-dot {
+    position: relative;
+    z-index: 2;
+
+    width: 9px;
+    height: 9px;
+
+    margin-top: 4px;
+
+    border-radius: 50%;
+
+    background: var(--steel);
+
+    box-shadow:
+        0 0 0 4px rgba(47, 93, 140, 0.08);
+}
+
+
+.history-dot.active {
+    background: var(--red);
+
+    box-shadow:
+        0 0 0 4px rgba(201, 54, 44, 0.09);
+}
+
+
+.history-line {
+    position: absolute;
+
+    top: 17px;
+    bottom: -2px;
+
+    width: 1px;
+
+    background:
+        rgba(10, 35, 66, 0.14);
+}
+
+
+/* .tracking-history-content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    padding-bottom: 15px;
+}
+
+
+.tracking-history-content strong {
+    margin-bottom: 3px;
+
+    color: var(--navy);
+
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+
+.tracking-history-content > span {
+    margin-bottom: 2px;
+
+    color: var(--steel);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.tracking-history-content small {
+    color: var(--muted);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+} */
+
+
+/* =========================================
+   TRACKING HISTORY CONTENT
+   Matches Origin / Destination typography
+========================================= */
+
+.tracking-history-content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    padding-bottom: 18px;
+}
+
+
+/* Event status - same as detail labels */
+
+.tracking-history-content > strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--muted);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+
+/* Date + time - same as detail values */
+
+.tracking-history-content > span {
+    margin-bottom: 2px;
+    
+    color: var(--navy);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+
+/* Location - same typography as detail values */
+
+.tracking-history-content > small {
+    /* margin-top: 3px; */
+
+    color: var(--navy);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+ 
+/* finished tracking history */
 
 .tracking-panel-kicker {
     display: block;
@@ -2753,6 +2957,26 @@
     .quote-success-done {
         min-width: 130px;
     }
+
+    /* TRACKING HISTORY */
+
+    .tracking-detail-bottom {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    .tracking-history {
+        padding-left: 0;
+        padding-top: 22px;
+
+        border-left: 0;
+
+        border-top:
+            1px solid rgba(10, 35, 66, 0.08);
+    }
+
 }
 
 /* =========================================

@@ -18,6 +18,30 @@ const mockShipments = {
         destination: "Ottawa, ON",
         progress: 3,
 
+        history: [
+            {
+                id: 1,
+                status: "In Transit",
+                date: "Sep 13",
+                time: "9:18 AM",
+                location: "Toronto, ON",
+            },
+            {
+                id: 2,
+                status: "Departed Origin Facility",
+                date: "Sep 13",
+                time: "6:42 AM",
+                location: "Mississauga, ON",
+            },
+            {
+                id: 3,
+                status: "Shipment Received",
+                date: "Sep 12",
+                time: "4:25 PM",
+                location: "Mississauga, ON",
+            },
+        ],
+
         /*Mock Coordinates for map display*/
 
         originCoordinates: {
@@ -45,6 +69,30 @@ const mockShipments = {
         destination: "Ottawa, ON",
         progress: 4,
 
+        history: [
+            {
+                id: 1,
+                status: "Delivered",
+                date: "Sep 11",
+                time: "2:14 PM",
+                location: "Ottawa, ON",
+            },
+            {
+                id: 2,
+                status: "Out for Delivery",
+                date: "Sep 11",
+                time: "8:05 AM",
+                location: "Ottawa, ON",
+            },
+            {
+                id: 3,
+                status: "Arrived at Delivery Facility",
+                date: "Sep 11",
+                time: "5:32 AM",
+                location: "Ottawa, ON",
+            },
+        ],
+
         originCoordinates: {
             lat: 43.5890,
             lng: -79.6441,
@@ -70,6 +118,30 @@ const mockShipments = {
         destination: "Montreal, QC",
         progress: 1,
 
+        history: [
+            {
+                id: 1,
+                status: "Picked Up",
+                date: "Sep 13",
+                time: "3:10 PM",
+                location: "Mississauga, ON",
+            },
+            {
+                id: 2,
+                status: "Pickup Scheduled",
+                date: "Sep 13",
+                time: "10:30 AM",
+                location: "Mississauga, ON",
+            },
+            {
+                id: 3,
+                status: "Shipment Created",
+                date: "Sep 12",
+                time: "6:45 PM",
+                location: "Mississauga, ON",
+            },
+        ],
+
         originCoordinates: {
             lat: 43.5890,
             lng: -79.6441,
@@ -94,6 +166,34 @@ const mockShipments = {
         origin: "Mississauga, ON",
         destination: "Kingston, ON",
         progress: 2,
+
+        /* =========================================
+            TRACKING HISTORY
+        ========================================= */
+
+        history: [
+            {
+                id: 1,
+                status: "At Hub",
+                date: "Sep 15",
+                time: "8:42 AM",
+                location: "Toronto Distribution Hub, ON",
+            },
+            {
+                id: 2,
+                status: "In Transit",
+                date: "Sep 15",
+                time: "5:20 AM",
+                location: "Mississauga, ON",
+            },
+            {
+                id: 3,
+                status: "Shipment Received",
+                date: "Sep 14",
+                time: "6:15 PM",
+                location: "Mississauga, ON",
+            },
+        ],
 
         originCoordinates: {
             lat: 43.5890,
@@ -898,7 +998,7 @@ function ShipmentCommand() {
                                             }}
                                         >
 
-                                            <div className="tracking-details-panel">
+                                            {/* <div className="tracking-details-panel">
 
                                                 <span className="tracking-panel-kicker">
                                                     TRACKING DETAILS
@@ -953,6 +1053,148 @@ function ShipmentCommand() {
                                                         <strong>
                                                             {trackingResult.estimatedDelivery}
                                                         </strong>
+                                                    </div>
+
+                                                </div>
+
+                                            </div> */}
+
+                                            <div className="tracking-details-panel">
+
+                                                <span className="tracking-panel-kicker">
+                                                    TRACKING DETAILS
+                                                </span>
+
+
+                                                {/* =========================================
+                                                    CURRENT STATUS + TRACKING NUMBER
+                                                ========================================= */}
+
+                                                <div className="tracking-detail-main">
+
+                                                    <div>
+                                                        <span>Current status</span>
+
+                                                        <strong className="tracking-status-value">
+                                                            {trackingResult.status}
+                                                        </strong>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <span>Tracking number</span>
+
+                                                        <strong>
+                                                            {trackingResult.trackingNumber}
+                                                        </strong>
+                                                    </div>
+
+                                                </div>
+
+
+                                                {/* =========================================
+                                                    SHIPMENT DETAILS + TRACKING HISTORY
+                                                ========================================= */}
+
+                                                <div className="tracking-detail-bottom">
+
+                                                    {/* LEFT - ROUTE DETAILS */}
+                                                    <div className="tracking-detail-list">
+
+                                                        <div>
+                                                            <span>Origin</span>
+
+                                                            <strong>
+                                                                {trackingResult.origin}
+                                                            </strong>
+                                                        </div>
+
+
+                                                        <div>
+                                                            <span>Destination</span>
+
+                                                            <strong>
+                                                                {trackingResult.destination}
+                                                            </strong>
+                                                        </div>
+
+
+                                                        <div>
+                                                            <span>Estimated delivery</span>
+
+                                                            <strong>
+                                                                {trackingResult.estimatedDelivery}
+                                                            </strong>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    {/* RIGHT - TRACKING HISTORY */}
+                                                    <div className="tracking-history">
+
+                                                        <span className="tracking-panel-kicker">
+                                                            TRACKING HISTORY
+                                                        </span>
+
+
+                                                        <div className="tracking-history-list">
+
+                                                            {trackingResult.history?.slice(0, 3).map(
+                                                                (event, index) => (
+
+                                                                    <div
+                                                                        className="tracking-history-event"
+                                                                        key={event.id}
+                                                                    >
+
+                                                                        <div className="tracking-history-marker">
+
+                                                                            <span
+                                                                                className={
+                                                                                    index === 0
+                                                                                        ? "history-dot active"
+                                                                                        : "history-dot"
+                                                                                }
+                                                                            ></span>
+
+
+                                                                            {index <
+                                                                                Math.min(
+                                                                                    trackingResult.history.length,
+                                                                                    3
+                                                                                ) - 1 && (
+
+                                                                                <span className="history-line"></span>
+
+                                                                            )}
+
+                                                                        </div>
+
+
+                                                                        <div className="tracking-history-content">
+
+                                                                            <strong>
+                                                                                {event.status}
+                                                                            </strong>
+
+                                                                            <span>
+                                                                                {event.date} • {event.time}
+                                                                            </span>
+
+                                                                            <small>
+                                                                                {event.location}
+                                                                            </small>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                )
+                                                            )}
+
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
