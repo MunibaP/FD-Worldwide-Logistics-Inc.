@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import ShipmentMap from "./ShipmentMap";
+import fastDropPackage from "../../assets/tracking/packageOne.png";
 import "./ShipmentCommand.css";
 
 /* =========================================
@@ -229,6 +230,8 @@ function ShipmentCommand() {
     const [trackingNumber, setTrackingNumber] = useState("");
     const [trackingResult, setTrackingResult] = useState(null);
     const [trackingError, setTrackingError] = useState("");
+    const [showDeliveredCelebration, setShowDeliveredCelebration] =
+    useState(false);
 
     /* =========================================
        CALCULATOR STEP
@@ -617,41 +620,194 @@ function ShipmentCommand() {
         CALCULATOR - RESET QUOTE
         Clears the completed shipment request
         and returns the calculator to Step 1.
-        ========================================= */
+    ========================================= */
 
-        const resetQuoteRequest = () => {
+    const resetQuoteRequest = () => {
 
-            setEstimateData({
-                from: "",
-                to: "",
+        setEstimateData({
+            from: "",
+            to: "",
 
-                measurementSystem: "metric",
+            measurementSystem: "metric",
 
-                shippingMethod: "",
+            shippingMethod: "",
 
-                contact: {
-                    fullName: "",
-                    email: "",
-                    phone: "",
-                    company: "",
-                    notes: "",
+            contact: {
+                fullName: "",
+                email: "",
+                phone: "",
+                company: "",
+                notes: "",
+            },
+
+            items: [
+                {
+                    id: 1,
+                    type: "",
+                    weight: "",
+                    length: "",
+                    width: "",
+                    height: "",
                 },
+            ],
+        });
 
-                items: [
-                    {
-                        id: 1,
-                        type: "",
-                        weight: "",
-                        length: "",
-                        width: "",
-                        height: "",
-                    },
-                ],
-            });
+        setEstimateStep(1);
+    };
 
-            setEstimateStep(1);
+    // =========================================
+    // TRACKING PACKAGE ANIMATION
+    // Controls pause time and travel speed
+    // =========================================
+
+    // How long the package waits at each stop
+    const packageStopPause = 0.8;
+
+    // How long the package takes to travel
+    // from one stop to the next
+    const packageTravelTime = 0.8;
+
+
+    // =========================================
+    // PACKAGE ROUTE POSITIONS
+    // =========================================
+
+    // Desktop / tablet horizontal route
+    const packageDesktopPositions = [
+        "8%",   // Origin
+        "36%",  // Hub
+        "64%",  // In Transit
+        "92%",  // Destination
+    ];
+
+    // Mobile / Fold vertical route
+    const packageMobilePositions = [
+        "20px",    // Origin
+        "78px",   // Hub
+        "135px",  // In Transit
+        "190px",  // Destination
+    ];
+
+
+    // Build the package movement animation
+    const getPackageAnimation = (routePositions) => {
+
+        const reachedStops =
+            routePositions.slice(0, routeProgress);
+
+
+        // No tracking result yet
+        if (reachedStops.length === 0) {
+            return {
+                positions: [routePositions[0]],
+                times: [0],
+                duration: 0,
+            };
+        }
+
+
+        // Shipment is at Origin
+        if (reachedStops.length === 1) {
+            return {
+                positions: [routePositions[0]],
+                times: [0],
+                duration: 0,
+            };
+        }
+
+
+        const positions = [];
+        const timesInSeconds = [];
+
+        let currentTime = 0;
+
+
+        // Start at Origin
+        positions.push(reachedStops[0]);
+        timesInSeconds.push(currentTime);
+
+
+        for (let i = 1; i < reachedStops.length; i++) {
+
+            // Pause at current stop
+            currentTime += packageStopPause;
+
+            positions.push(reachedStops[i - 1]);
+            timesInSeconds.push(currentTime);
+
+
+            // Travel to next stop
+            currentTime += packageTravelTime;
+
+            positions.push(reachedStops[i]);
+            timesInSeconds.push(currentTime);
+        }
+
+
+        const totalDuration = currentTime;
+
+
+        const normalizedTimes =
+            timesInSeconds.map((time) =>
+                totalDuration === 0
+                    ? 0
+                    : time / totalDuration
+            );
+
+
+        return {
+            positions,
+            times: normalizedTimes,
+            duration: totalDuration,
+        };
+    };
+
+
+    const packageDesktopAnimation =
+        getPackageAnimation(packageDesktopPositions);
+
+    const packageMobileAnimation =
+        getPackageAnimation(packageMobilePositions);
+
+
+    const deliveredArrivalTime =
+    packageDesktopAnimation.duration * 1000;
+
+    useEffect(() => {
+
+        // Only run celebration for delivered shipments
+        if (!trackingResult || routeProgress !== 4) {
+            setShowDeliveredCelebration(false);
+            return;
+        }
+
+
+        // Wait until package reaches Destination
+        const arrivalTimer = setTimeout(() => {
+
+            setShowDeliveredCelebration(true);
+
+        }, deliveredArrivalTime + 400);
+
+
+        // Bring package back after celebration
+        const resetTimer = setTimeout(() => {
+
+            setShowDeliveredCelebration(false);
+
+        }, deliveredArrivalTime + 2800);
+
+
+        return () => {
+            clearTimeout(arrivalTimer);
+            clearTimeout(resetTimer);
         };
 
+    }, [
+        trackingResult,
+        routeProgress,
+        deliveredArrivalTime,
+    ]);
 
     return (
         <section
@@ -769,6 +925,239 @@ function ShipmentCommand() {
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                         ></motion.div>
+
+                        {/* =========================================
+                            FASTDROP MOVING PACKAGE
+                        ========================================= */}
+
+                        {mode === "track" && trackingResult && (
+                            <>
+
+                                {/* =========================================
+                                    DESKTOP / TABLET PACKAGE
+                                ========================================= */}
+
+                                <motion.div
+                                    key={`desktop-${trackingResult.trackingNumber}`}
+                                    className="fastdrop-route-marker fastdrop-route-marker-desktop"
+
+                                    initial={{
+                                        left: "8%",
+                                        opacity: 0,
+                                    }}
+
+                                    animate={{
+                                        left: packageDesktopAnimation.positions,
+                                        opacity: 1,
+                                    }}
+
+                                    transition={{
+                                        left: {
+                                            duration: packageDesktopAnimation.duration,
+                                            times: packageDesktopAnimation.times,
+                                            ease: "easeInOut",
+                                        },
+
+                                        opacity: {
+                                            duration: 0.25,
+                                        },
+                                    }}
+                                >
+
+                                    <div className="fastdrop-package-marker">
+
+                                        <AnimatePresence mode="wait">
+
+                                            {!showDeliveredCelebration ? (
+
+                                                <motion.img
+                                                    key="desktop-package"
+                                                    src={fastDropPackage}
+                                                    alt="FastDrop shipment"
+                                                    className="fastdrop-package-image"
+
+                                                    initial={{
+                                                        opacity: 0,
+                                                        scale: 0.8,
+                                                    }}
+
+                                                    animate={{
+                                                        opacity: 1,
+                                                        scale: 1,
+                                                    }}
+
+                                                    exit={{
+                                                        opacity: 0,
+                                                        scale: 0.7,
+                                                    }}
+
+                                                    transition={{
+                                                        duration: 0.3,
+                                                    }}
+                                                />
+
+                                            ) : (
+
+                                                <motion.div
+                                                    key="desktop-delivered"
+                                                    className="fastdrop-delivered-celebration"
+
+                                                    initial={{
+                                                        opacity: 0,
+                                                        scale: 0.5,
+                                                    }}
+
+                                                    animate={{
+                                                        opacity: 1,
+                                                        scale: 1,
+                                                    }}
+
+                                                    exit={{
+                                                        opacity: 0,
+                                                        scale: 0.7,
+                                                    }}
+
+                                                    transition={{
+                                                        duration: 0.35,
+                                                        ease: [0.22, 1, 0.36, 1],
+                                                    }}
+                                                >
+
+                                                    <span className="delivered-check">
+                                                        ✓
+                                                    </span>
+
+                                                    <span className="confetti confetti-1"></span>
+                                                    <span className="confetti confetti-2"></span>
+                                                    <span className="confetti confetti-3"></span>
+                                                    <span className="confetti confetti-4"></span>
+                                                    <span className="confetti confetti-5"></span>
+                                                    <span className="confetti confetti-6"></span>
+
+                                                </motion.div>
+
+                                            )}
+
+                                        </AnimatePresence>
+
+                                    </div>
+
+                                </motion.div>
+
+
+                                {/* =========================================
+                                    MOBILE / FOLD PACKAGE
+                                ========================================= */}
+
+                                <motion.div
+                                    key={`mobile-${trackingResult.trackingNumber}`}
+                                    className="fastdrop-route-marker fastdrop-route-marker-mobile"
+
+                                    initial={{
+                                        top: "0px",
+                                        opacity: 0,
+                                    }}
+
+                                    animate={{
+                                        top: packageMobileAnimation.positions,
+                                        opacity: 1,
+                                    }}
+
+                                    transition={{
+                                        top: {
+                                            duration: packageMobileAnimation.duration,
+                                            times: packageMobileAnimation.times,
+                                            ease: "easeInOut",
+                                        },
+
+                                        opacity: {
+                                            duration: 0.25,
+                                        },
+                                    }}
+                                >
+
+                                    <div className="fastdrop-package-marker">
+
+                                        <AnimatePresence mode="wait">
+
+                                            {!showDeliveredCelebration ? (
+
+                                                <motion.img
+                                                    key="mobile-package"
+                                                    src={fastDropPackage}
+                                                    alt="FastDrop shipment"
+                                                    className="fastdrop-package-image"
+
+                                                    initial={{
+                                                        opacity: 0,
+                                                        scale: 0.8,
+                                                    }}
+
+                                                    animate={{
+                                                        opacity: 1,
+                                                        scale: 1,
+                                                    }}
+
+                                                    exit={{
+                                                        opacity: 0,
+                                                        scale: 0.7,
+                                                    }}
+
+                                                    transition={{
+                                                        duration: 0.3,
+                                                    }}
+                                                />
+
+                                            ) : (
+
+                                                <motion.div
+                                                    key="mobile-delivered"
+                                                    className="fastdrop-delivered-celebration"
+
+                                                    initial={{
+                                                        opacity: 0,
+                                                        scale: 0.5,
+                                                    }}
+
+                                                    animate={{
+                                                        opacity: 1,
+                                                        scale: 1,
+                                                    }}
+
+                                                    exit={{
+                                                        opacity: 0,
+                                                        scale: 0.7,
+                                                    }}
+
+                                                    transition={{
+                                                        duration: 0.35,
+                                                        ease: [0.22, 1, 0.36, 1],
+                                                    }}
+                                                >
+
+                                                    <span className="delivered-check">
+                                                        ✓
+                                                    </span>
+
+                                                    <span className="confetti confetti-1"></span>
+                                                    <span className="confetti confetti-2"></span>
+                                                    <span className="confetti confetti-3"></span>
+                                                    <span className="confetti confetti-4"></span>
+                                                    <span className="confetti confetti-5"></span>
+                                                    <span className="confetti confetti-6"></span>
+
+                                                </motion.div>
+
+                                            )}
+
+                                        </AnimatePresence>
+
+                                    </div>
+
+                                </motion.div>
+
+                            </>
+                        )}
 
                         {/* STOP 1 */}
                         <div
@@ -1143,11 +1532,74 @@ function ShipmentCommand() {
                                                             {trackingResult.history?.slice(0, 3).map(
                                                                 (event, index) => (
 
+                                                                    // <div
+                                                                    //     className="tracking-history-event"
+                                                                    //     key={event.id}
+                                                                    // >
+
+                                                                    //     <div className="tracking-history-marker">
+
+                                                                    //         <span
+                                                                    //             className={
+                                                                    //                 index === 0
+                                                                    //                     ? "history-dot active"
+                                                                    //                     : "history-dot"
+                                                                    //             }
+                                                                    //         ></span>
+
+
+                                                                    //         {index <
+                                                                    //             Math.min(
+                                                                    //                 trackingResult.history.length,
+                                                                    //                 3
+                                                                    //             ) - 1 && (
+
+                                                                    //             <span className="history-line"></span>
+
+                                                                    //         )}
+
+                                                                    //     </div>
+
+
+                                                                    //     <div className="tracking-history-content">
+
+                                                                    //         <strong>
+                                                                    //             {event.status}
+                                                                    //         </strong>
+
+                                                                    //         <span>
+                                                                    //             {event.date} • {event.time}
+                                                                    //         </span>
+
+                                                                    //         <small>
+                                                                    //             {event.location}
+                                                                    //         </small>
+
+                                                                    //     </div>
+
+                                                                    // </div>
+
+
                                                                     <div
                                                                         className="tracking-history-event"
                                                                         key={event.id}
                                                                     >
 
+                                                                        {/* DATE + TIME */}
+                                                                        <div className="tracking-history-time">
+
+                                                                            <span>
+                                                                                {event.time}
+                                                                            </span>
+
+                                                                            <strong>
+                                                                                {event.date}
+                                                                            </strong>
+
+                                                                        </div>
+
+
+                                                                        {/* TIMELINE */}
                                                                         <div className="tracking-history-marker">
 
                                                                             <span
@@ -1157,7 +1609,6 @@ function ShipmentCommand() {
                                                                                         : "history-dot"
                                                                                 }
                                                                             ></span>
-
 
                                                                             {index <
                                                                                 Math.min(
@@ -1172,15 +1623,12 @@ function ShipmentCommand() {
                                                                         </div>
 
 
+                                                                        {/* EVENT */}
                                                                         <div className="tracking-history-content">
 
                                                                             <strong>
                                                                                 {event.status}
                                                                             </strong>
-
-                                                                            <span>
-                                                                                {event.date} • {event.time}
-                                                                            </span>
 
                                                                             <small>
                                                                                 {event.location}

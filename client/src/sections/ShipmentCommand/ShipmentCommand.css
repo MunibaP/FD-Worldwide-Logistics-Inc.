@@ -250,6 +250,260 @@
     margin-bottom: 34px;
 }
 
+/* =========================================
+   FASTDROP MOVING PACKAGE
+========================================= */
+
+.fastdrop-route-marker {
+    position: absolute;
+
+    /*
+       Center package directly on
+       the big horizontal route line.
+    */
+    top: 36px;
+
+    z-index: 12;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+
+/* Circle surrounding FastDrop package */
+
+.fastdrop-package-marker {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid var(--red);
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 5px rgba(201, 54, 44, 0.08),
+        0 7px 18px rgba(10, 35, 66, 0.16);
+
+    overflow: visible;
+}
+
+
+/* Actual FastDrop package PNG */
+
+.fastdrop-package-image {
+    width: 82px;
+    height: 47px;
+
+    object-fit: contain;
+
+    display: block;
+    max-width: none;
+}
+
+/* =========================================
+   DELIVERED CELEBRATION
+========================================= */
+
+.fastdrop-delivered-celebration {
+    position: relative;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #22a06b;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 0 5px rgba(34, 160, 107, 0.10),
+        0 6px 16px rgba(10, 35, 66, 0.14);
+}
+
+
+/* CHECK */
+
+.delivered-check {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 0.9rem;
+    line-height: 1;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   CONFETTI INSIDE GREEN CIRCLE
+========================================= */
+
+.confetti {
+    position: absolute;
+
+    z-index: 3;
+
+    width: 3px;
+    height: 6px;
+
+    border-radius: 1px;
+
+    opacity: 0;
+
+    animation:
+        fastdropInsideConfetti 0.9s ease-out infinite;
+}
+
+
+/* RED */
+.confetti-1 {
+    top: 8px;
+    left: 9px;
+
+    background: #ff3b30;
+
+    --x: -4px;
+    --y: -5px;
+}
+
+
+/* YELLOW */
+.confetti-2 {
+    top: 7px;
+    right: 9px;
+
+    background: #ffd60a;
+
+    --x: 4px;
+    --y: -5px;
+
+    animation-delay: 0.08s;
+}
+
+
+/* BLUE */
+.confetti-3 {
+    top: 19px;
+    left: 6px;
+
+    background: #0a84ff;
+
+    --x: -4px;
+    --y: 1px;
+
+    animation-delay: 0.14s;
+}
+
+
+/* ORANGE */
+.confetti-4 {
+    top: 18px;
+    right: 6px;
+
+    background: #ff9f0a;
+
+    --x: 4px;
+    --y: 1px;
+
+    animation-delay: 0.18s;
+}
+
+
+/* PURPLE */
+.confetti-5 {
+    bottom: 7px;
+    left: 11px;
+
+    background: #bf5af2;
+
+    --x: -3px;
+    --y: 5px;
+
+    animation-delay: 0.22s;
+}
+
+
+/* PINK */
+.confetti-6 {
+    bottom: 7px;
+    right: 11px;
+
+    background: #ff375f;
+
+    --x: 3px;
+    --y: 5px;
+
+    animation-delay: 0.27s;
+}
+
+
+@keyframes fastdropInsideConfetti {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(0, 0)
+            rotate(0deg)
+            scale(0.4);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(160deg)
+            scale(0.8);
+    }
+}
+
+/* =========================================
+   RESPONSIVE FASTDROP PACKAGE
+========================================= */
+
+/* Desktop + Tablet */
+
+.fastdrop-route-marker-desktop {
+    display: block;
+}
+
+.fastdrop-route-marker-mobile {
+    display: none;
+}
+
+.shipment-route:has(.fastdrop-route-marker)
+.route-stop.current > span {
+    opacity: 0;
+}
+
 .route-line,
 .route-progress {
     position: absolute;
@@ -578,7 +832,7 @@
    TRACKING DETAILS - LOWER LAYOUT
 ========================================= */
 
-.tracking-detail-bottom {
+/* .tracking-detail-bottom {
     display: grid;
 
     grid-template-columns:
@@ -586,6 +840,18 @@
         minmax(0, 1.1fr);
 
     gap: 28px;
+
+    align-items: start;
+} */
+
+.tracking-detail-bottom {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.78fr)
+        minmax(0, 1.22fr);
+
+    gap: 18px;
 
     align-items: start;
 }
@@ -598,7 +864,7 @@
 .tracking-history {
     min-width: 0;
 
-    padding-left: 26px;
+    padding-left: 16px;
     padding-top: 22px;
 
     border-left:
@@ -608,11 +874,14 @@
 
 .tracking-history > .tracking-panel-kicker {
     display: block;
+    width: 100%;
+    margin-bottom: 28px;
 
-    margin-bottom: 16px;
+    text-align: center;
+
 }
 
-.tracking-history-list {
+/* .tracking-history-list {
     display: grid;
     gap: 0;
 }
@@ -675,46 +944,6 @@
 
     background:
         rgba(10, 35, 66, 0.14);
-}
-
-
-/* .tracking-history-content {
-    display: flex;
-    flex-direction: column;
-
-    min-width: 0;
-
-    padding-bottom: 15px;
-}
-
-
-.tracking-history-content strong {
-    margin-bottom: 3px;
-
-    color: var(--navy);
-
-    font-size: 0.82rem;
-    font-weight: 900;
-}
-
-
-.tracking-history-content > span {
-    margin-bottom: 2px;
-
-    color: var(--steel);
-
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-
-
-.tracking-history-content small {
-    color: var(--muted);
-
-    font-size: 0.7rem;
-    font-weight: 600;
-
-    line-height: 1.4;
 } */
 
 
@@ -723,19 +952,19 @@
    Matches Origin / Destination typography
 ========================================= */
 
-.tracking-history-content {
+/* .tracking-history-content {
     display: flex;
     flex-direction: column;
 
     min-width: 0;
 
     padding-bottom: 18px;
-}
+} */
 
 
 /* Event status - same as detail labels */
 
-.tracking-history-content > strong {
+/* .tracking-history-content > strong {
     display: block;
 
     margin-bottom: 5px;
@@ -746,12 +975,12 @@
     font-weight: 700;
 
     letter-spacing: 0.02em;
-}
+} */
 
 
 /* Date + time - same as detail values */
 
-.tracking-history-content > span {
+/* .tracking-history-content > span {
     margin-bottom: 2px;
     
     color: var(--navy);
@@ -760,18 +989,191 @@
     font-weight: 700;
 
     line-height: 1.35;
-}
+} */
 
 
 /* Location - same typography as detail values */
 
-.tracking-history-content > small {
-    /* margin-top: 3px; */
-
+/* .tracking-history-content > small {
     color: var(--navy);
 
     font-size: 0.82rem;
     font-weight: 700;
+
+    line-height: 1.4;
+} */
+
+/* =========================================
+   MOBILE TRACKING HISTORY
+   Date | Timeline | Event
+========================================= */
+
+.tracking-history-list {
+    width: 100%;
+}
+
+
+/* EVENT ROW */
+
+.tracking-history-event {
+    display: grid;
+
+    grid-template-columns:
+        72px
+        22px
+        minmax(0, 1fr);
+
+    column-gap: 10px;
+
+    position: relative;
+
+    min-height: 92px;
+}
+
+
+/* =========================================
+   DATE + TIME
+========================================= */
+
+.tracking-history-time {
+    padding-top: 0;
+
+    text-align: right;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.tracking-history-time span {
+    color: var(--muted);
+
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+.tracking-history-time strong {
+    margin-top: 2px;
+
+    color: var(--navy);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   TIMELINE
+========================================= */
+
+.tracking-history-marker {
+    position: relative;
+
+    width: 22px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    align-self: stretch;
+}
+
+
+.history-dot {
+    position: relative;
+
+    z-index: 3;
+
+    width: 12px;
+    height: 12px;
+
+    flex: 0 0 12px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    border: 3px solid var(--steel);
+
+    box-shadow: none;
+}
+
+
+/* Current event */
+
+.history-dot.active {
+    background: var(--red);
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 0 5px rgba(215, 38, 56, 0.10);
+}
+
+
+/* Vertical route */
+
+.history-line {
+    position: absolute;
+
+    top: 12px;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 3px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(47, 93, 140, 0.55),
+            rgba(47, 93, 140, 0.20)
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   EVENT DETAILS
+========================================= */
+
+.tracking-history-content {
+    padding: 0 0 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    text-align: left;
+}
+
+
+.tracking-history-content > strong {
+    margin: 0 0 6px;
+
+    color: var(--navy);
+
+    font-size: 0.82rem;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+.tracking-history-content > small {
+    color: var(--muted);
+
+    font-size: 0.76rem;
+    font-weight: 600;
 
     line-height: 1.4;
 }
@@ -2975,6 +3377,89 @@
 
         border-top:
             1px solid rgba(10, 35, 66, 0.08);
+    }
+
+    /* =========================================
+        MOBILE / FOLD PACKAGE
+    ========================================= */
+
+    .fastdrop-route-marker-desktop {
+        display: none;
+    }
+
+    .fastdrop-route-marker-mobile {
+        display: block;
+
+        position: absolute;
+
+        left: 18px;
+
+        top: 0;
+
+        z-index: 12;
+
+        transform: translate(-50%, -50%);
+
+        pointer-events: none;
+    }
+
+    /* =========================================
+        MOBILE / FOLD PACKAGE SIZE
+    ========================================= */
+
+    .fastdrop-route-marker-mobile .fastdrop-package-marker {
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+        min-height: 34px;
+
+        border-width: 2px;
+
+        box-shadow:
+            0 0 0 4px rgba(215, 38, 56, 0.08),
+            0 5px 12px rgba(10, 35, 66, 0.15);
+    }
+
+
+    .fastdrop-route-marker-mobile .fastdrop-package-image {
+        width: 30px;
+        height: 30px;
+
+        max-width: 30px;
+
+        object-fit: contain;
+    }
+
+    .fastdrop-route-marker-mobile
+    .fastdrop-delivered-celebration {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .fastdrop-route-marker-mobile
+    .delivered-check {
+        font-size: 0.72rem;
+    }
+
+
+    .fastdrop-route-marker-mobile
+    .confetti {
+        width: 3px;
+        height: 5px;
+    }
+
+    /* =========================================
+        REMOVE EXTRA SPACE AFTER LAST EVENT (Tracking History)
+    ========================================= */
+
+    .tracking-history-event:last-child {
+        min-height: auto;
+    }
+
+    .tracking-history-event:last-child .tracking-history-content {
+        padding-bottom: 0;
     }
 
 }
