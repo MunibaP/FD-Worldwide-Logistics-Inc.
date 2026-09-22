@@ -1,0 +1,851 @@
+/* =========================================================
+   WHY FASTDROP
+========================================================= */
+
+.why-fastdrop {
+    position: relative;
+    width: 100%;
+    /* background:
+        radial-gradient(
+            circle at 85% 12%,
+            rgba(47, 93, 140, 0.09),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #f7f9fc 0%,
+            #ffffff 45%,
+            #f5f8fb 100%
+        ); */
+
+    background:
+        /* Soft steel-blue glow behind image side */
+        radial-gradient(
+            ellipse at 88% 48%,
+            rgba(47, 93, 140, 0.13) 0%,
+            rgba(47, 93, 140, 0.06) 28%,
+            transparent 58%
+        ),
+
+        /* Very subtle red brand warmth */
+        radial-gradient(
+            ellipse at 12% 68%,
+            rgba(201, 54, 44, 0.045) 0%,
+            transparent 42%
+        ),
+
+        /* Main section surface */
+        linear-gradient(
+            180deg,
+            #f7f9fc 0%,
+            #ffffff 42%,
+            #f3f7fb 100%
+        );
+
+    overflow: clip;
+}
+
+.why-fastdrop-container {
+    width: min(1320px, 92%);
+    margin: 0 auto;
+    padding: 70px 0;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+.why-fastdrop-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: var(--steel);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.why-fastdrop-eyebrow-line {
+    width: 28px;
+    height: 3px;
+    flex-shrink: 0;
+
+    background: var(--red);
+    border-radius: 999px;
+
+}
+
+.why-fastdrop-header {
+    max-width: 1050px;
+    margin-bottom: 30px;
+}
+
+.why-fastdrop-header h2 {
+    max-width: 1000px;
+    margin: 0 0 20px;
+
+    color: var(--navy);
+    font-size: clamp(3rem, 5vw, 5rem);
+    /* font-weight: 800; */
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.why-fastdrop-header h2 span {
+    color: var(--red);
+}
+
+.why-fastdrop-header > p {
+    max-width: 760px;
+
+    margin: 30px 0 0;
+    padding-left: 20px;
+
+    border-left: 3px solid var(--red);
+
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.why-fastdrop-story {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.why-fastdrop-item {
+    display: grid;
+    grid-template-columns:
+        minmax(280px, 0.8fr)
+        minmax(0, 1.5fr);
+
+    align-items: center;
+    gap: clamp(50px, 7vw, 110px);
+
+    min-height: 620px;
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+.why-fastdrop-copy {
+    position: relative;
+}
+
+.why-fastdrop-number {
+    display: inline-flex;
+
+    margin-bottom: 26px;
+
+    color: var(--red);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+}
+
+.why-fastdrop-copy h3 {
+    max-width: 470px;
+
+    margin: 0;
+
+    color: var(--navy);
+    font-size: clamp(2.4rem, 4vw, 4.4rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.why-fastdrop-copy p {
+    max-width: 470px;
+
+    margin: 26px 0 0;
+
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.why-fastdrop-visual {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background: #e9eef4;
+
+    box-shadow:
+        0 30px 70px rgba(10, 35, 66, 0.12);
+}
+
+.why-fastdrop-visual::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(10, 35, 66, 0.12) 100%
+        );
+}
+
+.why-fastdrop-visual img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+/* =========================================================
+   DESKTOP STICKY EXPERIENCE
+========================================================= */
+
+.why-fastdrop-desktop {
+    position: relative;
+    width: 100%;
+    height: 88vh;
+    min-height: 650px;
+
+    margin-top: -30px;
+}
+
+.why-fastdrop-desktop::before {
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 720px;
+
+    right: -180px;
+    top: 48%;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(47, 93, 140, 0.10) 0%,
+            rgba(47, 93, 140, 0.045) 38%,
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+}
+
+.why-fastdrop-desktop-inner {
+    position: relative;
+
+    width: min(1650px, 96%);
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 24px;
+
+    align-items: start;
+
+    padding-top: 0;
+
+    /* Move progress + text + image together */
+    /* transform: translateY(-90px); */
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PROGRESS RAIL
+========================================================= */
+
+.why-fastdrop-progress {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 52px;
+
+    height: 100%;
+
+    /* Move 01–04 timeline upward */
+    transform: translateY(-70px);
+}
+
+.why-fastdrop-progress::before {
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: 50%;
+
+    width: 1px;
+    height: 220px;
+
+    transform: translateY(-50%);
+
+    background: rgba(10, 35, 66, 0.14);
+}
+
+.why-fastdrop-progress-item {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: rgba(10, 35, 66, 0.35);
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.why-fastdrop-progress-dot {
+    width: 13px;
+    height: 13px;
+
+    flex: 0 0 13px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+    border: 2px solid rgba(10, 35, 66, 0.25);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.why-fastdrop-progress-number {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.why-fastdrop-progress-item.active {
+    color: var(--red);
+}
+
+.why-fastdrop-progress-item.active .why-fastdrop-progress-dot {
+    background: var(--red);
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 0 6px rgba(215, 38, 56, 0.10);
+}
+
+
+/* =========================================================
+   DESKTOP STAGE
+========================================================= */
+
+.why-fastdrop-desktop-stage {
+    position: relative;
+
+    width: 100%;
+    height: min(680px, 78vh);
+
+    overflow: hidden;
+
+    background: transparent;
+}
+
+/* =========================================================
+   EACH DESKTOP STORY
+========================================================= */
+
+.why-fastdrop-desktop-slide {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(390px, 0.9fr)
+        minmax(0, 1.6fr);
+
+    align-items: center;
+
+    gap: clamp(45px, 4vw, 70px);
+
+    padding:
+        clamp(32px, 2.5vw, 46px)
+        clamp(42px, 4vw, 65px);
+
+    box-sizing: border-box;
+
+    /* background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(247, 250, 253, 0.98)
+        ); */
+
+    background: transparent;
+
+    will-change: transform;
+
+    backface-visibility: hidden;
+}
+
+/* =========================================================
+   DESKTOP COPY
+========================================================= */
+
+.why-fastdrop-desktop-slide .why-fastdrop-copy {
+    padding-left: 0;
+}
+
+.why-fastdrop-desktop-slide .why-fastdrop-copy h3 {
+    font-size: clamp(2.7rem, 3.6vw, 4.35rem);
+}
+
+.why-fastdrop-desktop-slide .why-fastdrop-copy p {
+    max-width: 440px;
+}
+
+
+
+/* =========================================================
+   DESKTOP IMAGE
+========================================================= */
+
+/* .why-fastdrop-desktop-slide .why-fastdrop-visual {
+    width: 100%;
+    height: auto;
+
+    border-radius: 26px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 45px rgba(10, 35, 66, 0.10);
+} */
+
+.why-fastdrop-desktop-slide .why-fastdrop-visual {
+    position: relative;
+
+    width: 100%;
+    /* height: 500px; */
+    height: auto;
+
+    overflow: hidden;
+
+    /* Clipped top-left + bottom-right */
+    clip-path: polygon(
+        9% 0%,
+        100% 0%,
+        100% 88%,
+        91% 100%,
+        0% 100%,
+        0% 12%
+    );
+
+    border-radius: 0;
+
+    background: #e9eef4;
+
+    box-shadow:
+        0 24px 55px rgba(10, 35, 66, 0.13);
+}
+
+
+.why-fastdrop-desktop-slide .why-fastdrop-visual img {
+    display: block;
+
+    width: 100%;
+    /* height: 100%; */
+    height: auto;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.why-fastdrop-desktop-slide .why-fastdrop-visual::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 35, 66, 0.02) 0%,
+            transparent 55%,
+            rgba(10, 35, 66, 0.11) 100%
+        );
+}
+
+/* .why-fastdrop-desktop-slide .why-fastdrop-visual img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+} */
+
+/* =========================================================
+   IMAGE FRAME
+========================================================= */
+
+.why-fastdrop-image-frame {
+    position: absolute;
+    z-index: 2;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    /*
+        Clean premium shape:
+        strong diagonal left edge,
+        subtle lower-right cut.
+    */
+    clip-path: polygon(
+        15% 0,
+        100% 0,
+        100% 91%,
+        97% 100%,
+        10% 100%,
+        0 56%
+    );
+
+    filter:
+        drop-shadow(
+            0 24px 45px rgba(10, 35, 66, 0.10)
+        );
+}
+
+
+.why-fastdrop-image-frame img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Mobile version hidden on desktop */
+.why-fastdrop-mobile {
+    display: none;
+}
+
+/* BUTTONS FOR WHY FASTDROP IMAGES*/
+
+.why-fastdrop-progress-item {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: rgba(10, 35, 66, 0.35);
+
+    font: inherit;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.why-fastdrop-progress-item:hover {
+    color: var(--navy);
+}
+
+
+.why-fastdrop-progress-item:hover
+.why-fastdrop-progress-dot {
+    border-color: var(--red);
+}
+
+
+.why-fastdrop-progress-item:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 6px;
+
+    border-radius: 4px;
+}
+
+
+.why-fastdrop-progress-item.active {
+    color: var(--red);
+}
+
+/* =========================================================
+   PREVIOUS / NEXT CONTROLS
+========================================================= */
+
+.why-fastdrop-controls {
+    position: absolute;
+
+    z-index: 20;
+
+    right: 34px;
+    bottom: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 999px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 12px 30px rgba(10, 35, 66, 0.12);
+}
+
+
+.why-fastdrop-control {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: var(--navy);
+
+    font-size: 1.15rem;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.why-fastdrop-control:hover {
+    color: #ffffff;
+
+    background: var(--red);
+    border-color: var(--red);
+
+    transform: translateY(-2px);
+}
+
+
+.why-fastdrop-control-count {
+    min-width: 58px;
+
+    text-align: center;
+
+    color: var(--navy);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+.why-fastdrop-control-count small {
+    margin: 0 4px;
+
+    color: rgba(10, 35, 66, 0.35);
+
+    font-size: inherit;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .why-fastdrop-container {
+        padding: 100px 0;
+    }
+
+    .why-fastdrop-header {
+        margin-bottom: 70px;
+    }
+
+    .why-fastdrop-item {
+        grid-template-columns: 1fr 1.25fr;
+        gap: 40px;
+        min-height: 520px;
+    }
+
+    .why-fastdrop-desktop {
+        display: none;
+    }
+
+    .why-fastdrop-mobile {
+        display: block;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .why-fastdrop-container {
+        width: min(92%, 620px);
+        padding: 80px 0;
+    }
+
+    .why-fastdrop-header {
+        margin-bottom: 70px;
+    }
+
+    .why-fastdrop-header h2 {
+        font-size: clamp(2.6rem, 12vw, 4rem);
+    }
+
+    .why-fastdrop-header > p {
+        margin-top: 24px;
+    }
+
+    .why-fastdrop-story {
+        gap: 90px;
+    }
+
+    .why-fastdrop-item {
+        display: flex;
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 30px;
+
+        min-height: auto;
+    }
+
+    .why-fastdrop-copy h3 {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .why-fastdrop-copy p {
+        margin-top: 18px;
+    }
+
+    /* Show complete image on mobile */
+    .why-fastdrop-visual {
+        width: 100%;
+        height: auto;
+
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .why-fastdrop-visual img {
+        width: 100%;
+        height: auto;
+
+        display: block;
+        object-fit: contain;
+    }
+}
+
+
+/* =========================================================
+   GALAXY FOLD / SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .why-fastdrop-container {
+        width: 90%;
+        padding: 70px 0;
+    }
+
+    .why-fastdrop-header h2 {
+        font-size: 2.45rem;
+    }
+
+    .why-fastdrop-header > p {
+        padding-left: 16px;
+        font-size: 0.9rem;
+    }
+
+    .why-fastdrop-copy h3 {
+        font-size: 2rem;
+    }
+
+    .why-fastdrop-copy p {
+        font-size: 0.9rem;
+    }
+
+    .why-fastdrop-visual {
+        height: auto;
+        border-radius: 18px;
+    }
+}
