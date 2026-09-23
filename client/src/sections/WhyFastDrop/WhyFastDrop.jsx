@@ -2,7 +2,22 @@ import {
     useLayoutEffect, 
     useRef,
     useState
- } from "react";
+} from "react";
+
+import {
+    FiPackage,
+    FiLayers,
+    FiLink,
+    FiSliders,
+    FiRefreshCw,
+    FiZap,
+    FiEye,
+    FiActivity,
+    FiCheckCircle,
+    FiMapPin,
+    FiGlobe,
+    FiNavigation,
+} from "react-icons/fi";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,6 +37,20 @@ const whyFastDropItems = [
         title: "One Logistics Partner",
         description:
             "From handling and storage to transportation and delivery, one coordinated logistics partner keeps every stage moving together.",
+        features: [
+            {
+                icon: FiPackage,
+                label: "End-to-End",
+            },
+            {
+                icon: FiLayers,
+                label: "Coordinated",
+            },
+            {
+                icon: FiLink,
+                label: "One Partner",
+            },
+        ],
         image: onePartner,
         alt: "FastDrop warehouse and transportation operation",
     },
@@ -30,6 +59,20 @@ const whyFastDropItems = [
         title: "Built Around Your Shipment",
         description:
             "Every shipment has different requirements. We coordinate around your route, timeline, cargo and delivery needs.",
+        features: [
+            {
+                icon: FiSliders,
+                label: "Flexible",
+            },
+            {
+                icon: FiRefreshCw,
+                label: "Adaptable",
+            },
+            {
+                icon: FiZap,
+                label: "Responsive",
+            },
+        ],
         image: builtAroundShipment,
         alt: "FastDrop employee handling a customer shipment",
     },
@@ -38,6 +81,20 @@ const whyFastDropItems = [
         title: "Visibility at Every Step",
         description:
             "From processing to movement through the network, clear shipment visibility helps you know where things stand and what comes next.",
+        features: [
+            {
+                icon: FiEye,
+                label: "Visibility",
+            },
+            {
+                icon: FiActivity,
+                label: "Connected",
+            },
+            {
+                icon: FiCheckCircle,
+                label: "Reliable",
+            },
+        ],
         image: visibility,
         alt: "Shipment moving through an automated logistics sorting system",
     },
@@ -46,6 +103,20 @@ const whyFastDropItems = [
         title: "Local Attention. Global Capability.",
         description:
             "Hands-on service from Mississauga, connected to transportation and logistics networks that move shipments across borders and around the world.",
+        features: [
+            {
+                icon: FiMapPin,
+                label: "Local Service",
+            },
+            {
+                icon: FiGlobe,
+                label: "Global Network",
+            },
+            {
+                icon: FiNavigation,
+                label: "Worldwide Reach",
+            },
+        ],
         image: globalCapability,
         alt: "Large international container terminal and logistics network",
     },
@@ -354,13 +425,42 @@ function WhyFastDrop() {
                                 key={item.number}
                             >
                                 <div className="why-fastdrop-copy">
-                                    <span className="why-fastdrop-number">
-                                        {item.number}
-                                    </span>
+                                    {/* Slide number + red accent */}
+                                    <div className="why-fastdrop-number-row">
+                                        <span className="why-fastdrop-number">
+                                            {item.number}
+                                        </span>
 
+                                        <span className="why-fastdrop-number-line"></span>
+                                    </div>
+                                    
+                                    {/* Main heading */}
                                     <h3>{item.title}</h3>
 
-                                    <p>{item.description}</p>
+                                    {/* Description */}
+                                    <p className="why-fastdrop-description">
+                                        {item.description}
+                                    </p>
+
+                                    {/* Slide features */}
+                                    <div className="why-fastdrop-features">
+                                        {item.features.map((feature) => {
+                                            const Icon = feature.icon;
+
+                                            return (
+                                                <div
+                                                    className="why-fastdrop-feature"
+                                                    key={`${item.number}-${feature.label}`}
+                                                >
+                                                    <div className="why-fastdrop-feature-icon">
+                                                        <Icon />
+                                                    </div>
+
+                                                    <span>{feature.label}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
 
                                 <div
