@@ -131,7 +131,8 @@ function WhyFastDrop() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     useLayoutEffect(() => {
-        const mediaQuery = window.matchMedia("(min-width: 901px)");
+        // const mediaQuery = window.matchMedia("(min-width: 901px)");
+        const mediaQuery = window.matchMedia("(min-width: 1200px)");
 
         if (!mediaQuery.matches) {
             return undefined;
@@ -537,6 +538,16 @@ function WhyFastDrop() {
                                 className="why-fastdrop-item"
                                 key={item.number}
                             >
+                                {/* <div className="why-fastdrop-copy">
+                                    <span className="why-fastdrop-number">
+                                        {item.number}
+                                    </span>
+
+                                    <h3>{item.title}</h3>
+
+                                    <p>{item.description}</p>
+                                </div> */}
+
                                 <div className="why-fastdrop-copy">
                                     <span className="why-fastdrop-number">
                                         {item.number}
@@ -545,6 +556,26 @@ function WhyFastDrop() {
                                     <h3>{item.title}</h3>
 
                                     <p>{item.description}</p>
+
+                                    {/* Mobile / Tablet Features */}
+                                    <div className="why-fastdrop-features">
+                                        {item.features.map((feature) => {
+                                            const Icon = feature.icon;
+
+                                            return (
+                                                <div
+                                                    className="why-fastdrop-feature"
+                                                    key={`${item.number}-${feature.label}`}
+                                                >
+                                                    <div className="why-fastdrop-feature-icon">
+                                                        <Icon />
+                                                    </div>
+
+                                                    <span>{feature.label}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
 
                                 <div
