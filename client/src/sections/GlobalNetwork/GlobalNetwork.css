@@ -1,0 +1,908 @@
+/* =========================================================
+   GLOBAL NETWORK
+========================================================= */
+
+/* .global-network {
+    position: relative;
+
+    width: 100%;
+    min-height: 940px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 72% 30%,
+            rgba(47, 93, 140, 0.10),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fbff 0%,
+            #f3f7fb 55%,
+            #eef4f9 100%
+        );
+} */
+
+.global-network {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        /* soft cool light behind globe */
+        radial-gradient(
+            circle at 76% 24%,
+            rgba(92, 157, 210, 0.12) 0%,
+            rgba(92, 157, 210, 0.055) 24%,
+            transparent 48%
+        ),
+
+        /* extremely subtle light behind content */
+        radial-gradient(
+            circle at 22% 28%,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(239, 246, 252, 0.45) 32%,
+            transparent 58%
+        ),
+
+        /* warm transition toward sunset */
+        radial-gradient(
+            ellipse at 32% 72%,
+            rgba(255, 196, 118, 0.10) 0%,
+            rgba(255, 211, 155, 0.045) 30%,
+            transparent 58%
+        ),
+
+        /* base */
+        linear-gradient(
+            180deg,
+            #f7faff 0%,
+            #f2f7fc 42%,
+            #edf4fa 100%
+        );
+}
+
+.global-network-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 520px;
+
+    top: -60px;
+    right: -80px;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(72, 151, 214, 0.11) 0%,
+        rgba(115, 180, 225, 0.055) 38%,
+        transparent 70%
+    );
+
+    filter: blur(18px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.global-network-container {
+    position: relative;
+    z-index: 3;
+
+    width: min(92%, 1440px);
+    min-height: 720px;
+
+    margin: 0 auto;
+    /* padding: 110px 0 80px; */
+
+    display: grid;
+
+    /* grid-template-columns:
+        minmax(500px, 0.95fr)
+        minmax(600px, 1.25fr); */
+    grid-template-columns: 46% 54%;
+
+    align-items: start;
+
+    padding-top: 150px;
+
+    /* gap: clamp(40px, 5vw, 90px); */
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.global-network-content {
+    position: relative;
+    z-index: 10;
+
+    top: -85px;
+    /* max-width: 600px; */
+}
+
+
+/* Eyebrow */
+
+.global-network-eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 26px;
+
+    color: var(--navy);
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+.global-network-eyebrow-line {
+    display: block;
+
+    width: 32px;
+    height: 3px;
+
+    border-radius: 999px;
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.global-network-title {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: clamp(3.8rem, 5vw, 5.8rem);
+    font-weight: 800;
+
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+}
+
+.global-network-title span {
+    display: block;
+
+    color: var(--red);
+}
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
+.global-network-tagline {
+    max-width: 460px;
+
+    margin: 28px 0 0;
+
+    color: var(--navy);
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.global-network-description {
+    max-width: 500px;
+
+    margin: 12px 0 0;
+
+    color: #58708e;
+
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   TRANSPORT MODES
+========================================================= */
+
+.global-network-modes {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 0;
+
+    margin-top: 28px;
+
+    /* keep the three modes underneath the text */
+    /* width: 88%; */
+
+    position: relative;
+    left: -90px;
+
+
+}
+
+.global-network-mode {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+
+    gap: 8px;
+
+    padding: 0 20px;
+
+    border-right:
+        1px solid rgba(10, 35, 66, 0.12);
+}
+
+/* .global-network-mode:first-child {
+    padding-left: 0;
+} */
+
+/* .global-network-mode:last-child {
+    padding-right: 0;
+    border-right: none;
+} */
+
+.global-network-mode:last-child {
+    border-right: none;
+}
+
+.global-network-mode strong {
+    color: var(--navy);
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+.global-network-mode span {
+    color: #6c7f96;
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+/* =========================
+   TRANSPORT MODE ICONS
+========================= */
+
+.global-network-mode-icon {
+    width: 30px;
+    height: 30px;
+
+    color: var(--navy);
+
+    margin-bottom: 5px;
+
+    flex-shrink: 0;
+}
+
+.cargo-ship-icon {
+    font-size: 2rem;
+}
+
+/* =========================================================
+   VISUAL AREA
+========================================================= */
+
+.global-network-visual {
+    position: relative;
+
+    width: 100%;
+    height: 760px;
+    /* min-height: 620px; */
+
+    overflow: visible;
+    isolation: isolate;
+    /* z-index: 3; */
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(60px); */
+}
+
+
+/* =========================================================
+   GLOBE
+========================================================= */
+
+/* .global-network-globe {
+    position: absolute;
+
+    top: 0;
+    right: -5%;
+
+    width: min(720px, 105%);
+
+    z-index: 2;
+
+    pointer-events: none;
+} */
+
+.global-network-globe {
+    position: absolute;
+
+    width: min(650px, 43vw);
+
+    /* width: 680px;
+    max-width: none; */
+
+    top: -90px;
+    right: -4%;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    /* creates depth for the movement */
+    perspective: 1200px;
+}
+
+/* .global-network-globe img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 35px 55px rgba(10, 35, 66, 0.15)
+        );
+} */
+
+.global-network-globe img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    transform-origin: center center;
+
+    animation: globeDrift 12s ease-in-out infinite;
+
+    will-change: transform;
+
+    /* object-fit: contain; */
+
+    filter: drop-shadow(
+        0 30px 60px rgba(10, 35, 66, 0.14)
+    );
+}
+
+@keyframes globeDrift {
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            rotateY(0deg)
+            rotateX(0deg);
+    }
+
+    25% {
+        transform:
+            translate3d(-4px, -2px, 0)
+            rotateY(-2deg)
+            rotateX(0.5deg);
+    }
+
+    50% {
+        transform:
+            translate3d(0, -5px, 0)
+            rotateY(0deg)
+            rotateX(1deg);
+    }
+
+    75% {
+        transform:
+            translate3d(4px, -2px, 0)
+            rotateY(2deg)
+            rotateX(0.5deg);
+    }
+}
+
+/* =========================================================
+   MISSISSAUGA ORIGIN Marker
+========================================================= */
+
+.global-network-origin {
+    position: absolute;
+
+    /*
+        Temporary position.
+        Adjust these two values until the marker
+        sits over Mississauga / Southern Ontario.
+    */
+    top: 31%;
+    left: 42%;
+
+    z-index: 7;
+
+    pointer-events: none;
+}
+
+
+/* White location card */
+/* .global-network-origin-label {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 6px 10px 6px 7px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 6px 18px rgba(10, 35, 66, 0.12),
+        0 0 14px rgba(255, 255, 255, 0.4);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+} */
+
+.global-network-origin-label {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+    padding: 6px 10px 6px 7px;
+
+    /* GLASS */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.78),
+            rgba(235, 245, 255, 0.52)
+        );
+
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+
+    border: 1px solid rgba(255, 255, 255, 0.72);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 24px rgba(10, 35, 66, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+    overflow: hidden;
+}
+
+.global-network-origin-label::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.08) 45%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+
+/* Red location point */
+.global-network-origin-dot {
+    width: 11px;
+    height: 11px;
+
+    flex-shrink: 0;
+
+    background: var(--red);
+
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 3px rgba(229, 57, 53, 0.14),
+        0 0 10px rgba(229, 57, 53, 0.5);
+}
+
+
+/* Text wrapper */
+.global-network-origin-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.05;
+}
+
+
+/* MISSISSAUGA */
+.global-network-origin-text strong {
+    color: var(--navy);
+
+    font-size: 0.58rem;
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* OUR BASE */
+.global-network-origin-text small {
+    margin-top: 2px;
+
+    color: #63768d;
+
+    font-size: 0.44rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   LOCATION PULSE
+========================================================= */
+
+.global-network-origin-pulse {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    left: 4px;
+    top: 50%;
+
+    border:
+        2px solid rgba(201, 54, 44, 0.65);
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+
+    animation:
+        globalOriginPulse 2.2s ease-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes globalOriginPulse {
+
+    0% {
+        transform:
+            translateY(-50%)
+            scale(0.6);
+
+        opacity: 0.85;
+    }
+
+    70% {
+        transform:
+            translateY(-50%)
+            scale(1.9);
+
+        opacity: 0;
+    }
+
+    100% {
+        transform:
+            translateY(-50%)
+            scale(1.9);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   SHIP
+========================================================= */
+
+/* .global-network-ship {
+    position: absolute;
+
+    z-index: 4;
+
+    width: 470px;
+
+    right: -5px;
+    top: 300px;
+
+    pointer-events: none;
+}
+
+.global-network-ship img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 20px 24px rgba(10, 35, 66, 0.14)
+        );
+} */
+
+
+/* =========================================================
+   HIGHWAY
+========================================================= */
+
+/* .global-network-highway {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 1600px);
+
+    height: 600px;
+
+    margin: -285px auto 0;
+
+    overflow: hidden;
+
+    border-radius: 0;
+} */
+
+.global-network-highway {
+    position: relative;
+
+    /* left: 3%; */
+    /* right: 0; */
+    /* bottom: -60px; */
+
+    width: 100%;
+    height: 560px;
+
+    margin-top: -425px;
+
+    z-index: 3; /*Toronto scene in front of globe*/
+
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* .global-network-highway img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 7%,
+            rgba(0, 0, 0, 0.08) 14%,
+            rgba(0, 0, 0, 0.22) 21%,
+            rgba(0, 0, 0, 0.48) 29%,
+            rgba(0, 0, 0, 0.78) 38%,
+            black 48%,
+            black 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 7%,
+            rgba(0, 0, 0, 0.08) 14%,
+            rgba(0, 0, 0, 0.22) 21%,
+            rgba(0, 0, 0, 0.48) 29%,
+            rgba(0, 0, 0, 0.78) 38%,
+            black 48%,
+            black 100%
+        );
+} */
+
+/* .global-network-highway img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 55%; */
+
+    /* only blend the upper sky */
+     /* -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 3%,
+        rgba(0, 0, 0, 0.10) 9%,
+        rgba(0, 0, 0, 0.28) 16%,
+        rgba(0, 0, 0, 0.55) 23%,
+        rgba(0, 0, 0, 0.82) 30%,
+        black 38%,
+        black 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 3%,
+        rgba(0, 0, 0, 0.10) 9%,
+        rgba(0, 0, 0, 0.28) 16%,
+        rgba(0, 0, 0, 0.55) 23%,
+        rgba(0, 0, 0, 0.82) 30%,
+        black 38%,
+        black 100%
+    );
+} */
+
+
+.global-network-highway img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 55%;
+
+   -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 5%,
+        rgba(0, 0, 0, 0.05) 9%,
+        rgba(0, 0, 0, 0.16) 13%,
+        rgba(0, 0, 0, 0.38) 17%,
+        rgba(0, 0, 0, 0.68) 21%,
+        rgba(0, 0, 0, 0.90) 25%,
+        black 28%,
+        black 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 5%,
+        rgba(0, 0, 0, 0.05) 9%,
+        rgba(0, 0, 0, 0.16) 13%,
+        rgba(0, 0, 0, 0.38) 17%,
+        rgba(0, 0, 0, 0.68) 21%,
+        rgba(0, 0, 0, 0.90) 25%,
+        black 28%,
+        black 100%
+    );
+}
+
+/* ========================================
+   AIR FREIGHT PLANE
+======================================== */
+
+.global-network-plane {
+    position: absolute;
+
+    width: min(300px, 21vw);
+
+    top: 20px;
+    right: -5%;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    /* subtle atmospheric softness */
+    filter:
+        drop-shadow(0 8px 12px rgba(10, 35, 66, 0.10))
+        drop-shadow(0 0 10px rgba(210, 232, 250, 0.35));
+
+    /* NEW: subtle flight movement */
+    animation: globalPlaneFloat 8s ease-in-out infinite;
+
+    will-change: transform;
+}
+
+.global-network-plane img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    /* makes it feel less "cut out" */
+   filter:
+        contrast(0.97)
+        saturate(0.95)
+        brightness(1.02)
+        blur(0.12px);
+
+    opacity: 0.98;
+}
+
+.global-network-plane::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65%;
+    height: 45%;
+
+    right: 5%;
+    top: 25%;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(235, 245, 252, 0.22) 42%,
+        transparent 72%
+    );
+
+    filter: blur(16px);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes globalPlaneFloat {
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            rotate(-0.5deg);
+    }
+
+    25% {
+        transform:
+            translate3d(5px, -3px, 0)
+            rotate(-0.2deg);
+    }
+
+    50% {
+        transform:
+            translate3d(12px, -7px, 0)
+            rotate(0.4deg);
+    }
+
+    75% {
+        transform:
+            translate3d(6px, -4px, 0)
+            rotate(0deg);
+    }
+}
+
+/* ========================================
+   Media Queries
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .global-network-globe img,
+    .global-network-plane {
+        animation: none;
+    }
+}

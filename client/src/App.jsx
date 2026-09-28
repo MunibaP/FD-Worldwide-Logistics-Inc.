@@ -3,6 +3,7 @@ import Hero from "./sections/Hero/Hero";
 import Services from "./sections/Services/Services";
 import ShipmentCommand from "./sections/ShipmentCommand/ShipmentCommand";
 import WhyFastDrop from "./sections/WhyFastDrop/WhyFastDrop";
+import GlobalNetwork from "./sections/GlobalNetwork/GlobalNetwork";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Services />
             <ShipmentCommand />
             <WhyFastDrop />
+            <GlobalNetwork />
         </>
     );
 }
