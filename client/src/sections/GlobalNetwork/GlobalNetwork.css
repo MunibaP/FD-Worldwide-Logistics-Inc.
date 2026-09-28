@@ -906,3 +906,369 @@
         animation: none;
     }
 }
+
+/* =========================================================
+   TABLET — GLOBAL NETWORK
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .global-network {
+        min-height: auto;
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       MAIN LAYOUT
+    ========================= */
+
+    .global-network-container {
+        width: min(92%, 900px);
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        padding-top: 110px;
+    }
+
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .global-network-content {
+        max-width: 650px;
+
+        top: 0;
+
+        z-index: 10;
+    }
+
+
+    .global-network-title {
+        max-width: 620px;
+
+        font-size: clamp(3.6rem, 8vw, 5rem);
+        line-height: 0.94;
+    }
+
+
+    .global-network-tagline {
+        max-width: 500px;
+    }
+
+
+    .global-network-description {
+        max-width: 520px;
+    }
+
+
+    /* =========================
+       TRANSPORT MODES
+    ========================= */
+
+    .global-network-modes {
+        width: 100%;
+
+        max-width: 580px;
+
+        left: 0;
+
+        margin-top: 32px;
+    }
+
+
+    /* =========================
+       VISUAL
+    ========================= */
+
+    .global-network-visual {
+        width: 100%;
+        height: 570px;
+
+        margin-top: 30px;
+    }
+
+
+    /* Globe */
+
+    .global-network-globe {
+        width: min(570px, 68vw);
+
+        top: 10px;
+        right: -6%;
+    }
+
+
+    /* Plane */
+
+    .global-network-plane {
+        width: min(250px, 29vw);
+
+        top: 85px;
+        right: -3%;
+    }
+
+
+    /* =========================
+       HIGHWAY / TORONTO SCENE
+    ========================= */
+
+    .global-network-highway {
+        margin-top: -260px;
+        height: 500px;
+    }
+
+
+    .global-network-highway img {
+        object-position: center 55%;
+    }
+}
+
+
+
+/* =========================================================
+   MOBILE — GLOBAL NETWORK
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .global-network-container {
+        width: 90%;
+
+        padding-top: 60px;
+    }
+
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .global-network-content {
+        width: 100%;
+        max-width: none;
+
+        top: 0;
+
+        text-align: center;
+    }
+
+
+    .global-network-eyebrow {
+        /* margin-bottom: 18px; */
+
+        font-size: 0.68rem;
+
+        justify-content: center;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .global-network-eyebrow-line {
+        width: 26px;
+    }
+
+
+    .global-network-title {
+        max-width: 100%;
+
+        margin: 0 auto;
+
+        font-size: clamp(3rem, 13vw, 4.1rem);
+
+        line-height: 0.93;
+        letter-spacing: -0.05em;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+    }
+
+
+    .global-network-tagline {
+        max-width: 100%;
+
+        margin-top: 22px auto 0;
+
+        font-size: 1rem;
+
+        text-align: center;
+    }
+
+
+    .global-network-description {
+        margin: 10px auto 0;
+
+        font-size: 0.92rem;
+        line-height: 1.7;
+
+        max-width: 340px;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       TRANSPORT MODES
+    ========================= */
+
+    .global-network-modes {
+        position: relative;
+
+        width: 100%;
+
+        left: 0;
+
+        margin-top: 24px;
+
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    .global-network-mode {
+        padding: 0 10px;
+
+        gap: 6px;
+    }
+
+
+    .global-network-mode:first-child {
+        padding-left: 0;
+    }
+
+
+    .global-network-mode:last-child {
+        padding-right: 0;
+    }
+
+
+    .global-network-mode-icon {
+        width: 23px;
+        height: 23px;
+
+        margin-bottom: 3px;
+    }
+
+
+    .global-network-mode strong {
+        font-size: 0.68rem;
+        line-height: 1.2;
+    }
+
+
+    .global-network-mode span {
+        font-size: 0.64rem;
+        line-height: 1.4;
+    }
+
+
+    /* =========================
+       VISUAL SCENE
+    ========================= */
+
+    .global-network-visual {
+        height: 430px;
+
+        margin-top: 15px;
+    }
+
+
+    /* Globe */
+
+    .global-network-globe {
+        width: min(430px, 85vw);
+
+        top: 40px;
+        right: 0%;
+    }
+
+
+    /* Plane */
+
+    .global-network-plane {
+        width: min(175px, 30vw);
+
+        top: 95px;
+        right: 1%;
+    }
+
+    /* =========================
+       GLOBE MARKER
+    ========================= */
+    
+   .global-network-origin-label {
+        transform: scale(0.85);
+        transform-origin: center;
+    }
+
+    /* =========================
+       HIGHWAY
+    ========================= */
+
+    .global-network-highway {
+        /* position: relative; */
+
+        width: 100%;
+
+        margin-left: 0%;
+
+        height: auto;
+
+        margin-top: -145px;
+
+        overflow: visible;
+    }
+
+    .global-network-highway img {
+        /* display: block; */
+        width: 145%;
+        max-width: none;
+        height: auto;
+
+        object-fit: contain;
+        object-position: center;
+
+        /* Shift image LEFT so truck + ship become the focus */
+        left: 44%;
+        top: 0;
+
+        transform: translateX(-31%);
+
+
+        filter:
+            saturate(0.88)
+            contrast(0.96)
+            brightness(1.02);
+
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.03) 8%,
+            rgba(0, 0, 0, 0.10) 16%,
+            rgba(0, 0, 0, 0.22) 25%,
+            rgba(0, 0, 0, 0.42) 34%,
+            rgba(0, 0, 0, 0.68) 44%,
+            rgba(0, 0, 0, 0.88) 54%,
+            black 64%,
+            black 100%
+        );
+
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.03) 8%,
+            rgba(0, 0, 0, 0.10) 16%,
+            rgba(0, 0, 0, 0.22) 25%,
+            rgba(0, 0, 0, 0.42) 34%,
+            rgba(0, 0, 0, 0.68) 44%,
+            rgba(0, 0, 0, 0.88) 54%,
+            black 64%,
+            black 100%
+        );
+    }
+
+}
