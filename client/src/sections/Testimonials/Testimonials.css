@@ -1,0 +1,859 @@
+/* =========================================================
+   TESTIMONIALS / CLIENT VOICES
+========================================================= */
+
+.testimonials {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 120px 0 95px;
+
+    /* background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(47, 93, 140, 0.08),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #edf4fa 0%,
+            #f6f9fc 45%,
+            #ffffff 100%
+        ); */
+
+    background:
+        /* subtle warm glow coming from previous sunset */
+        radial-gradient(
+            ellipse at 5% 12%,
+            rgba(235, 154, 82, 0.10) 0%,
+            rgba(235, 154, 82, 0.035) 28%,
+            transparent 52%
+        ),
+
+        /* cool logistics atmosphere on right */
+        radial-gradient(
+            ellipse at 94% 32%,
+            rgba(47, 93, 140, 0.13) 0%,
+            rgba(47, 93, 140, 0.045) 32%,
+            transparent 58%
+        ),
+
+        /* light behind testimonial */
+        radial-gradient(
+            ellipse at 50% 58%,
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(240, 247, 253, 0.52) 38%,
+            transparent 67%
+        ),
+
+        linear-gradient(
+            180deg,
+            #edf4fa 0%,
+            #f4f8fc 46%,
+            #ffffff 100%
+        );
+}
+
+/* =========================================================
+   BACKGROUND ATMOSPHERE
+========================================================= */
+
+.testimonials-atmosphere {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* subtle vertical route lines */
+
+.testimonial-route {
+    position: absolute;
+
+    width: 1px;
+    height: 320px;
+
+    opacity: 0.55;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(47, 93, 140, 0.16),
+        rgba(201, 54, 44, 0.20),
+        transparent
+    );
+}
+
+
+.testimonial-route-left {
+    left: 8%;
+    top: 30%;
+
+    transform: rotate(16deg);
+}
+
+
+.testimonial-route-right {
+    right: 9%;
+    top: 22%;
+
+    transform: rotate(-15deg);
+}
+
+
+/* tiny points */
+
+.testimonial-route::before,
+.testimonial-route::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+
+    width: 6px;
+    height: 6px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(201, 54, 44, 0.65);
+
+    box-shadow:
+        0 0 0 5px rgba(201, 54, 44, 0.06);
+}
+
+
+.testimonial-route::before {
+    top: 25%;
+}
+
+
+.testimonial-route::after {
+    bottom: 18%;
+}
+
+
+/* tiny editorial labels */
+
+.testimonial-coordinate {
+    position: absolute;
+
+    color: rgba(10, 35, 66, 0.28);
+
+    font-size: 0.58rem;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    writing-mode: vertical-rl;
+}
+
+
+.coordinate-left {
+    left: 4.5%;
+    top: 46%;
+}
+
+
+.coordinate-right {
+    right: 4.5%;
+    top: 38%;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.testimonials-container {
+    position: relative;
+
+    width: min(90%, 1180px);
+
+    margin: 0 auto;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.testimonials-header {
+    position: relative;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    z-index: 3;
+}
+
+
+/* Eyebrow */
+
+.testimonials-eyebrow {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+
+    color: var(--navy);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+.testimonials-eyebrow-line {
+    display: block;
+
+    width: 30px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.testimonials-title {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: clamp(3.2rem, 5vw, 5.3rem);
+    font-weight: 800;
+
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+}
+
+
+.testimonials-title span {
+    display: block;
+
+    color: var(--red);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.testimonials-intro {
+    max-width: 570px;
+
+    margin: 24px auto 0;
+
+    color: #61758e;
+
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   TESTIMONIAL STAGE
+========================================================= */
+
+.testimonials-stage {
+    position: relative;
+
+    max-width: 960px;
+
+    margin: 48px auto 0;
+
+    padding: 35px 70px 42px;
+
+    text-align: center;
+}
+
+
+/* very subtle decorative quotation */
+
+.testimonials-quote-mark {
+    position: absolute;
+
+    top: -75px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: rgba(10, 35, 66, 0.045);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 15rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 0;
+}
+
+.testimonials-background-number {
+    position: absolute;
+
+    right: -180px;
+    top: 70px;
+
+    color: rgba(10, 35, 66, 0.022);
+
+    font-size: 22rem;
+    font-weight: 900;
+
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 0;
+}
+
+.testimonials-quote-window,
+.testimonials-navigation {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   QUOTE WINDOW
+========================================================= */
+
+.testimonials-quote-window {
+    position: relative;
+
+    min-height: 340px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonial {
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+
+/* Service */
+
+.testimonial-service {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 30px;
+
+    padding: 6px 13px;
+
+    margin-bottom: 25px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.10);
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.58);
+
+    color: var(--red);
+
+    font-size: 0.67rem;
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    z-index: 2;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* Quote */
+
+.testimonial-quote {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    color: var(--navy);
+
+    font-size: clamp(1.55rem, 2.45vw, 2.45rem);
+    font-weight: 600;
+
+    line-height: 1.42;
+    letter-spacing: -0.028em;
+}
+
+
+/* =========================================================
+   PERSON
+========================================================= */
+
+.testimonial-person {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+
+.testimonial-person strong {
+    color: var(--navy);
+
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+
+.testimonial-person span {
+    margin-top: 4px;
+
+    color: #6b7f97;
+
+    font-size: 0.78rem;
+}
+
+
+.testimonial-location {
+    color: #8a9aab !important;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.testimonials-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 30px;
+}
+
+
+/* arrows */
+
+.testimonials-arrow {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.14);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    color: var(--navy);
+
+    font-size: 1.05rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.testimonials-arrow:hover {
+    transform: translateY(-2px);
+
+    background: var(--navy);
+
+    border-color: var(--navy);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 25px rgba(10, 35, 66, 0.16);
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.testimonials-progress {
+    width: min(300px, 40vw);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.testimonials-current,
+.testimonials-total {
+    min-width: 20px;
+
+    color: var(--navy);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+.testimonials-total {
+    color: #8999aa;
+}
+
+
+.testimonials-progress-track {
+    position: relative;
+
+    flex: 1;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(10, 35, 66, 0.10);
+}
+
+
+.testimonials-progress-fill {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   SERVICE STRIP
+========================================================= */
+
+.testimonials-services {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px 34px;
+
+    margin-top: 65px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(10, 35, 66, 0.09);
+}
+
+
+.testimonials-services span {
+    position: relative;
+
+    color: #77899e;
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+}
+
+
+.testimonials-services span:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    right: -19px;
+
+    width: 4px;
+    height: 4px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(201, 54, 44, 0.65);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .testimonials {
+        padding:
+            100px 0 80px;
+    }
+
+
+    .testimonials-stage {
+        margin-top: 60px;
+
+        padding:
+            45px 35px 35px;
+    }
+
+
+    .testimonials-quote-window {
+        min-height: 320px;
+    }
+
+
+    .testimonials-quote-mark {
+        font-size: 15rem;
+
+        top: -55px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .testimonials {
+        padding:
+            80px 0 65px;
+    }
+
+
+    .testimonials-container {
+        width: 88%;
+    }
+
+
+    .testimonials-eyebrow {
+        font-size: 0.65rem;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .testimonials-eyebrow-line {
+        width: 22px;
+    }
+
+
+    .testimonials-title {
+        font-size:
+            clamp(2.7rem, 12vw, 4rem);
+    }
+
+
+    .testimonials-intro {
+        max-width: 350px;
+
+        margin-top: 18px;
+
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+
+    .testimonials-stage {
+        margin-top: 50px;
+
+        padding:
+            35px 0 20px;
+    }
+
+
+    .testimonials-quote-mark {
+        top: -38px;
+
+        font-size: 11rem;
+    }
+
+
+    .testimonials-quote-window {
+        min-height: 390px;
+    }
+
+
+    .testimonial-service {
+        margin-bottom: 22px;
+    }
+
+
+    .testimonial-quote {
+        font-size:
+            clamp(1.3rem, 5.7vw, 1.7rem);
+
+        line-height: 1.48;
+    }
+
+
+    .testimonial-person {
+        margin-top: 25px;
+    }
+
+
+    .testimonials-navigation {
+        gap: 14px;
+
+        margin-top: 20px;
+    }
+
+
+    .testimonials-arrow {
+        width: 43px;
+        height: 43px;
+
+        flex-shrink: 0;
+    }
+
+
+    .testimonials-progress {
+        width: min(220px, 55vw);
+
+        gap: 8px;
+    }
+
+
+    .testimonials-services {
+        gap: 12px 22px;
+
+        margin-top: 45px;
+
+        padding-top: 22px;
+    }
+
+
+    .testimonials-services span {
+        font-size: 0.59rem;
+    }
+
+
+    .testimonials-services span:not(:last-child)::after {
+        right: -13px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .testimonials-container {
+        width: 90%;
+    }
+
+
+    .testimonials-title {
+        font-size: 2.75rem;
+    }
+
+
+    .testimonials-quote-window {
+        min-height: 430px;
+    }
+
+
+    .testimonials-navigation {
+        gap: 10px;
+    }
+
+
+    .testimonials-progress {
+        width: 175px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .testimonials-arrow,
+    .testimonials-progress-fill {
+        transition: none;
+    }
+
+}
