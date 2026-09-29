@@ -908,10 +908,173 @@
 }
 
 /* =========================================================
-   TABLET — GLOBAL NETWORK
+   SMALL DESKTOP / LAPTOP
+   1025px — 1250px
 ========================================================= */
 
-@media (max-width: 1024px) {
+@media (min-width: 1025px) and (max-width: 1250px) {
+
+    .global-network {
+        min-height: auto;
+        overflow: hidden;
+    }
+
+    .global-network-container {
+        width: 90%;
+        max-width: 1080px;
+
+        grid-template-columns: 44% 56%;
+
+        min-height: 720px;
+
+        margin: 0 auto;
+        padding-top: 120px;
+    }
+
+
+    /* =========================
+       LEFT CONTENT
+    ========================= */
+
+    .global-network-content {
+        position: relative;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        max-width: 460px;
+
+        z-index: 10;
+    }
+
+    .global-network-title {
+        font-size: clamp(3.4rem, 5.5vw, 4.6rem);
+    }
+
+    .global-network-description {
+        max-width: 430px;
+    }
+
+
+    /* =========================
+       MODES
+    ========================= */
+
+    .global-network-modes {
+        position: relative;
+
+        left: 0;
+
+        width: 100%;
+
+        margin-top: 32px;
+    }
+
+    .global-network-mode {
+        padding: 0 12px;
+    }
+
+    .global-network-mode:first-child {
+        padding-left: 0;
+    }
+
+
+    /* =========================
+       RIGHT VISUAL
+    ========================= */
+
+    .global-network-visual {
+        position: relative;
+
+        width: 100%;
+        height: 520px;
+    }
+
+
+    /* GLOBE */
+
+    .global-network-globe {
+        width: min(500px, 44vw);
+
+        top: 25px;
+
+        left: auto;
+        right: 0;
+    }
+
+
+    /* PLANE */
+
+    .global-network-plane {
+        width: min(210px, 19vw);
+
+        top: 105px;
+        right: 0;
+    }
+
+
+    /* =========================
+       HIGHWAY
+    ========================= */
+
+   .global-network-highway {
+        height: 430px;
+
+        margin-top: -245px;
+
+        overflow: hidden;
+    }
+
+    .global-network-highway img {
+        display: block;
+
+        width: 110%;
+        max-width: none;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: 65% 55%;
+
+        /* Slightly soften the intense image */
+        filter:
+            saturate(0.82)
+            contrast(0.95)
+            brightness(1.01);
+
+        /* Fade the sky into the globe/background */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.04) 10%,
+            rgba(0, 0, 0, 0.12) 18%,
+            rgba(0, 0, 0, 0.30) 25%,
+            rgba(0, 0, 0, 0.58) 32%,
+            rgba(0, 0, 0, 0.82) 39%,
+            black 46%,
+            black 100%
+        );
+
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.04) 10%,
+            rgba(0, 0, 0, 0.12) 18%,
+            rgba(0, 0, 0, 0.30) 25%,
+            rgba(0, 0, 0, 0.58) 32%,
+            rgba(0, 0, 0, 0.82) 39%,
+            black 46%,
+            black 100%
+        );
+   }
+}
+
+/* =========================================================
+   TABLET — GLOBAL NETWORK
+   768px — 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
 
     .global-network {
         min-height: auto;
@@ -924,12 +1087,15 @@
     ========================= */
 
     .global-network-container {
-        width: min(92%, 900px);
+        width: min(90%, 860px);
         min-height: auto;
 
         grid-template-columns: 1fr;
 
-        padding-top: 110px;
+        margin: 0 auto;
+
+        /* navbar clearance */
+        padding-top: 125px;
     }
 
 
@@ -938,29 +1104,72 @@
     ========================= */
 
     .global-network-content {
+        position: relative;
+
+        width: 100%;
         max-width: 650px;
 
         top: 0;
+        left: 0;
+
+        margin: 0 auto;
+
+        text-align: center;
 
         z-index: 10;
     }
 
 
+    /* Eyebrow */
+
+    .global-network-eyebrow {
+        justify-content: center;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 22px;
+    }
+
+
+    /* Title */
+
     .global-network-title {
         max-width: 620px;
 
-        font-size: clamp(3.6rem, 8vw, 5rem);
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: clamp(3.5rem, 8vw, 5rem);
+
         line-height: 0.94;
+
+        text-align: center;
     }
 
+
+    /* Tagline */
 
     .global-network-tagline {
         max-width: 500px;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+
+        text-align: center;
     }
 
 
+    /* Description */
+
     .global-network-description {
         max-width: 520px;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 12px;
+
+        text-align: center;
     }
 
 
@@ -969,13 +1178,24 @@
     ========================= */
 
     .global-network-modes {
-        width: 100%;
+        position: relative;
 
-        max-width: 580px;
+        width: min(100%, 580px);
 
         left: 0;
 
-        margin-top: 32px;
+        grid-template-columns: repeat(3, 1fr);
+
+        margin: 32px auto 0;
+    }
+
+
+    .global-network-mode {
+        padding: 0 18px;
+
+        align-items: center;
+
+        text-align: center;
     }
 
 
@@ -984,48 +1204,140 @@
     ========================= */
 
     .global-network-visual {
-        width: 100%;
-        height: 570px;
+        position: relative;
 
-        margin-top: 30px;
+        width: 100%;
+        height: 500px;
+
+        margin-top: 35px;
+
+        overflow: visible;
     }
 
-
-    /* Globe */
+    /* =========================
+       GLOBE
+    ========================= */
 
     .global-network-globe {
-        width: min(570px, 68vw);
+        /*
+            Smaller than before.
+            72vw was making it dominate the tablet.
+        */
+        width: min(450px, 66vw);
 
-        top: 10px;
-        right: -6%;
+        top: -25px;
+
+        /*
+            TRUE CENTERING
+        */
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+
     }
 
-
-    /* Plane */
+    /* =========================
+       PLANE
+    ========================= */
 
     .global-network-plane {
-        width: min(250px, 29vw);
+        /*
+            Smaller so it doesn't touch
+            the right edge.
+        */
+        width: min(190px, 25vw);
 
-        top: 85px;
-        right: -3%;
+        top: 80px;
+
+        /*
+            Bring plane farther inside.
+        */
+        right: 24%;
     }
-
 
     /* =========================
        HIGHWAY / TORONTO SCENE
     ========================= */
 
     .global-network-highway {
-        margin-top: -260px;
-        height: 500px;
-    }
+        position: relative;
 
+        width: 100%;
+        height: 360px;
+
+        margin-top: -205px;
+
+        overflow: hidden;
+
+        z-index: 3;
+    }
 
     .global-network-highway img {
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        display: block;
+
+        width: 139%;
+        max-width: none;
+        height: 100%;
+
+        /*
+            Fill area without making
+            truck/ship microscopic.
+        */
+        object-fit: cover;
+
+        /*
+            Shift composition toward
+            Toronto + truck + ship.
+        */
         object-position: center 55%;
+
+        /* Move image LEFT = focus on truck + Toronto + ship */
+        /* transform: translateX(-25%); */
+
+        /*
+            Reduce the very intense
+            orange/blue difference.
+        */
+        filter:
+            saturate(0.80)
+            contrast(0.95)
+            brightness(1.03);
+
+        /*
+            Softer transition from
+            globe into Toronto scene.
+        */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.05) 7%,
+            rgba(0, 0, 0, 0.18) 13%,
+            rgba(0, 0, 0, 0.40) 19%,
+            rgba(0, 0, 0, 0.68) 25%,
+            rgba(0, 0, 0, 0.88) 30%,
+            black 35%,
+            black 100%
+        );
+
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.05) 7%,
+            rgba(0, 0, 0, 0.18) 13%,
+            rgba(0, 0, 0, 0.40) 19%,
+            rgba(0, 0, 0, 0.68) 25%,
+            rgba(0, 0, 0, 0.88) 30%,
+            black 35%,
+            black 100%
+        );
     }
 }
-
 
 
 /* =========================================================
@@ -1036,6 +1348,12 @@
 
     .global-network-container {
         width: 90%;
+
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+        margin: 0 auto;
 
         padding-top: 60px;
     }
@@ -1092,7 +1410,7 @@
     .global-network-tagline {
         max-width: 100%;
 
-        margin-top: 22px auto 0;
+        margin: 22px auto 0;
 
         font-size: 1rem;
 
@@ -1182,8 +1500,12 @@
     .global-network-globe {
         width: min(430px, 85vw);
 
-        top: 40px;
+        top: 0;
+        left: 0;
         right: 0%;
+
+        margin-left: auto;
+        margin-right: auto;
     }
 
 
@@ -1271,4 +1593,44 @@
         );
     }
 
+}
+
+/* =========================================================
+   LARGE MOBILE — KEEP PLANE CLOSE TO GLOBE
+   480px — 767px
+========================================================= */
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .global-network-globe {
+        top: 25px;
+    }
+
+    .global-network-plane {
+        right: clamp(12%, 20vw, 22%);
+    }
+
+}
+
+/* =========================================================
+   SMALL MOBILE — 320px to 479px
+   Keep globe + highway visually connected
+========================================================= */
+
+@media (min-width: 320px) and (max-width: 479px) {
+
+    .global-network-visual {
+        margin-top: -45px;
+    }
+
+    .global-network-globe {
+        top: 45px; /* was 25px */
+    }
+
+    .global-network-highway {
+        /* margin-top: -190px; */
+        margin-top: calc(
+            -205px + (70 * (100vw - 320px) / 159)
+        );
+    }
 }
