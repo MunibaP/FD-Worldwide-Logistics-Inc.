@@ -9,7 +9,7 @@
 
     overflow: hidden;
 
-    padding: 120px 0 95px;
+    padding: 70px 0 40px;
 
     /* background:
         radial-gradient(
@@ -167,7 +167,7 @@
 
 
 .coordinate-right {
-    right: 4.5%;
+    right: 5.6%;
     top: 38%;
 }
 
@@ -235,6 +235,7 @@
     border-radius: 999px;
 
     background: var(--red);
+
 }
 
 
@@ -289,7 +290,7 @@
 
     margin: 48px auto 0;
 
-    padding: 35px 70px 42px;
+    padding: 35px 70px 20px;
 
     text-align: center;
 }
@@ -300,7 +301,7 @@
 .testimonials-quote-mark {
     position: absolute;
 
-    top: -75px;
+    top: -65px;
     left: 50%;
 
     transform: translateX(-50%);
@@ -309,7 +310,7 @@
 
     font-family: Georgia, "Times New Roman", serif;
 
-    font-size: 15rem;
+    font-size: 12rem;
     font-weight: 700;
 
     line-height: 1;
@@ -324,12 +325,12 @@
 .testimonials-background-number {
     position: absolute;
 
-    right: -180px;
+    right: -140px;
     top: 70px;
 
     color: rgba(10, 35, 66, 0.022);
 
-    font-size: 22rem;
+    font-size: 18rem;
     font-weight: 900;
 
     line-height: 0.8;
@@ -609,7 +610,7 @@
 
     gap: 12px 34px;
 
-    margin-top: 65px;
+    margin-top: 20px;
 
     padding-top: 25px;
 
@@ -651,6 +652,85 @@
 
 
 /* =========================================================
+   SMALL DESKTOP / LAPTOP
+   1025px — 1250px
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1250px) {
+
+    .testimonials {
+        padding: 55px 0 85px;
+    }
+
+    .testimonials-container {
+        width: 90%;
+        max-width: 1080px;
+    }
+
+    .testimonials-title {
+        font-size: clamp(3.5rem, 5.5vw, 4.8rem);
+    }
+
+    .testimonials-intro {
+        max-width: 540px;
+    }
+
+    .testimonials-stage {
+        max-width: 900px;
+
+        margin-top: 55px;
+
+        padding: 40px 55px 40px;
+    }
+
+    .testimonials-quote-window {
+        min-height: 330px;
+    }
+
+    .testimonials-quote-mark {
+        font-size: 17rem;
+        top: -70px;
+    }
+
+    .testimonials-background-number {
+        right: -5%;
+        top: 70px;
+
+        font-size: 17rem;
+    }
+
+    /* Route decorations */
+
+    .testimonial-route-left,
+    .testimonial-route-right {
+        top: 22%;
+        height: 280px;
+    }
+
+    .testimonial-route-left {
+        left: 7%;
+    }
+
+    .testimonial-route-right {
+        right: 7%;
+    }
+
+    .coordinate-left,
+    .coordinate-right {
+        top: 38%;
+    }
+
+    .coordinate-left {
+        left: 3%;
+    }
+
+    .coordinate-right {
+        right: 3%;
+    }
+}
+
+
+/* =========================================================
    TABLET
 ========================================================= */
 
@@ -658,9 +738,12 @@
 
     .testimonials {
         padding:
-            100px 0 80px;
+            60px 0 80px;
     }
 
+    .testimonials-container {
+        width: 90%;
+    }
 
     .testimonials-stage {
         margin-top: 60px;
@@ -676,11 +759,44 @@
 
 
     .testimonials-quote-mark {
-        font-size: 15rem;
+        font-size: 17rem;
 
-        top: -55px;
+        top: -78px;
     }
 
+    /* Large decorative testimonial number */
+    .testimonials-background-number {
+        right: -3%;
+    }
+
+    .testimonial-route-left,
+    .testimonial-route-right {
+        top: 18%;
+        height: 250px;
+    }
+
+    .testimonial-route-left {
+        left: 7.5%;
+    }
+
+    .testimonial-route-right {
+        right: 3%;
+    }
+
+    .coordinate-left,
+    .coordinate-right {
+        top: 31%;
+    }
+
+    .coordinate-left {
+        left: 1.5%;
+        display: none;
+    }
+
+    .coordinate-right {
+        right: 1.5%;
+        display: none;
+    }
 }
 
 
@@ -692,7 +808,7 @@
 
     .testimonials {
         padding:
-            80px 0 65px;
+            70px 0 65px;
     }
 
 
@@ -700,6 +816,9 @@
         width: 88%;
     }
 
+    /* =========================
+       HEADER
+    ========================= */
 
     .testimonials-eyebrow {
         font-size: 0.65rem;
@@ -716,8 +835,9 @@
 
 
     .testimonials-title {
-        font-size:
-            clamp(2.7rem, 12vw, 4rem);
+        font-size: clamp(2.7rem, 12vw, 4rem);
+
+        line-height: 0.95;
     }
 
 
@@ -730,14 +850,16 @@
         line-height: 1.65;
     }
 
+    /* =========================
+       TESTIMONIAL STAGE
+    ========================= */
 
     .testimonials-stage {
-        margin-top: 50px;
+        margin-top: 45px;
 
         padding:
             35px 0 20px;
     }
-
 
     .testimonials-quote-mark {
         top: -38px;
@@ -757,8 +879,9 @@
 
 
     .testimonial-quote {
-        font-size:
-            clamp(1.3rem, 5.7vw, 1.7rem);
+        max-width: 600px;
+
+        font-size: clamp(1.3rem, 5.7vw, 1.7rem);
 
         line-height: 1.48;
     }
@@ -809,6 +932,394 @@
         right: -13px;
     }
 
+    /* =========================
+       BACKGROUND NUMBER
+    ========================= */
+
+     .testimonials-background-number {
+        top: 100px;
+        right: -5%;
+
+        font-size: 13rem;
+    }
+
+
+    /* =========================
+       ROUTE DECORATIONS
+    ========================= */
+
+    .testimonial-route-left,
+    .testimonial-route-right {
+        top: 25%;
+
+        height: 210px;
+
+        opacity: 0.4;
+    }
+
+    .testimonial-route-left {
+        left: 4%;
+    }
+
+    .testimonial-route-right {
+        right: 4%;
+    }
+
+    .coordinate-left,
+    .coordinate-right {
+        top: 38%;
+
+        font-size: 0.5rem;
+    }
+
+    .coordinate-left {
+        left: 1%;
+        display: none;
+    }
+
+    .coordinate-right {
+        right: 1%;
+        display: none;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .testimonials-navigation {
+        gap: 14px;
+
+        margin-top: 20px;
+    }
+
+    .testimonials-arrow {
+        width: 43px;
+        height: 43px;
+
+        flex-shrink: 0;
+    }
+
+    .testimonials-progress {
+        width: min(220px, 55vw);
+
+        gap: 8px;
+    }
+
+
+    /* =========================
+       SERVICE STRIP
+    ========================= */
+
+    .testimonials-services {
+        gap: 12px 22px;
+
+        margin-top: 45px;
+
+        padding-top: 22px;
+    }
+
+    .testimonials-services span {
+        font-size: 0.59rem;
+    }
+
+    .testimonials-services span:not(:last-child)::after {
+        right: -13px;
+    }
+
+}
+
+
+/* =========================================================
+   LARGE MOBILE
+   480px — 767px
+========================================================= */
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .testimonials {
+        padding: 65px 0 65px;
+    }
+
+    .testimonials-container {
+        width: 88%;
+    }
+
+    .testimonials-title {
+        font-size: clamp(3rem, 9vw, 4rem);
+    }
+
+    .testimonials-intro {
+        max-width: 410px;
+    }
+
+
+    /* Testimonial */
+
+    .testimonials-stage {
+        margin-top: 45px;
+    }
+
+    .testimonials-quote-window {
+        min-height: 360px;
+    }
+
+    .testimonial-quote {
+        max-width: 560px;
+
+        font-size: clamp(1.35rem, 4vw, 1.65rem);
+    }
+
+
+    /* Quote symbol */
+
+    .testimonials-quote-mark {
+        top: -45px;
+
+        font-size: 13rem;
+    }
+
+
+    /* Decorative number */
+
+    .testimonials-background-number {
+        top: 85px;
+        right: -3%;
+
+        font-size: 14rem;
+        display: none;
+    }
+
+
+    /* Routes */
+
+    .testimonial-route-left,
+    .testimonial-route-right {
+        top: 23%;
+
+        height: 220px;
+    }
+
+    .testimonial-route-left {
+        left: 7.3%;
+    }
+
+    .testimonial-route-right {
+        right: 2.8%;
+    }
+
+    .coordinate-left,
+    .coordinate-right {
+        top: 36%;
+    }
+
+    .coordinate-left {
+        left: 1%;
+        display: none;
+    }
+
+    .coordinate-right {
+        right: 1%;
+        display: none;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   320px — 479px
+========================================================= */
+
+@media (min-width: 320px) and (max-width: 479px) {
+
+    .testimonials {
+        padding: 50px 0 20px;
+    }
+
+    .testimonials-container {
+        width: 90%;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .testimonials-eyebrow {
+        margin-bottom: 16px;
+
+        font-size: 0.61rem;
+    }
+
+    .testimonials-title {
+        font-size: clamp(2.55rem, 12vw, 3.25rem);
+
+        line-height: 1.02;
+    }
+
+    .testimonials-intro {
+        max-width: 330px;
+
+        margin-top: 16px;
+
+        font-size: 0.86rem;
+    }
+
+
+    /* =========================
+       TESTIMONIAL
+    ========================= */
+
+    .testimonials-stage {
+        margin-top: 38px;
+
+        padding: 30px 0 15px;
+    }
+
+    .testimonials-quote-window {
+        min-height: 410px;
+    }
+
+    .testimonials-quote-mark {
+        top: -3205px;
+
+        font-size: 13rem;
+    }
+
+    .testimonial-service {
+        margin-bottom: 20px;
+
+        font-size: 0.6rem;
+    }
+
+    .testimonial-quote {
+        max-width: 310px;
+
+        font-size: clamp(1.2rem, 5.8vw, 1.45rem);
+
+        line-height: 1.5;
+    }
+
+    .testimonial-person {
+        margin-top: 23px;
+    }
+
+
+    /* =========================
+       BACKGROUND NUMBER
+    ========================= */
+
+    /* .testimonials-background-number {
+        top: 165px;
+        right: -3%;
+
+        font-size: 8rem;
+    } */
+
+    .testimonials-background-number {
+        top: 68px;
+        right: 1%;
+
+        font-size: 5.5rem;
+        font-weight: 900;
+
+        line-height: 0.8;
+        letter-spacing: -0.08em;
+
+        color: rgba(10, 35, 66, 0.045);
+
+        z-index: 0;
+
+        display: none;
+    }
+
+
+    /* =========================
+       ROUTES
+    ========================= */
+
+    .testimonial-route-left,
+    .testimonial-route-right {
+        top: 29%;
+
+        height: 170px;
+
+        opacity: 0.22;
+    }
+
+    .testimonial-route-left {
+        left: 4%;
+    }
+
+    .testimonial-route-right {
+        right: 4%;
+    }
+
+    /* ROUTE LABELS */
+
+    .testimonial-coordinate {
+        font-size: 0.38rem;
+
+        letter-spacing: 0.11em;
+
+        opacity: 0.48;
+    }
+
+    .coordinate-left,
+    .coordinate-right {
+        top: 43%;
+        display: none;
+    }
+
+    .coordinate-left {
+        left: 1.5%;
+    }
+
+    .coordinate-right {
+        right: 2%;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .testimonials-navigation {
+        gap: 9px;
+
+        margin-top: 15px;
+    }
+
+    .testimonials-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .testimonials-progress {
+        width: min(175px, 52vw);
+
+        gap: 6px;
+    }
+
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .testimonials-services {
+        gap: 10px 18px;
+
+        margin-top: 38px;
+
+        padding-top: 20px;
+    }
+
+    .testimonials-services span {
+        font-size: 0.54rem;
+    }
+
+    .testimonials-services span:not(:last-child)::after {
+        right: -11px;
+    }
 }
 
 
@@ -816,7 +1327,7 @@
    VERY SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 390px) {
+/* @media (max-width: 390px) {
 
     .testimonials-container {
         width: 90%;
@@ -842,7 +1353,7 @@
         width: 175px;
     }
 
-}
+} */
 
 
 /* =========================================================

@@ -104,7 +104,7 @@
 // export default Testimonials;
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
@@ -178,6 +178,47 @@ function Testimonials() {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [direction, setDirection] = useState(1);
+    const [isPaused, setIsPaused] = useState(false);
+
+    /* =========================================
+       AUTOMATIC TESTIMONIAL ROTATION
+    ========================================= */
+
+    // useEffect(() => {
+
+    //     const interval = setInterval(() => {
+
+    //         setDirection(1);
+
+    //         setActiveIndex((currentIndex) =>
+    //             (currentIndex + 1) % testimonials.length
+    //         );
+
+    //     }, 6500);
+
+
+    //     return () => clearInterval(interval);
+
+    // }, []);
+
+    useEffect(() => {
+
+        if (isPaused) return;
+
+        const interval = setInterval(() => {
+
+            setDirection(1);
+
+            setActiveIndex((currentIndex) =>
+                (currentIndex + 1) % testimonials.length
+            );
+
+        }, 6500);
+
+
+        return () => clearInterval(interval);
+
+    }, [isPaused]);
 
     const testimonial = testimonials[activeIndex];
 
@@ -240,7 +281,7 @@ function Testimonials() {
                 <span className="testimonial-route testimonial-route-right" />
 
                 <span className="testimonial-coordinate coordinate-left">
-                    43.5890° N
+                    NORTH AMERICA
                 </span>
 
                 <span className="testimonial-coordinate coordinate-right">
@@ -313,7 +354,11 @@ function Testimonials() {
                     TESTIMONIAL STAGE
                 ========================================= */}
 
-                <div className="testimonials-stage">
+                <div 
+                    className="testimonials-stage"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
 
 
                     {/* Decorative quotation mark */}
@@ -418,16 +463,20 @@ function Testimonials() {
                             <div className="testimonials-progress-track">
 
                                 <motion.div
+                                    key={`${testimonial.id}-${isPaused}`}
                                     className="testimonials-progress-fill"
 
+                                    initial={{
+                                        width: "0%",      
+                                    }}
+
                                     animate={{
-                                        width:
-                                            `${((activeIndex + 1) / testimonials.length) * 100}%`,
+                                        width: isPaused ? "0%" : "100%",
                                     }}
 
                                     transition={{
-                                        duration: 0.45,
-                                        ease: [0.22, 1, 0.36, 1],
+                                        duration: isPaused ? 0 : 6.5,
+                                        ease: "linear",
                                     }}
                                 />
 
