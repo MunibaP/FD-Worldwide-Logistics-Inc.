@@ -6,6 +6,8 @@ import WhyFastDrop from "./sections/WhyFastDrop/WhyFastDrop";
 import GlobalNetwork from "./sections/GlobalNetwork/GlobalNetwork";
 import Testimonials from "./sections/Testimonials/Testimonials";
 import FAQ from "./sections/FAQ/FAQ";
+import CTA from "./sections/CTA/CTA";
+
 function App() {
     return (
         <>
@@ -17,6 +19,7 @@ function App() {
             <GlobalNetwork />
             <Testimonials />
             <FAQ />
+            <CTA />
         </>
     );
 }
