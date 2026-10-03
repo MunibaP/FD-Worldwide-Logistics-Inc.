@@ -5,7 +5,7 @@ import ShipmentCommand from "./sections/ShipmentCommand/ShipmentCommand";
 import WhyFastDrop from "./sections/WhyFastDrop/WhyFastDrop";
 import GlobalNetwork from "./sections/GlobalNetwork/GlobalNetwork";
 import Testimonials from "./sections/Testimonials/Testimonials";
-
+import FAQ from "./sections/FAQ/FAQ";
 function App() {
     return (
         <>
@@ -16,6 +16,7 @@ function App() {
             <WhyFastDrop />
             <GlobalNetwork />
             <Testimonials />
+            <FAQ />
         </>
     );
 }
