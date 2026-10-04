@@ -7,6 +7,7 @@ import GlobalNetwork from "./sections/GlobalNetwork/GlobalNetwork";
 import Testimonials from "./sections/Testimonials/Testimonials";
 import FAQ from "./sections/FAQ/FAQ";
 import CTA from "./sections/CTA/CTA";
+import Contact from "./sections/Contact/Contact";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
             <Testimonials />
             <FAQ />
             <CTA />
+            <Contact />
         </>
     );
 }

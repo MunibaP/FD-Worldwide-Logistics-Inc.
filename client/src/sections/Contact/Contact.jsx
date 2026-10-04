@@ -1,195 +1,503 @@
-// import { useState } from "react";
+import { motion } from "framer-motion";
 
-// import "./Contact.css";
+import {
+    FaArrowRight,
+    FaEnvelope,
+    FaPhone,
+    FaLocationDot
+} from "react-icons/fa6";
 
+import "./Contact.css";
 
-// function Contact() {
 
-//     const [submitted, setSubmitted] =
-//         useState(false);
+const Contact = () => {
 
+    const handleSubmit = (event) => {
 
-//     const handleSubmit = async (event) => {
+        event.preventDefault();
 
-//         event.preventDefault();
+        // Backend / email integration will be added later.
+        console.log("Contact form submitted");
 
-        /*
-            Connect this to your existing API.
+    };
 
-            Example:
 
-            await fetch(
-                `${import.meta.env.VITE_API_URL}/contact`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-                    body: JSON.stringify(...)
-                }
-            );
-        */
+    return (
 
+        <section
+            className="contact"
+            id="contact"
+        >
 
-//         setSubmitted(true);
+            {/* =========================================
+                BACKGROUND
+            ========================================= */}
 
-//     };
+            <div
+                className="contact-atmosphere"
+                aria-hidden="true"
+            >
 
+                <span className="contact-glow contact-glow-one" />
+                <span className="contact-glow contact-glow-two" />
 
-//     return (
+                <span className="contact-background-word">
+                    CONNECT
+                </span>
 
-//         <section
-//             className="contact section-pad"
-//             id="contact"
-//         >
+            </div>
 
-//             <div className="container contact-grid">
 
+            <div className="contact-container">
 
-//                 <div>
 
-//                     <span className="eyebrow">
-//                         CONTACT
-//                     </span>
+                {/* =========================================
+                    LEFT — INTRO
+                ========================================= */}
 
-//                     <h2>
-//                         Tell us what you
-//                         need moved.
-//                     </h2>
+                <motion.div
+                    className="contact-intro"
 
-//                     <p>
-//                         Give us the basic shipment
-//                         details and we'll have the
-//                         information needed to begin
-//                         the conversation.
-//                     </p>
+                    initial={{
+                        opacity: 0,
+                        y: 30
+                    }}
 
-//                 </div>
+                    whileInView={{
+                        opacity: 1,
+                        y: 0
+                    }}
 
+                    viewport={{
+                        once: true,
+                        amount: 0.25
+                    }}
 
-//                 <form
-//                     className="contact-form"
-//                     onSubmit={handleSubmit}
-//                 >
+                    transition={{
+                        duration: 0.7,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                >
 
-//                     <div className="form-row">
+                    <div className="contact-eyebrow">
 
-//                         <label>
+                        <span className="contact-eyebrow-line" />
 
-//                             Name
+                        <span>
+                            CONTACT OUR TEAM
+                        </span>
 
-//                             <input
-//                                 required
-//                                 placeholder="Your name"
-//                             />
+                    </div>
 
-//                         </label>
 
+                    <h2 className="contact-title">
 
-//                         <label>
+                        Logistics starts
+                        <span>with a conversation.</span>
 
-//                             Company
+                    </h2>
 
-//                             <input
-//                                 placeholder="Company"
-//                             />
 
-//                         </label>
+                    <p className="contact-description">
 
-//                     </div>
+                        Tell us what you're moving, where it
+                        needs to go, or what support you need.
+                        Our team is ready to help you find the
+                        right way forward.
 
+                    </p>
 
-//                     <div className="form-row">
 
-//                         <label>
+                    {/* =====================================
+                        CONTACT DETAILS
+                    ===================================== */}
 
-//                             Email
+                    <div className="contact-details">
 
-//                             <input
-//                                 required
-//                                 type="email"
-//                                 placeholder="you@company.com"
-//                             />
 
-//                         </label>
+                        <a
+                            className="contact-detail"
+                            href="mailto:info@fastdropinc.com"
+                        >
 
+                            <span className="contact-detail-icon">
 
-//                         <label>
+                                <FaEnvelope />
 
-//                             Service
+                            </span>
 
-//                             <select>
 
-//                                 <option>
-//                                     Ground Freight
-//                                 </option>
+                            <span className="contact-detail-content">
 
-//                                 <option>
-//                                     Air & Ocean
-//                                 </option>
+                                <small>
+                                    EMAIL
+                                </small>
 
-//                                 <option>
-//                                     Warehousing
-//                                 </option>
+                                <strong>
+                                    Info@fastdropinc.com
+                                </strong>
 
-//                                 <option>
-//                                     E-Commerce Fulfillment
-//                                 </option>
+                            </span>
 
-//                                 <option>
-//                                     Final-Mile Delivery
-//                                 </option>
+                        </a>
 
-//                             </select>
 
-//                         </label>
+                        <a
+                            className="contact-detail"
+                            href="tel:+1XXXXXXXXXX"
+                        >
 
-//                     </div>
+                            <span className="contact-detail-icon">
 
+                                <FaPhone />
 
-//                     <label>
+                            </span>
 
-//                         Message
 
-//                         <textarea
-//                             rows="5"
-//                             placeholder="Tell us about your shipment..."
-//                         />
+                            <span className="contact-detail-content">
 
-//                     </label>
+                                <small>
+                                    PHONE
+                                </small>
 
+                                <strong>
+                                    +19422881020
+                                </strong>
 
-//                     {submitted && (
+                            </span>
 
-//                         <div className="success-message">
+                        </a>
 
-//                             Thank you.
-//                             Your request has been received.
 
-//                         </div>
+                        <div className="contact-detail">
 
-//                     )}
+                            <span className="contact-detail-icon">
 
+                                <FaLocationDot />
 
-//                     <button
-//                         type="submit"
-//                         className="btn btn--primary"
-//                     >
+                            </span>
 
-//                         Send Request
 
-//                     </button>
+                            <span className="contact-detail-content">
 
-//                 </form>
+                                <small>
+                                    SERVICE AREA
+                                </small>
 
-//             </div>
+                                <strong>
+                                    Canada & Worldwide
+                                </strong>
 
-//         </section>
+                            </span>
 
-//     );
+                        </div>
 
-// }
 
+                    </div>
 
-// export default Contact;
+
+                    {/* =====================================
+                        STATUS
+                    ===================================== */}
+
+                    <div className="contact-status">
+
+                        <span className="contact-status-dot" />
+
+                        <div>
+
+                            <strong>
+                                Logistics desk online
+                            </strong>
+
+                            <span>
+                                Ready to discuss your next shipment.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </motion.div>
+
+
+                {/* =========================================
+                    RIGHT — FORM
+                ========================================= */}
+
+                <motion.div
+                    className="contact-form-panel"
+
+                    initial={{
+                        opacity: 0,
+                        x: 40
+                    }}
+
+                    whileInView={{
+                        opacity: 1,
+                        x: 0
+                    }}
+
+                    viewport={{
+                        once: true,
+                        amount: 0.2
+                    }}
+
+                    transition={{
+                        duration: 0.8,
+                        delay: 0.1,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                >
+
+                    <div className="contact-form-header">
+
+                        <span className="contact-form-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <span>
+                                SEND AN INQUIRY
+                            </span>
+
+                            <p>
+                                We'll get back to you as soon as possible.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        className="contact-form"
+                        onSubmit={handleSubmit}
+                    >
+
+
+                        {/* NAME + COMPANY */}
+
+                        <div className="contact-form-row">
+
+
+                            <div className="contact-field">
+
+                                <label htmlFor="contact-name">
+                                    YOUR NAME
+                                </label>
+
+                                <input
+                                    id="contact-name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Full name"
+                                    autoComplete="name"
+                                    required
+                                />
+
+                            </div>
+
+
+                            <div className="contact-field">
+
+                                <label htmlFor="contact-company">
+                                    COMPANY
+                                </label>
+
+                                <input
+                                    id="contact-company"
+                                    name="company"
+                                    type="text"
+                                    placeholder="Company name"
+                                    autoComplete="organization"
+                                />
+
+                            </div>
+
+
+                        </div>
+
+
+                        {/* EMAIL + PHONE */}
+
+                        <div className="contact-form-row">
+
+
+                            <div className="contact-field">
+
+                                <label htmlFor="contact-email">
+                                    EMAIL ADDRESS
+                                </label>
+
+                                <input
+                                    id="contact-email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="name@company.com"
+                                    autoComplete="email"
+                                    required
+                                />
+
+                            </div>
+
+
+                            <div className="contact-field">
+
+                                <label htmlFor="contact-phone">
+                                    PHONE
+                                </label>
+
+                                <input
+                                    id="contact-phone"
+                                    name="phone"
+                                    type="tel"
+                                    placeholder="+1"
+                                    autoComplete="tel"
+                                />
+
+                            </div>
+
+
+                        </div>
+
+
+                        {/* SUBJECT */}
+
+                        <div className="contact-field">
+
+                            <label htmlFor="contact-subject">
+                                HOW CAN WE HELP?
+                            </label>
+
+                            <select
+                                id="contact-subject"
+                                name="subject"
+                                defaultValue=""
+                                required
+                            >
+
+                                <option
+                                    value=""
+                                    disabled
+                                >
+                                    Select an inquiry
+                                </option>
+
+                                <option value="shipping">
+                                    Shipping inquiry
+                                </option>
+
+                                <option value="quote">
+                                    Request a quote
+                                </option>
+
+                                <option value="tracking">
+                                    Tracking support
+                                </option>
+
+                                <option value="business">
+                                    Business partnership
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        {/* MESSAGE */}
+
+                        <div className="contact-field">
+
+                            <label htmlFor="contact-message">
+                                MESSAGE
+                            </label>
+
+                            <textarea
+                                id="contact-message"
+                                name="message"
+                                placeholder="Tell us about your shipment or inquiry..."
+                                required
+                            />
+
+                        </div>
+
+
+                        {/* FOOTER */}
+
+                        <div className="contact-form-footer">
+
+                            <p>
+                                By submitting this form, you agree
+                                that we may contact you regarding
+                                your inquiry.
+                            </p>
+
+
+                            <button
+                                className="contact-submit"
+                                type="submit"
+                            >
+
+                                <span>
+                                    SEND MESSAGE
+                                </span>
+
+                                <span className="contact-submit-icon">
+
+                                    <FaArrowRight />
+
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </motion.div>
+
+
+            </div>
+
+
+            {/* =========================================
+                BOTTOM DETAIL
+            ========================================= */}
+
+            <div className="contact-bottom">
+
+                <span>
+                    FASTDROP WORLDWIDE LOGISTICS
+                </span>
+
+                <span>
+                    CANADA
+                </span>
+
+                <span className="contact-bottom-dot" />
+
+                <span>
+                    WORLDWIDE
+                </span>
+
+            </div>
+
+
+        </section>
+
+    );
+
+};
+
+
+export default Contact;
