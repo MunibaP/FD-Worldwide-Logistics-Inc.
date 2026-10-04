@@ -161,7 +161,7 @@ const Contact = () => {
                                 </small>
 
                                 <strong>
-                                    +19422881020
+                                    +1 942-288-1020
                                 </strong>
 
                             </span>
