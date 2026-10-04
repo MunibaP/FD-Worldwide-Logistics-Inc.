@@ -8,6 +8,7 @@ import Testimonials from "./sections/Testimonials/Testimonials";
 import FAQ from "./sections/FAQ/FAQ";
 import CTA from "./sections/CTA/CTA";
 import Contact from "./sections/Contact/Contact";
+import Footer from "./sections/Footer/Footer";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
             <FAQ />
             <CTA />
             <Contact />
+            <Footer />
         </>
     );
 }

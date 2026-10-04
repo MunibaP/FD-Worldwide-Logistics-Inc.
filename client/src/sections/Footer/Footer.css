@@ -1,0 +1,795 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        80px 0 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 8% 20%,
+            rgba(47, 93, 140, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 85%,
+            rgba(201, 54, 44, 0.035),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #edf3f8 0%,
+            #e7eef5 48%,
+            #dfe9f2 100%
+        );
+
+    color:
+        var(--navy, #0a2342);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.footer-atmosphere {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+.footer-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.footer-glow-one {
+    width: 620px;
+    height: 620px;
+
+    right: -220px;
+    top: -260px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(47, 93, 140, 0.10),
+            transparent 68%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND WORD
+========================================================= */
+
+.footer-background-word {
+    position: absolute;
+
+    left: 50%;
+    bottom: -2%;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(10, 35, 66, 0.025);
+
+    font-size:
+        clamp(9rem, 14vw, 15rem);
+
+    font-weight: 900;
+
+    line-height: 0.75;
+
+    letter-spacing: -0.055em;
+
+    white-space: nowrap;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.footer-container {
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(90%, 1400px);
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+/* .footer-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 1.5fr)
+        repeat(3, minmax(130px, 0.7fr));
+
+    gap:
+        clamp(45px, 6vw, 95px);
+
+    align-items: start;
+
+    padding-bottom:
+        50px;
+} */
+
+/* .footer-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 1.35fr)
+        minmax(100px, 0.55fr)
+        minmax(110px, 0.60fr)
+        minmax(180px, 0.90fr)
+        minmax(220px, 1fr);
+
+    gap:
+        clamp(28px, 3.5vw, 55px);
+
+    align-items: start;
+
+    padding-bottom: 65px;
+} */
+
+.footer-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 1.25fr)
+        minmax(100px, 0.50fr)
+        minmax(110px, 0.55fr)
+        minmax(190px, 0.85fr)
+        minmax(300px, 1.30fr);
+
+    gap:
+        clamp(25px, 3vw, 48px);
+
+    align-items: start;
+
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand {
+    max-width:
+        420px;
+}
+
+
+.footer-logo {
+    display: inline-flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    position: relative;
+
+    left: -21px;
+}
+
+.footer-logo-image {
+    display: block;
+
+    width: 350px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+.footer-brand-description {
+    max-width:
+        370px;
+
+    margin:
+        26px 0 0;
+
+    color:
+        rgba(47, 77, 111, 0.72);
+
+    font-size:
+        0.92rem;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================================
+   START SHIPMENT
+========================================================= */
+
+.footer-move-link {
+    margin-top:
+        30px;
+
+    padding:
+        0;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        var(--navy, #0a2342);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.64rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.13em;
+
+    cursor:
+        pointer;
+
+    text-transform:
+        uppercase;
+}
+
+
+.footer-move-icon {
+    width:
+        34px;
+
+    height:
+        34px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.13);
+
+    border-radius:
+        50%;
+
+    color:
+        var(--red, #c9362c);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.footer-move-link:hover
+.footer-move-icon {
+    transform:
+        translateX(4px);
+
+    background:
+        var(--red, #c9362c);
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   COLUMNS
+========================================================= */
+
+.footer-column {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+}
+
+
+.footer-column-title {
+    margin-bottom:
+        25px;
+
+    color:
+        rgba(47, 77, 111, 0.50);
+
+    font-size:
+        0.57rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.18em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.footer-links {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    gap:
+        16px;
+}
+
+
+.footer-links button {
+    position:
+        relative;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        var(--navy, #0a2342);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.86rem;
+
+    font-weight:
+        650;
+
+    cursor:
+        pointer;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.footer-links button::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        -5px;
+
+    width:
+        0;
+
+    height:
+        2px;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--red, #c9362c);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.footer-links button:hover {
+    color:
+        var(--red, #c9362c);
+
+    transform:
+        translateX(3px);
+}
+
+
+.footer-links button:hover::after {
+    width:
+        18px;
+}
+
+
+/* =========================================================
+   CONTACT COLUMN
+========================================================= */
+
+.footer-contact {
+    gap:
+        0;
+}
+
+
+.footer-contact-item {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        6px;
+
+    margin-bottom:
+        22px;
+}
+
+
+.footer-contact-item small {
+    color:
+        rgba(47, 77, 111, 0.46);
+
+    font-size:
+        0.52rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.16em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.footer-contact-item a,
+.footer-contact-item > span {
+    color:
+        var(--navy, #0a2342);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        650;
+
+    line-height:
+        1.5;
+
+    text-decoration:
+        none;
+}
+
+
+.footer-contact-item a {
+    transition:
+        color 0.25s ease;
+}
+
+
+.footer-contact-item a:hover {
+    color:
+        var(--red, #c9362c);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.footer-location {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.footer-map {
+    position: relative;
+
+    width: 100%;
+    height: 250px;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.80);
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.42);
+
+    box-shadow:
+        0 20px 50px rgba(10, 35, 66, 0.08);
+}
+
+/* =========================================================
+   LEAFLET MAP
+========================================================= */
+
+.footer-leaflet-map {
+    width: 100%;
+    height: 100%;
+}
+
+
+.footer-map .leaflet-container {
+    width: 100%;
+    height: 100%;
+
+    background: #dfe9f2;
+}
+
+
+/* CUSTOM FASTDROP MARKER */
+
+.footer-map-pin {
+    background: transparent;
+    border: 0;
+}
+
+
+.footer-map-pin-outer {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(201, 54, 44, 0.15);
+
+    box-shadow:
+        0 4px 18px rgba(10, 35, 66, 0.18);
+}
+
+
+.footer-map-pin-inner {
+    width: 14px;
+    height: 14px;
+
+    border: 3px solid #ffffff;
+
+    border-radius: 50%;
+
+    background: var(--red, #c9362c);
+
+    box-shadow:
+        0 2px 8px rgba(201, 54, 44, 0.25);
+}
+
+
+/* POPUP */
+
+.footer-map .leaflet-popup-content-wrapper {
+    border-radius: 14px;
+
+    box-shadow:
+        0 12px 35px rgba(10, 35, 66, 0.15);
+}
+
+
+.footer-map .leaflet-popup-content {
+    color: var(--navy, #0a2342);
+
+    font-size: 0.76rem;
+
+    line-height: 1.6;
+}
+ /*makes the Leaflet copyright smaller inside the map*/
+ 
+.footer-map .leaflet-control-attribution {
+    font-size: 8px;
+
+    padding: 2px 5px;
+
+    background: rgba(255, 255, 255, 0.88);
+}
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.footer-bottom {
+    min-height:
+        88px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+    
+    border-top:
+        1px solid rgba(10, 35, 66, 0.10);
+}
+
+
+.footer-bottom p {
+    margin:
+        0;
+
+    color:
+        rgba(47, 77, 111, 0.52);
+
+    font-size:
+        0.62rem;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================================
+   LEGAL
+========================================================= */
+
+.footer-legal {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+}
+
+
+.footer-legal a {
+    color:
+        rgba(47, 77, 111, 0.60);
+
+    font-size:
+        0.60rem;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.footer-legal a:hover {
+    color:
+        var(--red, #c9362c);
+}
+
+
+.footer-legal > span {
+    width:
+        3px;
+
+    height:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--red, #c9362c);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.footer button:focus-visible,
+.footer a:focus-visible {
+    outline:
+        2px solid var(--red, #c9362c);
+
+    outline-offset:
+        5px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer-network-line > span {
+        animation:
+            none;
+    }
+
+}
