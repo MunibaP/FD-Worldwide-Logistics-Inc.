@@ -527,6 +527,91 @@
 
     user-select: none;
     pointer-events: none;
+
+    animation:
+        privacyIlluminate 4.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   PRIVACY — ILLUMINATION EFFECT
+========================================================= */
+
+@keyframes privacyIlluminate {
+
+    /* Light off */
+    0%,
+    30%,
+    100% {
+        -webkit-text-stroke:
+            1px rgba(10, 35, 66, 0.07);
+
+        text-shadow: none;
+
+        opacity: 0.58;
+    }
+
+
+    /* First flicker */
+    36% {
+        -webkit-text-stroke:
+            1px rgba(47, 93, 140, 0.28);
+
+        text-shadow:
+            0 0 12px rgba(47, 93, 140, 0.12);
+
+        opacity: 0.88;
+    }
+
+
+    /* Briefly switches off */
+    39% {
+        -webkit-text-stroke:
+            1px rgba(10, 35, 66, 0.09);
+
+        text-shadow: none;
+
+        opacity: 0.60;
+    }
+
+
+    /* Comes back on */
+    42% {
+        -webkit-text-stroke:
+            1px rgba(47, 93, 140, 0.34);
+
+        text-shadow:
+            0 0 14px rgba(47, 93, 140, 0.15);
+
+        opacity: 0.92;
+    }
+
+
+    /* Fully illuminated */
+    50%,
+    58% {
+        -webkit-text-stroke:
+            1.5px rgba(47, 93, 140, 0.48);
+
+        text-shadow:
+            0 0 8px rgba(47, 93, 140, 0.20),
+            0 0 22px rgba(47, 93, 140, 0.13),
+            0 0 42px rgba(47, 93, 140, 0.07);
+
+        opacity: 1;
+    }
+
+
+    /* Slowly powers down */
+    72% {
+        -webkit-text-stroke:
+            1px rgba(47, 93, 140, 0.17);
+
+        text-shadow:
+            0 0 10px rgba(47, 93, 140, 0.05);
+
+        opacity: 0.70;
+    }
+
 }
 
 
@@ -1030,10 +1115,10 @@
     /* Vertical decorative PRIVACY word */
 
     .privacy-hero-word {
-        right: 1%;
+        right: -6%;
 
         font-size:
-            clamp(4.8rem, 8vw, 7.5rem);
+            clamp(8rem, 7vw, 7rem);
 
         letter-spacing: -0.035em;
     }
