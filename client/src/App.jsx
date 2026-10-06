@@ -50,7 +50,7 @@ import Contact from "./sections/Contact/Contact";
 import Footer from "./sections/Footer/Footer";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-// import TermsOfService from "./pages/TermsOfService/TermsOfService";
+import TermsOfService from "./pages/TermsOfService/TermsOfService";
 
 
 function App() {
@@ -96,10 +96,10 @@ function App() {
             {/* =========================
                 TERMS OF SERVICE
             ========================== */}
-            {/* <Route
+            <Route
                 path="/terms"
                 element={<TermsOfService />}
-            /> */}
+            />
 
         </Routes>
     );
