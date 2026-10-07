@@ -126,7 +126,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import FooterMap from "./FooterMap";
 
-import logo from "../../assets/logo/LogoFinal.png";
+import logo from "../../assets/logo/logoFinal.png";
 
 import "./Footer.css";
 
