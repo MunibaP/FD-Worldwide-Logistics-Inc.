@@ -493,6 +493,11 @@
         22px;
 }
 
+/* Remove extra margin after final contact item */
+.footer-contact-item:last-child {
+    margin-bottom: 0;
+}
+
 
 .footer-contact-item small {
     color:
@@ -540,6 +545,31 @@
 .footer-contact-item a:hover {
     color:
         var(--red, #c9362c);
+}
+
+/* -----------------------------------------
+   CONTACT LABEL + ICON
+----------------------------------------- */
+
+.footer-contact-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.footer-contact-label svg {
+    width: 14px;
+    height: 14px;
+
+    flex-shrink: 0;
+
+    color:
+        var(--red, #c9362c);
+
+    stroke-width: 2;
 }
 
 
@@ -1059,6 +1089,10 @@
         text-align: center;
     }
 
+    .footer-contact-label {
+        justify-content: center;
+    }
+
     /* -----------------------------------------
         LOCATION
     ----------------------------------------- */
@@ -1321,6 +1355,10 @@
 
         overflow-wrap: anywhere;
         word-break: break-word;
+    }
+
+    .footer-contact-label {
+        justify-content: center;
     }
 
 
@@ -1738,8 +1776,11 @@
         word-break: break-word;
     }
 
+    .footer-contact-label {
+        justify-content: center;
+    }
 
-     /* -----------------------------------------
+    /* -----------------------------------------
        LOCATION
     ----------------------------------------- */
 
