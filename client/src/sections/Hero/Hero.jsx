@@ -121,7 +121,7 @@ function Hero() {
 
                     <div className="hero-buttons">
 
-                        <Button href="#quote">
+                        <Button href="/quote">
 
                             Request a Quote
 
