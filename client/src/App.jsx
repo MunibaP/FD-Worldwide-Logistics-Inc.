@@ -49,6 +49,7 @@ import CTA from "./sections/CTA/CTA";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./sections/Footer/Footer";
 
+import Quote from "./pages/Quote/Quote";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 
@@ -81,6 +82,14 @@ function App() {
                         <Footer />
                     </>
                 }
+            />
+
+            {/* =========================
+                GET A QUOTE
+            ========================== */}
+            <Route
+                path="/quote"
+                element={<Quote />}
             />
 
 

@@ -1,0 +1,2421 @@
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        110px 0 120px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 88% 10%,
+            rgba(47, 93, 140, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 5% 78%,
+            rgba(201, 54, 44, 0.035),
+            transparent 24%
+        ),
+        linear-gradient(
+            135deg,
+            #f7f9fc 0%,
+            #eef3f8 50%,
+            #f8fafc 100%
+        );
+
+    color:
+        var(--navy, #0a2342);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND WORD
+========================================================= */
+
+.quote-background-word {
+    position: absolute;
+
+    right: -1%;
+    top: 220px;
+
+    z-index: 0;
+
+    color:
+        rgba(10, 35, 66, 0.025);
+
+    font-size:
+        clamp(8rem, 14vw, 14rem);
+
+    font-weight: 900;
+
+    line-height: 0.8;
+
+    letter-spacing: -0.06em;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    animation:
+        quoteWordPulse 4.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   BACKGROUND WORD — LIGHT PULSE
+========================================================= */
+
+@keyframes quoteWordPulse {
+
+    0%,
+    100% {
+        color:
+            rgba(10, 35, 66, 0.025);
+
+        text-shadow:
+            0 0 0 rgba(47, 93, 140, 0);
+    }
+
+    50% {
+        color:
+            rgba(47, 93, 140, 0.075);
+
+        text-shadow:
+            0 0 28px rgba(47, 93, 140, 0.08);
+    }
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.quote-container {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(92%, 1400px);
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.quote-header {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin-bottom:
+        70px;
+}
+
+
+.quote-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom:
+        18px;
+
+    color:
+        var(--red, #c9362c);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.18em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.quote-eyebrow::before {
+    content: "";
+
+    width: 32px;
+
+    height: 2px;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--red, #c9362c);
+}
+
+
+.quote-title {
+    margin:
+        0;
+
+    color:
+        var(--navy, #0a2342);
+
+    font-size:
+        clamp(3.2rem, 5vw, 5.4rem);
+
+    font-weight:
+        800;
+
+    line-height:
+        0.98;
+
+    letter-spacing:
+        -0.055em;
+}
+
+
+.quote-title span {
+    display: block;
+
+    margin-top:
+        16px;
+
+    color:
+        var(--steel, #2f5d8c);
+
+    font-weight:
+        600;
+}
+
+
+.quote-description {
+    max-width:
+        610px;
+
+    margin:
+        28px 0 0;
+
+    color:
+        rgba(47, 77, 111, 0.76);
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.75;
+}
+
+/* =========================================================
+   FORM — WIDE EDITORIAL GLASS PANEL
+========================================================= */
+
+.quote-form {
+    position: relative;
+
+    width: 100%;
+
+    padding: 18px 64px 58px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.82);
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(255, 255, 255, 0.76) 100%
+        );
+
+    box-shadow:
+        0 32px 80px rgba(10, 35, 66, 0.08),
+        0 8px 24px rgba(10, 35, 66, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow:
+        hidden;
+}
+
+.quote-form::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 8%;
+
+    width: 42%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(47, 93, 140, 0.38),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+========================================================= */
+
+.quote-section {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.72fr)
+        minmax(0, 2fr);
+
+    gap:
+        clamp(45px, 6vw, 95px);
+
+    padding:
+        58px 0;
+
+    border-bottom:
+        1px solid rgba(10, 35, 66, 0.11);
+}
+
+.quote-section:last-of-type {
+    border-bottom:
+        1px solid rgba(10, 35, 66, 0.09);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.quote-section-heading {
+    display: flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        18px;
+}
+
+
+.quote-section-number {
+    min-width:
+        38px;
+
+    padding-top:
+        3px;
+
+    color:
+        var(--red, #c9362c);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+}
+
+
+.quote-section-kicker {
+    display: block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        rgba(47, 77, 111, 0.58);
+
+    font-size:
+        0.63rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.16em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.quote-section-heading h3 {
+    margin:
+        0;
+
+    color:
+        var(--navy, #0a2342);
+
+    font-size:
+        clamp(1.25rem, 1.8vw, 1.7rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        1.25;
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.quote-field {
+    display: flex;
+
+    flex-direction:
+        column;
+
+    min-width:
+        0;
+}
+
+
+.quote-field label {
+    margin-bottom:
+        9px;
+
+    color:
+        rgba(47, 77, 111, 0.72);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+    width: 100%;
+
+    min-width:
+        0;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.14);
+
+    border-radius:
+        10px;
+
+    outline:
+        none;
+
+    background:
+        rgba(255, 255, 255, 0.68);
+
+    color:
+        var(--navy, #0a2342);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.9rem;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.quote-field input,
+.quote-field select {
+    height:
+        54px;
+
+    padding:
+        0 16px;
+}
+
+/* =========================================================
+   COUNTRY DROPDOWN — CUSTOM ARROW
+========================================================= */
+
+.quote-route-side .quote-field select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 45px;
+
+    background-color: rgba(255, 255, 255, 0.68);
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+
+    background-position: right 10px center;
+
+    background-size: 16px;
+}
+
+/* =========================================================
+   COUNTRY DROPDOWN — PREVENT ARROW MOVEMENT
+========================================================= */
+
+.quote-route-side .quote-field select,
+.quote-route-side .quote-field select:hover,
+.quote-route-side .quote-field select:focus,
+.quote-route-side .quote-field select:active {
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   COUNTRY DROPDOWN — KEEP ARROW VISIBLE
+========================================================= */
+
+.quote-route-side .quote-field select:focus,
+.quote-route-side .quote-field select:active {
+    background-color: rgba(255, 255, 255, 0.92);
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+
+.quote-field textarea {
+    min-height:
+        135px;
+
+    padding:
+        16px;
+
+    resize:
+        vertical;
+
+    line-height:
+        1.6;
+}
+
+
+.quote-field input::placeholder,
+.quote-field textarea::placeholder {
+    color:
+        rgba(47, 77, 111, 0.42);
+}
+
+
+.quote-field input:hover,
+.quote-field select:hover,
+.quote-field textarea:hover {
+    border-color:
+        rgba(47, 93, 140, 0.34);
+}
+
+
+/* .quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+    border-color:
+        var(--steel, #2f5d8c);
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    box-shadow:
+        0 0 0 3px rgba(47, 93, 140, 0.08);
+} */
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+    border-color: var(--steel, #2f5d8c);
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    box-shadow: 0 0 0 3px rgba(47, 93, 140, 0.08);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.quote-error {
+    display: block;
+
+    margin-top:
+        7px;
+
+    color:
+        var(--red, #c9362c);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        650;
+
+    line-height:
+        1.4;
+}
+
+
+/* =========================================================
+   SHIPPING PROFILE
+========================================================= */
+
+.quote-profile-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        16px;
+}
+
+
+.quote-profile-option {
+    position: relative;
+
+    display: flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        15px;
+
+    min-height:
+        105px;
+
+    padding:
+        22px 24px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.12);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255, 255, 255, 0.48);
+
+    color:
+        var(--navy, #0a2342);
+
+    font-family:
+        inherit;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.quote-profile-option:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(47, 93, 140, 0.32);
+
+    background:
+        rgba(255, 255, 255, 0.78);
+}
+
+
+.quote-profile-option.active {
+    border-color:
+        rgba(201, 54, 44, 0.45);
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        inset 3px 0 0 var(--red, #c9362c),
+        0 12px 35px rgba(10, 35, 66, 0.055);
+}
+
+
+.quote-radio {
+    position: relative;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    flex-shrink:
+        0;
+
+    margin-top:
+        2px;
+
+    border:
+        1.5px solid rgba(10, 35, 66, 0.30);
+
+    border-radius:
+        50%;
+}
+
+
+.quote-profile-option.active
+.quote-radio {
+    border-color:
+        var(--red, #c9362c);
+}
+
+
+.quote-profile-option.active
+.quote-radio::after {
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        4px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--red, #c9362c);
+}
+
+
+.quote-profile-option strong {
+    display: block;
+
+    margin-bottom:
+        7px;
+
+    font-size:
+        0.92rem;
+
+    font-weight:
+        750;
+}
+
+
+.quote-profile-option small {
+    display: block;
+
+    max-width:
+        270px;
+
+    color:
+        rgba(47, 77, 111, 0.66);
+
+    font-size:
+        0.76rem;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.quote-route {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        70px
+        minmax(0, 1fr);
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+}
+
+
+.quote-route-side {
+    min-width:
+        0;
+}
+
+
+.quote-route-label {
+    display: flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        20px;
+
+    color:
+        var(--navy, #0a2342);
+
+    font-size:
+        0.69rem;
+
+    font-weight:
+        850;
+
+    letter-spacing:
+        0.16em;
+}
+
+
+.quote-route-label svg {
+    width:
+        15px;
+
+    height:
+        15px;
+
+    color:
+        var(--red, #c9362c);
+}
+
+
+.quote-field-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap:
+        14px;
+
+    margin-top:
+        16px;
+}
+
+
+/* =========================================================
+   ROUTE ARROW
+========================================================= */
+
+.quote-route-arrow {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+
+    width: 100%;
+    height: 30px;
+
+    margin: 0;
+}
+
+/* =========================================================
+   ROUTE — HIDE CONNECTOR LINE
+========================================================= */
+
+.quote-route-arrow span {
+    display: none;
+}
+
+/* =========================================================
+   ROUTE — ARROW ONLY
+========================================================= */
+
+.quote-route-arrow svg {
+    width: 22px;
+    height: 22px;
+
+    margin: 0;
+
+    color: var(--red, #c9362c);
+    background: transparent;
+}
+
+
+/* =========================================================
+   SHIPMENT TYPES
+========================================================= */
+
+.quote-shipment-types {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap:
+        10px;
+}
+
+
+.quote-shipment-type {
+    display: flex;
+
+    min-width:
+        0;
+
+    min-height:
+        92px;
+
+    padding:
+        16px 12px;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    border:
+        1px solid rgba(10, 35, 66, 0.12);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255, 255, 255, 0.45);
+
+    color:
+        rgba(10, 35, 66, 0.74);
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.73rem;
+
+    font-weight:
+        700;
+
+    text-align:
+        center;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.quote-shipment-type svg {
+    width:
+        20px;
+
+    height:
+        20px;
+
+    color:
+        var(--steel, #2f5d8c);
+}
+
+
+.quote-shipment-type:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(47, 93, 140, 0.32);
+
+    background:
+        rgba(255, 255, 255, 0.76);
+}
+
+
+.quote-shipment-type.active {
+    border-color:
+        rgba(201, 54, 44, 0.42);
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    color:
+        var(--navy, #0a2342);
+}
+
+
+.quote-shipment-type.active svg {
+    color:
+        var(--red, #c9362c);
+}
+
+
+/* =========================================================
+   DETAILS GRID
+========================================================= */
+
+.quote-details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        18px;
+
+    margin-top:
+        12px;
+}
+
+/* =========================================================
+   SELECT A SERVICE — CUSTOM DROPDOWN ARROW
+========================================================= */
+
+.quote-details-grid > .quote-field > select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding: 0 45px 0 16px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   INPUT + UNIT
+========================================================= */
+
+.quote-input-with-unit {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        82px;
+}
+
+/* =========================================================
+   TOTAL WEIGHT — REMOVE NUMBER SPINNER ARROWS
+========================================================= */
+
+/* Chrome, Edge, Safari */
+.quote-input-with-unit input[type="number"]::-webkit-inner-spin-button,
+.quote-input-with-unit input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.quote-input-with-unit input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+
+.quote-input-with-unit input {
+    border-radius:
+        10px 0 0 10px;
+
+    border-right:
+        0;
+}
+
+
+.quote-input-with-unit select {
+    border-radius:
+        0 10px 10px 0;
+
+    background:
+        rgba(238, 243, 248, 0.95);
+
+    font-weight:
+        750;
+
+    text-align:
+        center;
+}
+
+/* =========================================================
+   WEIGHT & DIMENSION UNIT — CUSTOM DROPDOWN ARROWS
+========================================================= */
+
+.quote-input-with-unit select,
+.quote-unit-field select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-left: 12px;
+    padding-right: 30px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Keep kg/lb and cm/in arrows visible on focus */
+
+.quote-input-with-unit select:focus,
+.quote-input-with-unit select:active,
+.quote-unit-field select:focus,
+.quote-unit-field select:active {
+    background-color: rgba(255, 255, 255, 0.92);
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230A2342' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 14px;
+}
+
+
+/* =========================================================
+   DIMENSIONS
+========================================================= */
+
+.quote-dimensions {
+    margin-top:
+        -20px;
+
+    padding-top:
+        25px;
+
+    border-top:
+        1px dashed rgba(10, 35, 66, 0.12);
+}
+
+
+.quote-dimensions-heading {
+    display: flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        15px;
+}
+
+
+.quote-dimensions-heading > span {
+    color:
+        var(--navy, #0a2342);
+
+    font-size:
+        0.76rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.05em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.quote-dimensions-heading small {
+    padding:
+        4px 8px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(47, 93, 140, 0.08);
+
+    color:
+        rgba(47, 77, 111, 0.62);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.quote-dimensions-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        20px
+        minmax(0, 1fr)
+        20px
+        minmax(0, 1fr)
+        90px;
+
+    align-items:
+        end;
+
+    gap:
+        10px;
+}
+
+
+.quote-dimension-x {
+    display: flex;
+
+    height:
+        54px;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        rgba(47, 77, 111, 0.46);
+
+    font-size:
+        1rem;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   DATE FIELD
+========================================================= */
+
+.quote-date-field {
+    position:
+        relative;
+}
+
+
+.quote-date-field > svg {
+    position:
+        absolute;
+
+    left:
+        16px;
+
+    top:
+        50%;
+
+    z-index:
+        2;
+
+    width:
+        16px;
+
+    height:
+        16px;
+
+    transform:
+        translateY(-50%);
+
+    color:
+        var(--steel, #2f5d8c);
+
+    pointer-events:
+        none;
+}
+
+
+.quote-date-field input {
+    padding-left:
+        44px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.quote-textarea-field {
+    width: 100%;
+    margin-top: 0;
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   CONTACT GRID
+========================================================= */
+
+.quote-contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        20px 18px;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+========================================================= */
+
+.quote-submit-area {
+    display: flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        35px;
+
+    padding:
+        48px 0 0;
+}
+
+
+.quote-submit-note {
+    display: flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    color:
+        rgba(47, 77, 111, 0.66);
+}
+
+
+.quote-submit-note > svg {
+    width:
+        18px;
+
+    height:
+        18px;
+
+    flex-shrink:
+        0;
+
+    color:
+        var(--steel, #2f5d8c);
+}
+
+
+.quote-submit-note p {
+    max-width:
+        390px;
+
+    margin:
+        0;
+
+    font-size:
+        0.76rem;
+
+    line-height:
+        1.6;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.quote-submit {
+    display: inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    padding:
+        7px 7px 7px 24px;
+
+    border:
+        0;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--navy, #0a2342);
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.11em;
+
+    text-transform:
+        uppercase;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 14px 35px rgba(10, 35, 66, 0.14);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.quote-submit-icon {
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--red, #c9362c);
+
+    color:
+        #ffffff;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.quote-submit-icon svg {
+    width:
+        17px;
+
+    height:
+        17px;
+}
+
+
+.quote-submit:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        #102f54;
+
+    box-shadow:
+        0 18px 42px rgba(10, 35, 66, 0.18);
+}
+
+
+.quote-submit:hover
+.quote-submit-icon {
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.quote button:focus-visible,
+.quote input:focus-visible,
+.quote select:focus-visible,
+.quote textarea:focus-visible {
+    outline:
+        2px solid var(--red, #c9362c);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1025px TO 1250px
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1250px) {
+
+    .quote {
+        padding:
+            100px 0 110px;
+    }
+
+
+    .quote-container {
+        width:
+            88%;
+    }
+
+
+    .quote-header {
+        margin-bottom:
+            62px;
+    }
+
+    /* Background word — smaller */
+
+    /* .quote-background-word {
+        top: 150px;
+        font-size: clamp(8.3rem, 8vw, 7rem);
+    } */
+
+    .quote-background-word {
+        top: 150px;
+        font-size: clamp(8.3rem, 8vw, 7rem);
+    }
+
+    .quote-form {
+        padding:
+            14px 48px 52px;
+
+        border-radius:
+            26px;
+    }
+
+    .quote-section {
+        grid-template-columns:
+            minmax(190px, 0.65fr)
+            minmax(0, 2fr);
+
+        gap:
+            45px;
+
+        padding:
+            52px 0;
+    }
+
+
+    .quote-route {
+        grid-template-columns:
+            minmax(0, 1fr)
+            50px
+            minmax(0, 1fr);
+
+        gap:
+            14px;
+    }
+
+
+    .quote-route-arrow span {
+        width:
+            22px;
+    }
+
+
+    .quote-shipment-types {
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
+        gap:
+            8px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 768px TO 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .quote {
+        padding:
+            90px 0 100px;
+    }
+
+
+    .quote-container {
+        width:
+            86%;
+    }
+
+    .quote-form {
+        padding:
+            10px 40px 48px;
+
+        border-radius:
+            24px;
+    }
+
+
+    .quote-background-word {
+        display:
+            none;
+    }
+
+
+    .quote-header {
+        max-width:
+            680px;
+
+        margin:
+            0 auto 58px;
+
+        text-align:
+            center;
+    }
+
+
+    .quote-eyebrow {
+        justify-content:
+            center;
+    }
+
+
+    .quote-description {
+        margin:
+            24px auto 0;
+    }
+
+
+    .quote-section {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            32px;
+
+        padding:
+            48px 0;
+    }
+
+
+    /* Center section headings 01–05 */
+
+    .quote-section-heading {
+        max-width: 520px;
+        width: 100%;
+        margin: 0 auto;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .quote-section-number {
+        min-width: 0;
+        padding-top: 0;
+    }
+
+    .quote-section-heading > div {
+        text-align: center;
+    }
+
+
+    .quote-route {
+        grid-template-columns:
+            minmax(0, 1fr)
+            54px
+            minmax(0, 1fr);
+
+        gap:
+            14px;
+    }
+
+    .quote-route-arrow span {
+        width:
+            24px;
+    }
+
+
+    .quote-shipment-types {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .quote-dimensions-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            18px
+            minmax(0, 1fr)
+            18px
+            minmax(0, 1fr)
+            80px;
+    }
+
+    /* Keep postal/ZIP code label on one line */
+
+    .quote-route-side .quote-field-row .quote-field label {
+        font-size: 0.62rem;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 480px TO 767px
+========================================================= */
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .quote {
+        padding:
+            78px 0 88px;
+    }
+
+
+    .quote-container {
+        width:
+            88%;
+    }
+
+    .quote-form {
+        padding:
+            8px 28px 40px;
+
+        border-radius:
+            22px;
+    }
+
+    .quote-background-word {
+        display:
+            none;
+    }
+
+
+    .quote-header {
+        margin-bottom:
+            48px;
+
+        text-align:
+            center;
+    }
+
+
+    .quote-eyebrow {
+        justify-content:
+            center;
+
+        font-size:
+            0.66rem;
+    }
+
+
+    .quote-title {
+        font-size:
+            clamp(3rem, 10vw, 4rem);
+    }
+
+
+    .quote-description {
+        max-width:
+            500px;
+
+        margin:
+            22px auto 0;
+
+        font-size:
+            0.91rem;
+    }
+
+
+    .quote-section {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            28px;
+
+        padding:
+            42px 0;
+    }
+
+/* Center section headings 01–05 */
+    .quote-section-heading {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .quote-section-number {
+        min-width: 0;
+        padding-top: 0;
+    }
+
+    .quote-section-heading > div {
+        text-align: center;
+    }
+
+
+    .quote-profile-options {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .quote-profile-option {
+        min-height:
+            auto;
+    }
+
+
+    .quote-route {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            20px;
+    }
+
+
+    .quote-route-arrow {
+        width:
+            100%;
+
+        height:
+            42px;
+
+        margin:
+            0;
+
+        flex-direction:
+            column;
+    }
+
+
+    .quote-route-arrow span {
+        width:
+            1px;
+
+        height:
+            24px;
+    }
+
+
+    .quote-route-arrow svg {
+        margin:
+            -3px 0 0;
+
+        transform:
+            rotate(90deg);
+    }
+
+
+    .quote-field-row {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .quote-shipment-types {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .quote-details-grid,
+    .quote-contact-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .quote-dimensions-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            14px;
+    }
+
+
+    .quote-dimension-x {
+        display:
+            none;
+    }
+
+
+    .quote-unit-field {
+        grid-column:
+            auto;
+    }
+
+
+    .quote-submit-area {
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            25px;
+
+        padding-top:
+            38px;
+    }
+
+
+    .quote-submit {
+        align-self: center;
+        width: auto;
+        min-width: 210px;
+        padding: 7px 7px 7px 22px;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 320px TO 479px
+========================================================= */
+
+@media (min-width: 320px) and (max-width: 479px) {
+
+    .quote {
+        padding:
+            68px 0 78px;
+    }
+
+
+    .quote-container {
+        width:
+            90%;
+    }
+
+    .quote-form {
+        padding:
+            5px 20px 34px;
+
+        border-radius:
+            19px;
+    }
+
+    .quote-background-word {
+        display:
+            none;
+    }
+
+
+    .quote-header {
+        margin-bottom:
+            42px;
+
+        text-align:
+            center;
+    }
+
+
+    .quote-eyebrow {
+        justify-content:
+            center;
+
+        margin-bottom:
+            15px;
+
+        font-size:
+            0.62rem;
+    }
+
+
+    .quote-eyebrow::before {
+        width:
+            25px;
+    }
+
+
+    .quote-title {
+        font-size:
+            clamp(2.55rem, 12vw, 3.4rem);
+
+        line-height:
+            1;
+    }
+
+
+    .quote-description {
+        margin:
+            20px auto 0;
+
+        font-size:
+            0.86rem;
+
+        line-height:
+            1.7;
+    }
+
+
+    .quote-section {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            25px;
+
+        padding:
+            37px 0;
+    }
+
+
+    .quote-section-heading {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+
+    .quote-section-number {
+        min-width: 0;
+        padding-top: 0;
+    }
+
+    .quote-section-heading > div {
+        text-align: center;
+    }
+
+    .quote-section-heading h3 {
+        font-size:
+            1.22rem;
+    }
+
+
+    .quote-profile-options {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+    }
+
+
+    .quote-profile-option {
+        min-height:
+            auto;
+
+        padding:
+            18px;
+    }
+
+
+    .quote-route {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+    }
+
+
+    .quote-route-arrow {
+        width:
+            100%;
+
+        height:
+            38px;
+
+        margin:
+            0;
+
+        flex-direction:
+            column;
+    }
+
+
+    .quote-route-arrow span {
+        width:
+            1px;
+
+        height:
+            21px;
+    }
+
+
+    .quote-route-arrow svg {
+        margin:
+            -3px 0 0;
+
+        transform:
+            rotate(90deg);
+    }
+
+
+    .quote-field-row {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+    }
+
+
+    .quote-shipment-types {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            9px;
+    }
+
+
+    .quote-shipment-type {
+        min-height:
+            82px;
+
+        padding:
+            13px 8px;
+
+        font-size:
+            0.68rem;
+    }
+
+
+    .quote-details-grid,
+    .quote-contact-grid {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            17px;
+    }
+
+
+    .quote-dimensions-grid {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            14px 10px;
+    }
+
+
+    .quote-dimension-x {
+        display:
+            none;
+    }
+
+
+    .quote-field input,
+    .quote-field select {
+        height:
+            52px;
+    }
+
+
+    .quote-field textarea {
+        min-height:
+            125px;
+    }
+
+
+    .quote-submit-area {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            23px;
+
+        padding-top:
+            34px;
+    }
+
+
+    .quote-submit-note {
+        align-items:
+            flex-start;
+    }
+
+    .quote-submit {
+        align-self: center;
+        width: auto;
+        min-width: 200px;
+        max-width: 100%;
+
+        padding: 7px 7px 7px 20px;
+
+        justify-content: space-between;
+        gap: 16px;
+
+        font-size: 0.62rem;
+    }
+
+    .quote-submit-icon {
+        width:
+            40px;
+
+        height:
+            40px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE — BELOW 320px
+========================================================= */
+
+@media (max-width: 319px) {
+
+    .quote {
+        padding:
+            60px 0 70px;
+    }
+
+
+    .quote-container {
+        width:
+            92%;
+    }
+
+    .quote-form {
+        padding:
+            4px 15px 30px;
+
+        border-radius:
+            17px;
+    }
+
+
+    .quote-background-word {
+        display:
+            none;
+    }
+
+
+    .quote-header {
+        margin-bottom:
+            38px;
+
+        text-align:
+            center;
+    }
+
+
+    .quote-eyebrow {
+        justify-content:
+            center;
+    }
+
+
+    .quote-title {
+        font-size:
+            2.35rem;
+    }
+
+
+    .quote-description {
+        font-size:
+            0.82rem;
+    }
+
+
+    .quote-section {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            23px;
+
+        padding:
+            34px 0;
+    }
+
+
+    .quote-profile-options,
+    .quote-route,
+    .quote-field-row,
+    .quote-details-grid,
+    .quote-contact-grid,
+    .quote-dimensions-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .quote-route-arrow {
+        height:
+            35px;
+
+        margin:
+            0;
+
+        flex-direction:
+            column;
+    }
+
+
+    .quote-route-arrow span {
+        width:
+            1px;
+
+        height:
+            20px;
+    }
+
+
+    .quote-route-arrow svg {
+        margin:
+            -3px 0 0;
+
+        transform:
+            rotate(90deg);
+    }
+
+
+    .quote-shipment-types {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .quote-dimension-x {
+        display:
+            none;
+    }
+
+
+    .quote-submit-area {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .quote-submit {
+        width:
+            100%;
+
+        justify-content:
+            space-between;
+
+        padding-left:
+            17px;
+
+        font-size:
+            0.58rem;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .quote-profile-option,
+    .quote-shipment-type,
+    .quote-submit,
+    .quote-submit-icon,
+    .quote-field input,
+    .quote-field select,
+    .quote-field textarea {
+        transition:
+            none;
+    }
+
+    .quote-background-word {
+        animation: none;
+    }
+
+}
