@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -221,6 +222,27 @@ const mockShipments = {
 function ShipmentCommand() {
     const [mode, setMode] = useState("track");
 
+    const location = useLocation();
+
+    useEffect(() => {
+
+        if (location.pathname !== "/") return;
+
+        const frame = requestAnimationFrame(() => {
+
+            if (location.hash === "#tracking") {
+                setMode("track");
+            }
+
+            if (location.hash === "#calculator") {
+                setMode("estimate");
+            }
+        });
+
+        return () => cancelAnimationFrame(frame);
+
+    }, [location.pathname, location.hash]);
+
     /* =========================================
        TRACKING STATE
        Stores the entered tracking number,
@@ -284,6 +306,9 @@ function ShipmentCommand() {
     ========================================= */
 
     const handleTracking = () => {
+
+        setShowDeliveredCelebration(false);
+
         const cleanedNumber =
             trackingNumber.trim().toUpperCase();
 
@@ -777,7 +802,6 @@ function ShipmentCommand() {
 
         // Only run celebration for delivered shipments
         if (!trackingResult || routeProgress !== 4) {
-            setShowDeliveredCelebration(false);
             return;
         }
 
@@ -814,6 +838,10 @@ function ShipmentCommand() {
             className="shipment-command section"
             id="shipment-tools"
         >
+
+            <span id="tracking" className="shipment-nav-anchor" />
+            <span id="calculator" className="shipment-nav-anchor" />
+
             <div className="shipment-command-container">
 
                 {/* SECTION INTRO */}

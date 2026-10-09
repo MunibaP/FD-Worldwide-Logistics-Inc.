@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
     FiMail,
     FiPhone,
@@ -14,6 +15,8 @@ import "./Footer.css";
 
 
 const Footer = () => {
+
+    const navigate = useNavigate();
 
     const scrollToSection = (id) => {
 
@@ -107,9 +110,7 @@ const Footer = () => {
                         <button
                             className="footer-move-link"
                             type="button"
-                            onClick={() =>
-                                scrollToSection("quote")
-                            }
+                            onClick={() => navigate("/quote")}
                         >
 
                             <span>

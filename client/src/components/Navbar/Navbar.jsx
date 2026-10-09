@@ -1,4 +1,10 @@
 import {
+    Link,
+    useLocation,
+    useNavigate
+} from "react-router-dom";
+
+import {
     useEffect,
     useState
 } from "react";
@@ -6,12 +12,13 @@ import {
 import {
     FaBars,
     FaTimes,
-    FaArrowRight
 } from "react-icons/fa";
+
+import { FiArrowUpRight } from "react-icons/fi";
 
 import Button from "../Button/Button";
 
-import logo from "../../assets/logo/UpdatedLogo.png";
+import logo from "../../assets/logo/logoFinal.png";
 
 import "../Navbar/Navbar.css";
 
@@ -20,28 +27,28 @@ const navLinks = [
 
     {
         name: "Services",
-        href: "#services"
-    },
-
-    {
-        name: "Solutions",
-        href: "#solutions"
+        href: "/#services"
     },
 
     {
         name: "Tracking",
-        href: "#tracking"
+        href: "/#tracking"
     },
 
     {
         name: "Calculator",
-        href: "#calculator"
+        href: "/#calculator"
     },
 
     {
         name: "About",
-        href: "#about"
-    }
+        href: "/#about"
+    },
+
+    {
+        name: "Global Network",
+        href: "/#global-network"
+    },
 
 ];
 
@@ -53,6 +60,9 @@ function Navbar() {
 
     const [scrolled, setScrolled] =
         useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -90,6 +100,64 @@ function Navbar() {
 
     };
 
+    const handleNavClick = (event, href) => {
+
+        event.preventDefault();
+
+        closeMenu();
+
+        // Navigate to dedicated pages
+        if (!href.includes("#")) {
+
+            navigate(href);
+            return;
+
+        }
+
+        // Navigate to homepage sections
+        const id = href.split("#")[1];
+
+        if (!id) return;
+
+        if (location.pathname !== "/") {
+
+            navigate(href);
+            return;
+
+        }
+
+        if (location.hash !== `#${id}`) {
+            navigate(href);
+        }
+
+        document.getElementById(id)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    };
+
+    useEffect(() => {
+
+        if (location.pathname !== "/" || !location.hash) {
+            return;
+        }
+
+        const id = location.hash.substring(1);
+
+        const frame = requestAnimationFrame(() => {
+
+            document.getElementById(id)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+        return () => cancelAnimationFrame(frame);
+
+    }, [location.pathname, location.hash]);
+
 
     return (
 
@@ -106,10 +174,19 @@ function Navbar() {
 
                 {/* LOGO */}
 
-                <a
-                    href="#top"
+                <Link
+                    to="/"
                     className="navbar__logo"
-                    onClick={closeMenu}
+                    onClick={() => {
+                        closeMenu();
+
+                        if (location.pathname === "/") {
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }
+                    }}
                 >
 
                     <img
@@ -117,7 +194,7 @@ function Navbar() {
                         alt="Fast Drop Worldwide Logistics Inc."
                     />
 
-                </a>
+                </Link>
 
 
                 {/* DESKTOP NAV */}
@@ -129,6 +206,9 @@ function Navbar() {
                         <a
                             key={link.name}
                             href={link.href}
+                            onClick={(event) =>
+                                handleNavClick(event, link.href)
+                            }
                         >
 
                             {link.name}
@@ -144,14 +224,12 @@ function Navbar() {
 
                 <div className="navbar__cta">
 
-                    <Button
-                        href="#quote"
-                        variant="nav"
-                    >
-
+                    <Button href="/quote" variant="nav" icon={false}>
                         Request a Quote
-
-                        <FaArrowRight />
+                    
+                        <span className="navbar__cta-arrow">
+                            <FiArrowUpRight />
+                        </span>
 
                     </Button>
 
@@ -200,7 +278,9 @@ function Navbar() {
                     <a
                         key={link.name}
                         href={link.href}
-                        onClick={closeMenu}
+                        onClick={(event) =>
+                            handleNavClick(event, link.href)
+                        }
                     >
 
                         {link.name}
@@ -211,14 +291,13 @@ function Navbar() {
 
 
                 <Button
-                    href="#quote"
+                    href="/quote"
                     variant="primary"
                     onClick={closeMenu}
                 >
 
                     Request a Quote
-
-                    <FaArrowRight />
+                    
 
                 </Button>
 

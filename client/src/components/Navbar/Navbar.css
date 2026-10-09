@@ -131,7 +131,8 @@
 
     width: 190px;
 
-    height: 48px;
+    /* height: 48px; */
+    height: 98px;
 
     object-fit: contain;
 
@@ -218,10 +219,85 @@
    CTA
    ========================================================= */
 
-.navbar__cta {
+/* =========================================================
+   CTA
+   ========================================================= */
 
+.navbar__cta {
     flex-shrink: 0;
 
+    display: flex;
+    align-items: center;
+
+    transform: translateY(-2px);
+}
+
+/* Match Navbar typography */
+
+.navbar__cta .button {
+    font-size: 0.8rem;
+    font-weight: 750;
+    white-space: nowrap;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* CTA text hover */
+
+.navbar__cta .button:hover {
+    color: #C9362C;
+}
+
+/* Animated circular arrow */
+
+.navbar__cta-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+    flex-shrink: 0;
+
+    margin-left: 8px;
+
+    border-radius: 50%;
+
+    background: #C9362C;
+    color: #ffffff;
+
+    overflow: hidden;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Arrow icon */
+
+.navbar__cta-arrow svg {
+    width: 13px;
+    height: 13px;
+    color: #ffffff;
+
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover interaction */
+
+.navbar__cta .button:hover .navbar__cta-arrow {
+    background: #0A2342;
+}
+
+.navbar__cta .button:hover .navbar__cta-arrow svg {
+    transform: translate(3px, -3px);
 }
 
 

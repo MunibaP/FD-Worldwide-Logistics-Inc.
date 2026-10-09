@@ -1,70 +1,12 @@
-// import {
-//     ArrowRight
-// } from "lucide-react";
-
-// import Button from "../../components/Button/Button";
-
-// import "./CTA.css";
-
-
-// function CTA() {
-
-//     return (
-
-//         <section
-//             className="cta"
-//             id="quote"
-//         >
-
-//             <div className="container cta-inner">
-
-//                 <div>
-
-//                     <span className="eyebrow">
-//                         READY TO MOVE?
-//                     </span>
-
-//                     <h2>
-//                         Let's build the right
-//                         logistics plan.
-//                     </h2>
-
-//                     <p>
-//                         Tell us what you're moving,
-//                         where it needs to go and
-//                         what matters most.
-//                     </p>
-
-//                 </div>
-
-
-//                 <Button href="#contact">
-
-//                     Request a Quote
-
-//                     <ArrowRight />
-
-//                 </Button>
-
-//             </div>
-
-//         </section>
-
-//     );
-
-// }
-
-
-// export default CTA;
-
-
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa6";
 
 import "./CTA.css";
 
-
 const CTA = () => {
+
+    const navigate = useNavigate();
 
     const scrollToSection = (id) => {
 
@@ -185,9 +127,7 @@ const CTA = () => {
                         <button
                             className="cta-primary"
                             type="button"
-                            onClick={() =>
-                                scrollToSection("quote")
-                            }
+                            onClick={() => navigate("/quote")}
                         >
 
                             <span>
