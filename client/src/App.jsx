@@ -1,36 +1,3 @@
-// import Navbar from "./components/Navbar/Navbar";
-// import Hero from "./sections/Hero/Hero";
-// import Services from "./sections/Services/Services";
-// import ShipmentCommand from "./sections/ShipmentCommand/ShipmentCommand";
-// import WhyFastDrop from "./sections/WhyFastDrop/WhyFastDrop";
-// import GlobalNetwork from "./sections/GlobalNetwork/GlobalNetwork";
-// import Testimonials from "./sections/Testimonials/Testimonials";
-// import FAQ from "./sections/FAQ/FAQ";
-// import CTA from "./sections/CTA/CTA";
-// import Contact from "./sections/Contact/Contact";
-// import Footer from "./sections/Footer/Footer";
-
-// function App() {
-//     return (
-//         <>
-//             <Navbar />
-//             <Hero />
-//             <Services />
-//             <ShipmentCommand />
-//             <WhyFastDrop />
-//             <GlobalNetwork />
-//             <Testimonials />
-//             <FAQ />
-//             <CTA />
-//             <Contact />
-//             <Footer />
-//         </>
-//     );
-// }
-
-// export default App;
-
-
 import {
     Routes,
     Route
@@ -49,6 +16,7 @@ import CTA from "./sections/CTA/CTA";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./sections/Footer/Footer";
 
+import About from "./pages/About/About";
 import Quote from "./pages/Quote/Quote";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
@@ -82,6 +50,15 @@ function App() {
                         <Footer />
                     </>
                 }
+            />
+
+            {/* =========================
+                ABOUT
+            ========================== */}
+            <Route
+                path="/about"
+                element={<About />}
+
             />
 
             {/* =========================
