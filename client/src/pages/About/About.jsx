@@ -460,6 +460,7 @@ import {
     FiArrowUpRight,
     FiArrowRight,
     FiCheck,
+    FiMessageCircle
 } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar/Navbar";
@@ -467,6 +468,7 @@ import Footer from "../../sections/Footer/Footer";
 
 import aboutHero from "../../assets/About/About Hero.png";
 import meetFastDrop from "../../assets/About/Meet FastDrop.png";
+import fastDropEmployee from "../../assets/About/fastDropEmployee.png";
 import differenceImage from "../../assets/About/WhatMakesUsDifferent.png";
 import valuesImage from "../../assets/About/OurValue &Commitment.png";
 
@@ -537,26 +539,88 @@ const values = [
    01 — CORPORATE HERO
 ========================================== */
 
+
 function AboutHero() {
     return (
         <section className="about-hero">
-
             <div className="about-container">
 
+                {/* Editorial heading */}
                 <motion.div
                     className="about-hero__intro"
                     {...reveal}
                 >
-                    <span className="about-eyebrow">
-                        ABOUT FASTDROP WORLDWIDE LOGISTICS
-                    </span>
+                    <div className="about-hero__topline">
+                        <span className="about-eyebrow">
+                            THE PEOPLE BEHIND EVERY MILE
+                        </span>
+                        <span className="about-hero__chapter">
+                            FASTDROP / 001
+                        </span>
+                    </div>
 
                     <h1>
                         Moving Business Forward.
-                        <span> Connecting the World.</span>
+                        <span>Connecting the World.</span>
                     </h1>
+                </motion.div>
 
-                    <div className="about-hero__intro-bottom">
+                {/* Image and glass card */}
+                <div className="about-hero__stage">
+                    <motion.div
+                        className="about-hero__image"
+                        initial={{ opacity: 0, y: 45 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.85 }}
+                    >
+                        <img
+                            src={aboutHero}
+                            alt="FastDrop logistics and customer support illustration"
+                        />
+                    </motion.div>
+
+                    {/* <motion.div
+                        className="about-hero__glass"
+                        initial={{ opacity: 0, y: 35 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.7,
+                            delay: 0.2
+                        }}
+                    > */}
+
+                    <motion.div
+                        className="about-hero__glass"
+
+                        initial={{
+                            opacity: 0,
+                            x: -120,
+                            y: 20
+                        }}
+
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: 0
+                        }}
+
+                        transition={{
+                            duration: 1.1,
+                            delay: 0.5,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
+
+                        <span className="about-hero__glass-label">
+                            OUR COMPANY. OUR COMMITMENT.
+                        </span>
+
+                        <h2>
+                            More Than Moving
+                            <span> Shipments.</span>
+                        </h2>
 
                         <p>
                             Behind every successful delivery is a
@@ -565,41 +629,34 @@ function AboutHero() {
                             dependable.
                         </p>
 
+                        <p>
+                            At FastDrop Worldwide Logistics, we
+                            believe transportation is about building
+                            confidence, creating connections, and
+                            helping businesses move forward.
+                        </p>
+
                         <a
                             href="#meet-fastdrop"
-                            className="about-text-link"
+                            className="about-button about-button--red"
                         >
                             Discover Our Company
                             <FiArrowUpRight />
                         </a>
+                    </motion.div>
+                </div>
 
-                    </div>
-                </motion.div>
-
-                <motion.figure
-                    className="about-hero__photo"
-                    {...reveal}
-                >
-                    <img
-                        src={aboutHero}
-                        alt="Illustration of FastDrop customer support and shipment communication"
-                    />
-
-                    <figcaption>
-                        <span>
-                            PEOPLE FIRST. DELIVERY ALWAYS.
-                        </span>
-                        <span>
-                            FASTDROP WORLDWIDE LOGISTICS INC.
-                        </span>
-                    </figcaption>
-                </motion.figure>
+                {/* Editorial footer */}
+                <div className="about-hero__footer">
+                    <span>FASTDROP WORLDWIDE LOGISTICS INC.</span>
+                    <span>SCROLL TO EXPLORE <FiArrowRight /></span>
+                </div>
 
             </div>
-
         </section>
     );
 }
+
 
 /* ==========================================
    02 — OUR COMPANY STORY
@@ -634,12 +691,12 @@ function MeetFastDrop() {
                             01 / WHO WE ARE
                         </span>
 
-                        <h2>
+                        <h2 className="about-story__title">
                             Built on Trust.
-                            <em> Driven by People.</em>
+                            <span> Driven by People.</span>
                         </h2>
 
-                        <p className="about-lead">
+                        <p className="about-story__tagline">
                             Logistics is about more than moving
                             shipments. It's about connecting
                             businesses, people, and opportunities.
@@ -666,7 +723,18 @@ function MeetFastDrop() {
 
                 <div className="about-pillars">
 
-                    <motion.article {...reveal}>
+                    <motion.article 
+                        {...reveal}
+                        whileHover={{
+                            y: -8,
+                            scale: 1.015
+                        }}
+                        transition={{
+                            duration: 0.35,
+                            ease: "easeOut"
+                        }}
+                    >
+                            
                         <span className="about-number">01</span>
                         <h3>Our Mission</h3>
                         <p>
@@ -678,7 +746,17 @@ function MeetFastDrop() {
                         </p>
                     </motion.article>
 
-                    <motion.article {...reveal}>
+                    <motion.article 
+                        {...reveal}
+                        whileHover={{
+                            y: -8,
+                            scale: 1.015
+                        }}
+                        transition={{
+                            duration: 0.35,
+                            ease: "easeOut"
+                        }}
+                    >
                         <span className="about-number">02</span>
                         <h3>Our Vision</h3>
                         <p>
@@ -689,7 +767,17 @@ function MeetFastDrop() {
                         </p>
                     </motion.article>
 
-                    <motion.article {...reveal}>
+                    <motion.article 
+                        {...reveal}
+                        whileHover={{
+                            y: -8,
+                            scale: 1.015
+                        }}
+                        transition={{
+                            duration: 0.35,
+                            ease: "easeOut"
+                        }}
+                    >
                         <span className="about-number">03</span>
                         <h3>Our Approach</h3>
                         <p>
@@ -706,6 +794,7 @@ function MeetFastDrop() {
     );
 }
 
+
 /* ==========================================
    03 — WHAT MAKES US DIFFERENT
 ========================================== */
@@ -716,27 +805,164 @@ function WhatMakesUsDifferent() {
 
             <div className="about-container">
 
-                <motion.div
-                    className="about-section-heading"
+                {/* SECTION INTRO */}
+
+                {/* <motion.div
+                    className="about-difference__intro"
                     {...reveal}
                 >
-                    <div>
+                    <span className="about-eyebrow">
+                        02 / OUR APPROACH
+                    </span>
+
+                    <h2 className="about-difference__title">
+                        What Makes Us
+                        <span>Different.</span>
+                    </h2>
+
+                    <h3 className="about-difference__tagline">
+                        A Different Approach.
+                        <span> A Stronger Connection.</span>
+                    </h3>
+
+                    <p className="about-difference__description">
+                        At FastDrop Worldwide Logistics, we combine
+                        practical logistics solutions with clear
+                        communication, dependable service, and
+                        meaningful customer relationships.
+                    </p>
+                </motion.div> */}
+
+                
+                
+                <motion.div
+                    className="about-difference__intro"
+                    {...reveal}
+                >
+                    {/* LEFT — MAIN HEADING */}
+
+                    <div className="about-difference__heading">
                         <span className="about-eyebrow">
                             02 / OUR APPROACH
                         </span>
 
-                        <h2>
+                        <h2 className="about-difference__title">
                             What Makes Us
-                            <em> Different.</em>
+                            <span>Different.</span>
                         </h2>
                     </div>
 
-                    <p>
-                        Our approach combines practical logistics
-                        thinking with a strong commitment to
-                        communication and customer relationships.
-                    </p>
+                    {/* RIGHT — COMMUNICATION GLASS BUBBLE */}
+                    
+                    {/* <div className="about-message-wrapper"> */}
+                    <motion.div
+                        className="about-message-wrapper"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{
+                            once: true,
+                            amount: 0.25
+                        }}
+                    >
+
+                        {/* STEP 1 — Employee appears first */}
+
+                        
+                        <motion.img
+                            src={fastDropEmployee}
+                            alt="Illustrative FastDrop customer service representative"
+                            className="about-message__employee"
+
+                            variants={{
+                                hidden: {
+                                    opacity: 0,
+                                    x: -35,
+                                    y: 35,
+                                    scale: 0.9
+                                },
+
+                                visible: {
+                                    opacity: 1,
+                                    x: 0,
+                                    y: 0,
+                                    scale: 1,
+
+                                    transition: {
+                                        duration: 0.75,
+                                        delay: 0.1,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }
+                                }
+                            }}
+                        />
+
+
+                        {/* STEP 2 — Message appears after employee */}
+
+                        <motion.div
+                            className="about-message"
+
+                            variants={{
+                                hidden: {
+                                    opacity: 0,
+                                    x: 70,
+                                    scale: 0.96
+                                },
+
+                                visible: {
+                                    opacity: 1,
+                                    x: 0,
+                                    scale: 1,
+
+                                    transition: {
+                                        duration: 0.7,
+                                        delay: 0.85,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }
+                                }
+                            }}
+
+                            whileHover={{
+                                y: -6
+                            }}
+                        >
+
+                            <div className="about-message__header">
+                                <div className="about-message__icon">
+                                    <FiMessageCircle />
+                                </div>
+
+                                <div className="about-message__identity">
+                                    <strong>A Message From FastDrop</strong>
+                                    <span>Our approach to logistics</span>
+                                </div>
+
+                                <span className="about-message__indicator" />
+                            </div>
+
+                            <h3>
+                                A Different Approach.
+                                <span> A Stronger Connection.</span>
+                            </h3>
+
+                            <p>
+                                At FastDrop Worldwide Logistics, we combine
+                                practical logistics solutions with clear
+                                communication, dependable service, and
+                                meaningful customer relationships.
+                            </p>
+
+                            <div className="about-message__footer">
+                                <span className="about-message__status-dot" />
+                                Connected through trust
+                            </div>
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
+
+
+
+                {/* OPERATIONS IMAGE */}
 
                 <motion.div
                     className="about-difference__photo"
@@ -744,23 +970,37 @@ function WhatMakesUsDifferent() {
                 >
                     <img
                         src={differenceImage}
-                        alt="Illustration of logistics operations and shipment tracking"
+                        alt="FastDrop logistics operations and shipment tracking"
                         loading="lazy"
                     />
 
                     <div className="about-image-label">
-                        CONNECTED OPERATIONS
+                        <span>CONNECTED OPERATIONS</span>
                         <FiArrowUpRight />
                     </div>
                 </motion.div>
 
+                {/* DIFFERENTIATORS */}
+
                 <div className="about-difference__grid">
 
-                    {differences.map((item) => (
+                    {differences.map((item, index) => (
                         <motion.article
                             key={item.number}
                             className="about-difference__card"
-                            {...reveal}
+                            initial={{ opacity: 0, y: 35 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{
+                                once: true,
+                                amount: 0.15
+                            }}
+                            whileHover={{
+                                y: -7
+                            }}
+                            transition={{
+                                duration: 0.4,
+                                delay: index * 0.08
+                            }}
                         >
                             <span className="about-number">
                                 {item.number}
@@ -779,9 +1019,12 @@ function WhatMakesUsDifferent() {
                 </div>
 
             </div>
+
         </section>
     );
 }
+
+
 
 /* ==========================================
    04 — OUR VALUES & COMMITMENT
@@ -790,10 +1033,11 @@ function WhatMakesUsDifferent() {
 function OurValues() {
     return (
         <section className="about-section about-values">
-
             <div className="about-container">
 
                 <div className="about-values__layout">
+
+                    {/* LEFT — HEADING AND VALUES */}
 
                     <motion.div
                         className="about-values__content"
@@ -803,18 +1047,17 @@ function OurValues() {
                             03 / WHAT WE BELIEVE
                         </span>
 
-                        <h2>
+                        <h2 className="about-values__title">
                             Our Values.
-                            <em> Our Commitment.</em>
+                            <span>Our Commitment.</span>
                         </h2>
 
-                        <p className="about-lead">
+                        <p className="about-values__description">
                             The principles that guide how we work,
                             communicate, and build relationships.
                         </p>
 
                         <div className="about-values__list">
-
                             {values.map((value) => (
                                 <div
                                     className="about-values__item"
@@ -833,20 +1076,71 @@ function OurValues() {
                                     </div>
                                 </div>
                             ))}
-
                         </div>
                     </motion.div>
 
-                    <motion.div
-                        className="about-values__photo"
-                        {...reveal}
-                    >
-                        <img
-                            src={valuesImage}
-                            alt="Illustration of logistics professionals collaborating around a tablet"
-                            loading="lazy"
-                        />
-                    </motion.div>
+                    {/* RIGHT — IMAGE AND COMMITMENT PANEL */}
+
+                    <div className="about-values__visual">
+
+                        <motion.div
+                            className="about-values__photo"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{
+                                once: true,
+                                amount: 0.2
+                            }}
+                            transition={{
+                                duration: 0.8,
+                                ease: [0.22, 1, 0.36, 1]
+                            }}
+                        >
+                            <img
+                                src={valuesImage}
+                                alt="FastDrop team supporting customers and coordinating logistics operations"
+                                loading="lazy"
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            className="about-values__promise"
+                            initial={{ opacity: 0, y: 25 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{
+                                once: true,
+                                amount: 0.2
+                            }}
+                            transition={{
+                                duration: 0.7,
+                                delay: 0.2,
+                                ease: [0.22, 1, 0.36, 1]
+                            }}
+                        >
+                            <div className="about-values__promise-top">
+                                <span>THE FASTDROP PROMISE</span>
+                                <FiArrowUpRight />
+                            </div>
+
+                            <h3>
+                                Built on Trust.
+                                <span> Driven by Commitment.</span>
+                            </h3>
+
+                            <p>
+                                Every shipment represents a responsibility
+                                to the people and businesses who depend
+                                on us. We approach that responsibility
+                                with care, communication, and accountability.
+                            </p>
+
+                            <div className="about-values__promise-footer">
+                                <span className="about-values__promise-dot" />
+                                PEOPLE FIRST. DELIVERY ALWAYS.
+                            </div>
+                        </motion.div>
+
+                    </div>
 
                 </div>
 
@@ -855,6 +1149,7 @@ function OurValues() {
     );
 }
 
+
 /* ==========================================
    05 — CLOSING CTA
 ========================================== */
@@ -862,20 +1157,16 @@ function OurValues() {
 function AboutClosing() {
     return (
         <section className="about-closing">
+            <div className="about-container about-closing__inner">
 
-            <div className="about-container">
-
-                <motion.div
-                    className="about-closing__inner"
-                    {...reveal}
-                >
+                <motion.div {...reveal}>
                     <span className="about-eyebrow">
                         THE NEXT MILE STARTS HERE
                     </span>
 
                     <h2>
                         Let's Move Forward.
-                        <em> Together.</em>
+                        <em>Together.</em>
                     </h2>
 
                     <p>
@@ -883,16 +1174,15 @@ function AboutClosing() {
                         business with logistics solutions built
                         around your needs.
                     </p>
-
-                    <Link
-                        to="/quote"
-                        className="about-button about-button--red"
-                    >
-                        Request a Quote
-                        <FiArrowRight />
-                    </Link>
-
                 </motion.div>
+
+                <Link
+                    to="/quote"
+                    className="about-button about-button--red"
+                >
+                    Request a Quote
+                    <FiArrowRight />
+                </Link>
 
             </div>
         </section>
@@ -905,19 +1195,15 @@ function AboutClosing() {
 
 export default function About() {
     return (
-        <>
-            <Navbar />
-
-            <main className="about-page">
-                <AboutHero />
-                <MeetFastDrop />
-                <WhatMakesUsDifferent />
-                <OurValues />
-                <AboutClosing />
-            </main>
-
-            <Footer />
-        </>
+        <main className="about-page">
+            <AboutHero />
+            <MeetFastDrop />
+            <WhatMakesUsDifferent />
+            <OurValues />
+            <AboutClosing />
+        </main>
     );
 }
+
+
 
