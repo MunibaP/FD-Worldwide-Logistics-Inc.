@@ -1,0 +1,1411 @@
+
+/* ==========================================
+   FASTDROP — GLOBAL DELIVERY EXPERIENCE
+========================================== */
+
+.fd-scene {
+    position: relative;
+    width: min(1200px, 96%);
+    margin: 45px auto 0;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+/* ==========================================
+   SCENE INTRO
+========================================== */
+
+.fd-scene__intro {
+    position: relative;
+    z-index: 5;
+
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fd-scene__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    color: #C9362C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+
+    margin-bottom: 12px;
+}
+
+.fd-scene__eyebrow svg {
+    font-size: 1rem;
+}
+
+.fd-scene__intro h3 {
+    color: #0A2342;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+
+    margin: 0 0 12px;
+}
+
+.fd-scene__intro p {
+    max-width: 620px;
+    margin: 0 auto;
+
+    color: #607287;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   SCENE WRAPPER & STAGE
+========================================== */
+
+.fd-scene__scene-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.fd-scene__stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 440;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ==========================================
+   SHARED IMAGE STYLING
+========================================== */
+
+.fd-scene__truck img,
+.fd-scene__employee img,
+.fd-scene__customer img,
+.fd-scene__parcel img,
+.fd-scene__airplane img,
+.fd-scene__ship img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+/* ==========================================
+   AMBIENT BACKGROUND
+========================================== */
+
+.fd-scene__ambient {
+    position: absolute;
+    width: 70%;
+    height: 85%;
+    top: 0;
+    left: 15%;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(98, 155, 205, 0.14) 0%,
+        rgba(145, 190, 225, 0.06) 45%,
+        transparent 75%
+    );
+
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fd-scene__global-glow {
+    position: absolute;
+    inset: 5% 10%;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(91, 155, 210, 0.18),
+        rgba(91, 155, 210, 0.06) 45%,
+        transparent 75%
+    );
+
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================
+   LOCAL DELIVERY — ROAD
+========================================== */
+
+.fd-scene__ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 17%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(47, 93, 140, 0.25),
+        transparent
+    );
+
+    z-index: 0;
+}
+
+/* .fd-scene__road {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 17%;
+
+    background: linear-gradient(
+        180deg,
+        rgba(193, 209, 222, 0.65),
+        rgba(166, 188, 207, 0.8)
+    );
+
+    border-top: 2px solid rgba(47, 93, 140, 0.15);
+    border-radius: 14px 14px 0 0;
+
+    z-index: 1;
+}
+
+.fd-scene__road-line {
+    position: absolute;
+    left: 0;
+    top: 55%;
+    width: 100%;
+
+    border-top: 3px dashed rgba(255, 255, 255, 0.95);
+} */
+
+.fd-scene__road {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 17%;
+
+    background: linear-gradient(
+        180deg,
+        #D0DFEA 0%,
+        #B4C9DA 100%
+    );
+
+    border-top: 1px solid rgba(47, 93, 140, 0.12);
+    border-radius: 12px 12px 0 0;
+
+    z-index: 1;
+}
+
+.fd-scene__road-line {
+    position: absolute;
+    left: 0;
+    top: 55%;
+    width: 100%;
+
+    border-top: 3px dashed rgba(255, 255, 255, 0.9);
+}
+
+
+/* ==========================================
+   SIDEWALK — THIN CURB DESIGN
+========================================== */
+
+
+/* ==========================================
+   FASTDROP — SUBTLE BUILDING SIDEWALK
+========================================== */
+
+/* ==========================================
+   FULL-WIDTH CURB
+========================================== */
+
+.fd-scene__sidewalk {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 17%;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        180deg,
+        #F1F4F7 0%,
+        #C5D3DE 100%
+    );
+
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(77, 107, 130, 0.2);
+
+    border-radius: 12px 12px 0 0;
+
+    box-shadow: 0 2px 3px rgba(10, 35, 66, 0.04);
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Subtle concrete joints */
+
+.fd-scene__sidewalk::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 140px,
+        rgba(47, 93, 140, 0.08) 141px,
+        transparent 142px
+    );
+}
+
+/* ==========================================
+   BUILDING SIDEWALK
+========================================== */
+
+/* .fd-scene__sidewalk {
+    position: absolute;
+    right: 0;
+    bottom: 13%;
+    width: 45%;
+    height: 5%;
+
+    background: linear-gradient(
+        180deg,
+        #E8EDF2,
+        #CBD7E2
+    );
+
+    border-top: 2px solid rgba(47, 93, 140, 0.16);
+    border-radius: 8px 0 0 0;
+
+    z-index: 1;
+    pointer-events: none;
+} */
+
+
+/* ==========================================
+   LOCAL DELIVERY — TRUCK
+========================================== */
+
+.fd-scene__truck {
+    position: absolute;
+    width: 49%;
+    left: -1%;
+    bottom: 10%;
+    z-index: 2;
+    will-change: transform;
+}
+
+/* ==========================================
+   LOCAL DELIVERY — EMPLOYEE
+========================================== */
+
+.fd-scene__employee {
+    position: absolute;
+    width: 10%;
+    left: 57%;
+    bottom: 19%;
+    z-index: 4;
+    will-change: transform, opacity;
+}
+
+/* ==========================================
+   LOCAL DELIVERY — CUSTOMER
+========================================== */
+
+.fd-scene__customer {
+    position: absolute;
+    width: 10%;
+    left: 70%;
+    bottom: 19%;
+    z-index: 4;
+    will-change: transform, opacity;
+}
+
+/* ==========================================
+   LOCAL DELIVERY — PARCEL
+========================================== */
+
+.fd-scene__parcel {
+    position: absolute;
+    width: 5%;
+    left: 57%;
+    bottom: 43%;
+
+    z-index: 6;
+    will-change: transform, opacity;
+}
+
+/* ==========================================
+   MIXED-USE BUILDING
+========================================== */
+
+.fd-scene__building {
+    position: absolute;
+
+    width: 48%;
+    right: -8%;
+    bottom: 17%;
+
+    z-index: 1;
+
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.fd-scene__building img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    user-select: none;
+    pointer-events: none;
+
+    filter: drop-shadow(
+        0 12px 20px rgba(10, 35, 66, 0.08)
+    );
+}
+
+/* ==========================================
+   DELIVERY SUCCESS CARD
+========================================== */
+
+
+/* ==========================================
+   GLASS DELIVERY CONFIRMATION
+========================================== */
+
+.fd-scene__success {
+    position: absolute;
+
+    /* Beside the customer */
+    left: 79%;
+    bottom: 48%;
+    top: auto;
+    right: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: max-content;
+    max-width: 24%;
+    padding: 13px 17px;
+
+    /* Frosted glass */
+    background: rgba(255, 255, 255, 0.68);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+
+    box-shadow:
+        0 12px 32px rgba(10, 35, 66, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+    z-index: 8;
+    pointer-events: none;
+}
+
+/* Success icon */
+
+.fd-scene__success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    background: rgba(25, 135, 84, 0.12);
+    color: #198754;
+
+    border: 1px solid rgba(25, 135, 84, 0.16);
+    border-radius: 50%;
+
+    font-size: 19px;
+}
+
+/* Text */
+
+.fd-scene__success-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.fd-scene__success-text strong {
+    color: #0A2342;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.fd-scene__success-text span {
+    color: #61758A;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   INTERNATIONAL AIR FREIGHT
+========================================== */
+
+.fd-scene__stage--air {
+    position: relative;
+    overflow: hidden;
+}
+
+.fd-scene__globe {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+    border: 1px solid rgba(47, 93, 140, 0.12);
+
+    background:
+        radial-gradient(
+            circle at 40% 35%,
+            rgba(255, 255, 255, 0.35),
+            rgba(47, 93, 140, 0.035) 70%
+        );
+
+    overflow: hidden;
+    opacity: 0.65;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.fd-scene__globe-ring {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 55%;
+    height: 100%;
+
+    border: 1px solid rgba(47, 93, 140, 0.13);
+    border-radius: 50%;
+
+    transform: translateX(-50%);
+}
+
+
+/* ==========================================
+   GLOBE — LATITUDE LINES
+========================================== */
+
+.fd-scene__latitude {
+    position: absolute;
+
+    left: 50%;
+
+    height: 0;
+
+    border: 0;
+    border-top: 1px solid rgba(47, 93, 140, 0.20);
+
+    border-radius: 50%;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+}
+
+/* Northern latitude — near pole */
+
+.fd-scene__latitude--one {
+    top: 18%;
+    width: 76%;
+    height: 9%;
+
+    border-top: none;
+    border-bottom: 1px solid rgba(47, 93, 140, 0.18);
+}
+
+/* Northern latitude — near equator */
+
+.fd-scene__latitude--two {
+    top: 32%;
+    width: 94%;
+    height: 7%;
+
+    border-top: none;
+    border-bottom: 1px solid rgba(47, 93, 140, 0.18);
+}
+
+/* Equator — straight horizontal line */
+
+.fd-scene__latitude--three {
+    top: 50%;
+    width: 100%;
+    height: 0;
+
+    border-top: 1px solid rgba(47, 93, 140, 0.24);
+    border-bottom: none;
+    border-radius: 0;
+}
+
+/* Southern latitude — near equator */
+
+.fd-scene__latitude--four {
+    top: 61%;
+    width: 94%;
+    height: 7%;
+
+    border-top: 1px solid rgba(47, 93, 140, 0.18);
+    border-bottom: none;
+}
+
+/* Southern latitude — near pole */
+
+.fd-scene__latitude--five {
+    top: 75%;
+    width: 76%;
+    height: 9%;
+
+    border-top: 1px solid rgba(47, 93, 140, 0.18);
+    border-bottom: none;
+}
+
+
+.fd-scene__globe-ring--one {
+    width: 35%;
+}
+
+.fd-scene__globe-ring--two {
+    width: 65%;
+}
+
+.fd-scene__globe-ring--three {
+    width: 100%;
+}
+
+.fd-scene__routes {
+     position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+    pointer-events: none;
+    /* overflow: visible; */
+}
+
+.fd-scene__airplane {
+    position: absolute;
+    width: 36%;
+    left: 20%;
+    top: 30%;
+
+    z-index: 4;
+    will-change: transform, opacity;
+
+    filter: drop-shadow(
+        0 20px 30px rgba(10, 35, 66, 0.12)
+    );
+}
+
+/* ==========================================
+   DESTINATION LABELS
+========================================== */
+
+.fd-scene__destination {
+    position: absolute;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border: 1px solid rgba(47, 93, 140, 0.12);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+
+    color: #0A2342;
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    box-shadow: 0 8px 25px rgba(10, 35, 66, 0.05);
+}
+
+.fd-scene__destination-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #C9362C;
+}
+
+/* ==========================================
+   GLOBAL CONTINENT LABELS — DESKTOP
+========================================== */
+
+.fd-scene__destination--northamerica {
+    top: 38%;
+    left: 5%;
+}
+
+.fd-scene__destination--southamerica {
+    bottom: 13%;
+    left: 18%;
+}
+
+.fd-scene__destination--europe {
+    top: 15%;
+    left: 49%;
+}
+
+.fd-scene__destination--africa {
+    bottom: 17%;
+    left: 48%;
+}
+
+.fd-scene__destination--asia {
+    top: 33%;
+    right: 8%;
+}
+
+.fd-scene__destination--oceania {
+    bottom: 10%;
+    right: 5%;
+}
+
+.fd-scene__floating-label {
+    position: absolute;
+    top: 9%;
+    left: 10%;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    width: max-content;
+    padding: 10px 15px;
+
+    /* White glass effect */
+    background: rgba(255, 255, 255, 0.85);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(47, 93, 140, 0.12);
+    border-radius: 30px;
+
+    box-shadow: 0 8px 25px rgba(10, 35, 66, 0.05);
+
+    color: #2F5D8C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+.fd-scene__floating-label svg {
+    color: #C9362C;
+    font-size: 1rem;
+}
+
+/* ==========================================
+   INTERNATIONAL OCEAN FREIGHT
+========================================== */
+
+.fd-scene__stage--ocean {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.fd-scene__stage--ocean::before {
+    content: "";
+    position: absolute;
+
+    width: 85%;
+    height: 45%;
+    left: 7.5%;
+    bottom: 0;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(55, 137, 205, 0.18),
+        transparent 70%
+    );
+
+    filter: blur(25px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fd-scene__ocean-globe {
+    position: absolute;
+    width: 43%;
+    aspect-ratio: 1;
+
+    right: 6%;
+    top: -30%;
+
+    border: 1px solid rgba(47, 93, 140, 0.1);
+    border-radius: 50%;
+
+    opacity: 0.55;
+    z-index: 0;
+}
+
+.fd-scene__ship {
+    position: absolute;
+
+    width: 58%;
+    left: 21%;
+    bottom: 0;
+
+    z-index: 3;
+    will-change: transform, opacity;
+
+    filter: drop-shadow(
+        0 20px 30px rgba(10, 35, 66, 0.12)
+    );
+}
+
+/* .fd-scene__ocean-badge {
+    position: absolute;
+    top: 12%;
+    right: 10%;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border: 1px solid rgba(47, 93, 140, 0.12);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+
+    color: #2F5D8C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.fd-scene__ocean-badge svg {
+    color: #C9362C;
+    font-size: 1rem;
+} */
+
+
+/* ==========================================
+   GLOBAL OCEAN FREIGHT — LEFT LABEL
+========================================== */
+
+.fd-scene__ocean-badge {
+    position: absolute;
+
+    top: 9%;
+    left: 10%;
+    right: auto;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: max-content;
+    padding: 10px 15px;
+
+    border: 1px solid rgba(47, 93, 140, 0.12);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #2F5D8C;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: none;
+
+    box-shadow: 0 8px 25px rgba(10, 35, 66, 0.05);
+}
+
+.fd-scene__ocean-badge svg {
+    color: #C9362C;
+    font-size: 1rem;
+}
+
+
+/* ==========================================
+   SCENE INDICATORS
+========================================== */
+
+.fd-scene__indicators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding-bottom: 8px;
+}
+
+.fd-scene__indicator {
+    width: 30px;
+    height: 5px;
+
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+
+    background: rgba(47, 93, 140, 0.22);
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.fd-scene__indicator.active {
+    width: 48px;
+    background: #C9362C;
+}
+
+.fd-scene__indicator:hover {
+    background: #2F5D8C;
+}
+
+.fd-scene__indicator:focus-visible {
+    outline: 2px solid #0A2342;
+    outline-offset: 4px;
+}
+
+
+
+/* =========================================================
+   LOCAL DELIVERY — RESPONSIVE FOUNDATION
+========================================================= */
+
+.fd-scene__stage--local img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   FASTDROP — DELIVERY EXPERIENCE RESPONSIVE
+   Preserves desktop proportions across screen sizes
+========================================================= */
+
+/* Shared responsive foundation */
+
+.fd-scene {
+    width: min(1200px, 96%);
+    margin: 45px auto 0;
+}
+
+.fd-scene__stage {
+    width: 100%;
+    aspect-ratio: 1200 / 440;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.fd-scene__stage--local img,
+.fd-scene__airplane img,
+.fd-scene__ship img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+}
+
+/* Keep the globe proportional to the scene */
+
+.fd-scene__globe {
+    width: 35.8333%;
+    height: auto;
+    aspect-ratio: 1;
+}
+
+/* =========================================================
+   SMALL DESKTOP — 1025px TO 1250px
+========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1250px) {
+
+    .fd-scene {
+        width: 96%;
+        margin-top: 40px;
+    }
+
+    .fd-scene__intro {
+        margin-bottom: 20px;
+    }
+
+    .fd-scene__intro h3 {
+        font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+    }
+
+    .fd-scene__intro p {
+        max-width: 600px;
+    }
+
+    .fd-scene__indicators {
+        margin-top: 18px;
+    }
+}
+
+/* =========================================================
+   TABLET — 768px TO 1024px
+========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .fd-scene {
+        width: 96%;
+        margin: 35px auto 0;
+    }
+
+    .fd-scene__intro {
+        padding-inline: 20px;
+        margin-bottom: 18px;
+    }
+
+    .fd-scene__intro h3 {
+        font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+    }
+
+    .fd-scene__intro p {
+        max-width: 560px;
+        font-size: 0.9rem;
+    }
+
+    .fd-scene__stage {
+        min-height: 0;
+        aspect-ratio: 1200 / 440;
+    }
+
+    /* Keep local actors in their desktop positions */
+
+    .fd-scene__truck {
+        width: 49%;
+        left: -1%;
+        bottom: 10%;
+    }
+
+    .fd-scene__building {
+        width: 48%;
+        right: -8%;
+        bottom: 17%;
+    }
+
+    .fd-scene__employee {
+        width: 10%;
+        left: 57%;
+        bottom: 19%;
+    }
+
+    .fd-scene__customer {
+        width: 10%;
+        left: 70%;
+        bottom: 19%;
+    }
+
+    .fd-scene__parcel {
+        width: 5%;
+        left: 57%;
+        bottom: 43%;
+    }
+
+    /* Air scene */
+
+    .fd-scene__airplane {
+        width: 36%;
+        left: 20%;
+        top: 32%;
+    }
+
+    .fd-scene__destination {
+        padding: 7px 10px;
+        font-size: 0.65rem;
+    }
+
+    /* Ocean scene */
+
+    .fd-scene__ship {
+        width: 58%;
+        left: 21%;
+        bottom: 0;
+    }
+
+    .fd-scene__floating-label,
+    .fd-scene__ocean-badge {
+        left: 10%;
+        top: 9%;
+        padding: 8px 12px;
+        font-size: 0.68rem;
+    }
+
+    .fd-scene__success {
+        padding: 8px 10px;
+        gap: 7px;
+    }
+
+    .fd-scene__success-icon {
+        width: 27px;
+        height: 27px;
+        font-size: 14px;
+    }
+
+    .fd-scene__success-text strong {
+        font-size: 10px;
+    }
+
+    .fd-scene__success-text span {
+        font-size: 8px;
+    }
+
+    .fd-scene__indicators {
+        margin-top: 16px;
+    }
+}
+
+/* =========================================================
+   MOBILE — UP TO 767px
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .fd-scene {
+        width: 100%;
+        margin: 25px auto 0;
+        overflow: hidden;
+    }
+
+    .fd-scene__intro {
+        padding: 0 18px;
+        margin-bottom: 16px;
+    }
+
+    .fd-scene__eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        gap: 6px;
+    }
+
+    .fd-scene__intro h3 {
+        font-size: clamp(1.5rem, 5vw, 1.9rem);
+        line-height: 1.2;
+    }
+
+    .fd-scene__intro p {
+        max-width: 500px;
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .fd-scene__stage {
+        width: 100%;
+        aspect-ratio: 1200 / 440;
+        min-height: 0;
+    }
+
+    /* Preserve scene composition */
+
+    .fd-scene__truck {
+        width: 49%;
+        left: -1%;
+        bottom: 10%;
+    }
+
+    .fd-scene__building {
+        width: 48%;
+        right: -8%;
+        bottom: 17%;
+    }
+
+    .fd-scene__employee {
+        width: 10%;
+        left: 57%;
+        bottom: 19%;
+    }
+
+    .fd-scene__customer {
+        width: 10%;
+        left: 70%;
+        bottom: 19%;
+    }
+
+    .fd-scene__parcel {
+        width: 5%;
+        left: 57%;
+        bottom: 43%;
+    }
+
+    .fd-scene__road {
+        height: 17%;
+    }
+
+    .fd-scene__road-line {
+        border-top-width: 1px;
+    }
+
+    .fd-scene__sidewalk {
+        bottom: 17%;
+        height: 2px;
+    }
+
+    /* Air freight */
+
+    .fd-scene__airplane {
+        width: 36%;
+        left: 20%;
+        top: 40%;
+    }
+
+    .fd-scene__destination {
+        padding: 4px 6px;
+        gap: 3px;
+        font-size: clamp(4px, 1.25vw, 8px);
+        white-space: nowrap;
+    }
+
+    .fd-scene__destination-dot {
+        width: 4px;
+        height: 4px;
+        flex-shrink: 0;
+    }
+
+    /* Ocean freight */
+
+    .fd-scene__ship {
+        width: 58%;
+        left: 21%;
+        bottom: 0;
+    }
+
+    .fd-scene__floating-label,
+    .fd-scene__ocean-badge {
+        top: 9%;
+        left: 10%;
+        right: auto;
+        padding: 5px 8px;
+        gap: 5px;
+        font-size: clamp(6px, 1.5vw, 9px);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .fd-scene__floating-label svg,
+    .fd-scene__ocean-badge svg {
+        font-size: 0.75rem;
+    }
+
+    /* Delivery confirmation */
+
+    .fd-scene__success {
+        left: 79%;
+        bottom: 48%;
+        max-width: 20%;
+        padding: 3px 5px;
+        gap: 3px;
+        border-radius: 6px;
+    }
+
+    .fd-scene__success-icon {
+        width: 13px;
+        height: 13px;
+        font-size: 8px;
+    }
+
+    .fd-scene__success-text strong {
+        font-size: 5px;
+    }
+
+    .fd-scene__success-text span {
+        font-size: 4px;
+    }
+
+    .fd-scene__indicators {
+        margin-top: 16px;
+        gap: 8px;
+    }
+
+    .fd-scene__indicator {
+        width: 24px;
+        height: 4px;
+    }
+
+    .fd-scene__indicator.active {
+        width: 38px;
+    }
+
+}
+
+/* =========================================================
+   LARGE MOBILE — 480px TO 767px
+========================================================= */
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .fd-scene {
+        width: 98%;
+    }
+
+    .fd-scene__intro h3 {
+        font-size: clamp(1.65rem, 4.5vw, 1.9rem);
+    }
+
+    .fd-scene__destination {
+        font-size: clamp(6px, 1.3vw, 9px);
+    }
+
+    .fd-scene__success {
+        padding: 5px 7px;
+    }
+
+    .fd-scene__success-text strong {
+        font-size: 7px;
+    }
+
+    .fd-scene__success-text span {
+        font-size: 6px;
+    }
+
+    
+    /* Move airplane down — small mobile only */
+
+    .fd-scene__airplane {
+        top: 45%;
+    }
+
+}
+
+/* =========================================================
+   SMALL MOBILE — 320px TO 479px
+========================================================= */
+
+@media (min-width: 320px) and (max-width: 479px) {
+
+    .fd-scene {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .fd-scene__intro {
+        padding: 0 14px;
+        margin-bottom: 14px;
+    }
+
+    .fd-scene__intro h3 {
+        font-size: clamp(1.35rem, 5.4vw, 1.6rem);
+    }
+
+    .fd-scene__intro p {
+        font-size: 0.78rem;
+    }
+
+    .fd-scene__destination {
+        padding: 3px 4px;
+        gap: 2px;
+        font-size: clamp(4px, 1.15vw, 6px);
+    }
+
+    .fd-scene__destination-dot {
+        width: 3px;
+        height: 3px;
+    }
+
+    .fd-scene__floating-label,
+    .fd-scene__ocean-badge {
+        padding: 4px 6px;
+        font-size: 6px;
+    }
+
+    .fd-scene__floating-label svg,
+    .fd-scene__ocean-badge svg {
+        font-size: 9px;
+    }
+
+    .fd-scene__success {
+        left: 79%;
+        bottom: 48%;
+        max-width: 20%;
+        padding: 2px 3px;
+        gap: 2px;
+    }
+
+    .fd-scene__success-icon {
+        width: 10px;
+        height: 10px;
+        font-size: 6px;
+    }
+
+    .fd-scene__success-text strong {
+        font-size: 4px;
+    }
+
+    .fd-scene__success-text span {
+        font-size: 3.5px;
+    }
+
+    .fd-scene__indicators {
+        margin-top: 12px;
+    }
+
+    
+    /* Move airplane down — small mobile only */
+
+    .fd-scene__airplane {
+        top: 40%;
+    }
+
+}
+

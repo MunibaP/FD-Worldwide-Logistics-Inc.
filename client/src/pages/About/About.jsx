@@ -460,13 +460,18 @@ import {
     FiArrowUpRight,
     FiArrowRight,
     FiCheck,
-    FiMessageCircle
+    FiMessageCircle,
+    FiTarget,
+    FiGlobe,
+    FiUsers,
 } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../sections/Footer/Footer";
 
-import aboutHero from "../../assets/About/About Hero.png";
+import DeliveryScene from "../About/DeliveryScene";
+
+import aboutHero from "../../assets/About/AboutHero.png";
 import meetFastDrop from "../../assets/About/Meet FastDrop.png";
 import fastDropEmployee from "../../assets/About/fastDropEmployee.png";
 import differenceImage from "../../assets/About/WhatMakesUsDifferent.png";
@@ -723,6 +728,7 @@ function MeetFastDrop() {
 
                 <div className="about-pillars">
 
+                    {/* CARD 01 — OUR MISSION */}
                     <motion.article 
                         {...reveal}
                         whileHover={{
@@ -734,8 +740,15 @@ function MeetFastDrop() {
                             ease: "easeOut"
                         }}
                     >
-                            
-                        <span className="about-number">01</span>
+                        <div className="about-pillars__header">   
+                            <span className="about-number">01</span>
+
+                            <FiTarget
+                                className="about-pillars__icon"
+                                aria-hidden="true"
+                            />
+                        </div> 
+
                         <h3>Our Mission</h3>
                         <p>
                             To simplify logistics through dependable
@@ -744,8 +757,10 @@ function MeetFastDrop() {
                             approach that helps businesses operate
                             with confidence.
                         </p>
+
                     </motion.article>
 
+                    {/* CARD 02 — OUR VISION */}
                     <motion.article 
                         {...reveal}
                         whileHover={{
@@ -757,7 +772,15 @@ function MeetFastDrop() {
                             ease: "easeOut"
                         }}
                     >
-                        <span className="about-number">02</span>
+                        <div className="about-pillars__header">
+                            <span className="about-number">02</span>
+
+                            <FiGlobe
+                                className="about-pillars__icon"
+                                aria-hidden="true"
+                            />
+                        </div>
+
                         <h3>Our Vision</h3>
                         <p>
                             To build meaningful connections across
@@ -767,6 +790,7 @@ function MeetFastDrop() {
                         </p>
                     </motion.article>
 
+                    {/* CARD 03 — OUR APPROACH */}
                     <motion.article 
                         {...reveal}
                         whileHover={{
@@ -778,7 +802,15 @@ function MeetFastDrop() {
                             ease: "easeOut"
                         }}
                     >
-                        <span className="about-number">03</span>
+                        <div className="about-pillars__header">
+                            <span className="about-number">03</span>
+
+                            <FiUsers
+                                className="about-pillars__icon"
+                                aria-hidden="true"
+                            />
+                        </div>
+
                         <h3>Our Approach</h3>
                         <p>
                             We focus on understanding customer needs,
@@ -1157,34 +1189,62 @@ function OurValues() {
 function AboutClosing() {
     return (
         <section className="about-closing">
+
+            {/* Decorative global-inspired background */}
+            <div className="about-closing__background" aria-hidden="true">
+                <div className="about-closing__globe">
+                    <span className="about-closing__orbit about-closing__orbit--one" />
+                    <span className="about-closing__orbit about-closing__orbit--two" />
+                    <span className="about-closing__orbit about-closing__orbit--three" />
+                    <span className="about-closing__globe-line about-closing__globe-line--vertical" />
+                    <span className="about-closing__globe-line about-closing__globe-line--horizontal" />
+                </div>
+
+                <span className="about-closing__glow about-closing__glow--one" />
+                <span className="about-closing__glow about-closing__glow--two" />
+            </div>
+
             <div className="about-container about-closing__inner">
 
-                <motion.div {...reveal}>
+                <motion.div
+                    className="about-closing__content"
+                    initial={{ opacity: 0, y: 35 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                        duration: 0.8,
+                        ease: [0.22, 1, 0.36, 1]
+                    }}
+                >
                     <span className="about-eyebrow">
                         THE NEXT MILE STARTS HERE
                     </span>
 
-                    <h2>
+                    
+                    <h2 className="about-closing__title">
                         Let's Move Forward.
-                        <em>Together.</em>
+                        <span>Together.</span>
                     </h2>
 
+
                     <p>
-                        Discover how FastDrop can support your
-                        business with logistics solutions built
-                        around your needs.
+                        Discover how FastDrop can support your business
+                        with logistics solutions built around your needs.
                     </p>
+
+                    <Link
+                        to="/quote"
+                        className="about-button about-button--red about-closing__button"
+                    >
+                        Request a Quote
+                        <FiArrowRight />
+                    </Link>
                 </motion.div>
 
-                <Link
-                    to="/quote"
-                    className="about-button about-button--red"
-                >
-                    Request a Quote
-                    <FiArrowRight />
-                </Link>
-
             </div>
+
+            {/* Animated delivery scene */}
+            <DeliveryScene />
         </section>
     );
 }
@@ -1193,17 +1253,25 @@ function AboutClosing() {
    ABOUT PAGE
 ========================================== */
 
+
 export default function About() {
     return (
-        <main className="about-page">
-            <AboutHero />
-            <MeetFastDrop />
-            <WhatMakesUsDifferent />
-            <OurValues />
-            <AboutClosing />
-        </main>
+        <>
+            <Navbar />
+
+            <main className="about-page">
+                <AboutHero />
+                <MeetFastDrop />
+                <WhatMakesUsDifferent />
+                <OurValues />
+                <AboutClosing />
+            </main>
+
+            <Footer />
+        </>
     );
 }
+
 
 
 
