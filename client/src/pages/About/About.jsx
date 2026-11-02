@@ -473,7 +473,7 @@ import DeliveryScene from "../About/DeliveryScene";
 
 import aboutHero from "../../assets/About/AboutHero.png";
 import meetFastDrop from "../../assets/About/Meet FastDrop.png";
-import fastDropEmployee from "../../assets/About/fastDropEmployee.png";
+import fastDropEmployee from "../../assets/About/FastDropEmployee.png";
 import differenceImage from "../../assets/About/WhatMakesUsDifferent.png";
 import valuesImage from "../../assets/About/OurValue &Commitment.png";
 
