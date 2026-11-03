@@ -1,4 +1,5 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 import "./Services.css";
@@ -69,10 +70,72 @@ const services = [
 ];
 
 
+// function Services() {
+
+//     const [searchParams, setSearchParams] = useSearchParams();
+
+//     const selectedService = searchParams.get("service");
+
+//     const [localActiveIndex, setLocalActiveIndex] = useState(null);
+
+//     // Find the service requested through the URL
+//     const urlServiceIndex = services.findIndex(
+//         (service) => service.id === selectedService
+//     );
+
+//     // Use local selection only when no URL service is specified
+//     const activeIndex =
+//         localActiveIndex !== null
+//             ? localActiveIndex
+//             : urlServiceIndex >= 0
+//                 ? urlServiceIndex
+//                 : 0;
+
+//     const activeService = services[activeIndex];   
+    
+//     // Update the selected service and its URL
+//     const handleServiceChange = (index) => {
+
+//         setLocalActiveIndex(index);
+//         const params = new URLSearchParams(searchParams);
+//         params.set("service", services[index].id);
+
+//         setSearchParams(params, {
+//             replace: true,
+//             preventScrollReset: true
+//         });
+
+//     };
+
 function Services() {
-    const [activeIndex, setActiveIndex] = useState(0);
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const selectedService = searchParams.get("service");
+
+    // Find the selected service using its URL ID
+    const selectedIndex = services.findIndex(
+        (service) => service.id === selectedService
+    );
+
+    // Default to Ground when no service is specified
+    const activeIndex = selectedIndex >= 0 ? selectedIndex : 0;
 
     const activeService = services[activeIndex];
+
+    // Update the highlighted service
+    const handleServiceChange = (index) => {
+
+        const params = new URLSearchParams(searchParams);
+
+        params.set("service", services[index].id);
+
+        setSearchParams(params, {
+            replace: true,
+            preventScrollReset: true
+        });
+
+    };
 
 
     return (
@@ -118,8 +181,8 @@ function Services() {
                                     className={`service-nav-item ${
                                         isActive ? "active" : ""
                                     }`}
-                                    onClick={() => setActiveIndex(index)}
-                                    onMouseEnter={() => setActiveIndex(index)}
+                                    onClick={() => handleServiceChange(index)}
+                                    onMouseEnter={() => handleServiceChange(index)}
                                 >
                                     <span className="service-number">
                                         {service.number}

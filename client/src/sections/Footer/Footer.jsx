@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import {
     FiMail,
     FiPhone,
@@ -17,9 +17,42 @@ import "./Footer.css";
 const Footer = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    
+const navigateToLogistics = (service) => {
+    const destination = `/?service=${service}#services`;
+
+    // Already on the homepage
+    if (location.pathname === "/") {
+        navigate(destination);
+
+        // Always scroll, even if the URL hash is unchanged
+        document.getElementById("services")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+
+        return;
+    }
+
+    // Coming from About, Quote, or another page
+    navigate(destination);
+};
+
 
     const scrollToSection = (id) => {
 
+        // If we're on a different page, navigate home
+        if (location.pathname !== "/") {
+            navigate(`/#${id}`);
+            return;
+        }
+
+        // If already on homepage, update the URL
+        navigate(`/#${id}`);
+
+        // Scroll to the selected section
         const section = document.getElementById(id);
 
         if (section) {
@@ -72,11 +105,20 @@ const Footer = () => {
                     <div className="footer-brand">
 
                         <a
-                            href="#home"
+                            href="/"
                             className="footer-logo"
                             onClick={(event) => {
                                 event.preventDefault();
-                                scrollToSection("home");
+                                
+                                if (location.pathname !== "/") {
+                                    navigate("/");
+                                } else {
+                                    navigate("/", { replace: true });
+                                    window.scrollTo({
+                                        top: 0,
+                                        behavior: "smooth"
+                                    });
+                                }
                             }}
                             aria-label="FastDrop Worldwide Logistics home"
                         >
@@ -143,9 +185,13 @@ const Footer = () => {
 
                             <button
                                 type="button"
-                                onClick={() =>
-                                    scrollToSection("about")
-                                }
+                                onClick={() => {
+                                    navigate("/about");
+                                    window.scrollTo({
+                                        top: 0,
+                                        behavior: "instant"
+                                    });
+                                }}
                             >
                                 About
                             </button>
@@ -162,10 +208,10 @@ const Footer = () => {
                             <button
                                 type="button"
                                 onClick={() =>
-                                    scrollToSection("industries")
+                                    scrollToSection("faq")
                                 }
                             >
-                                Industries
+                                FAQs
                             </button>
 
                             <button
@@ -196,9 +242,8 @@ const Footer = () => {
 
                             <button
                                 type="button"
-                                onClick={() =>
-                                    scrollToSection("services")
-                                }
+                                onClick={() => 
+                                    navigateToLogistics("ground")}
                             >
                                 Ground
                             </button>
@@ -206,8 +251,7 @@ const Footer = () => {
                             <button
                                 type="button"
                                 onClick={() =>
-                                    scrollToSection("services")
-                                }
+                                    navigateToLogistics("air")}
                             >
                                 Air
                             </button>
@@ -215,8 +259,7 @@ const Footer = () => {
                             <button
                                 type="button"
                                 onClick={() =>
-                                    scrollToSection("services")
-                                }
+                                    navigateToLogistics("ocean")}
                             >
                                 Ocean
                             </button>

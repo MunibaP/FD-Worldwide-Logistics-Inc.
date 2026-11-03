@@ -3,6 +3,9 @@ import {
     Route
 } from "react-router-dom";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import Navbar from "./components/Navbar/Navbar";
 
 import Hero from "./sections/Hero/Hero";
@@ -22,72 +25,116 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 
 
+function ScrollToSection() {
+
+    const { pathname, hash } = useLocation();
+
+    useEffect(() => {
+
+        // Navigate to the top when opening the homepage
+        if (pathname === "/" && !hash) {
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+            return;
+        }
+
+        // Scroll to the requested section
+        if (!hash) return;
+
+        const sectionId = decodeURIComponent(hash.slice(1));
+
+        const frame = requestAnimationFrame(() => {
+
+            const section = document.getElementById(sectionId);
+
+            if (section) {
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+
+        });
+
+        return () => cancelAnimationFrame(frame);
+
+    }, [pathname, hash]);
+
+    return null;
+}
+
 function App() {
     return (
-        <Routes>
+        <>
+            {/* Handles scrolling after navigating from another page */}
+            <ScrollToSection />
+            <Routes>
 
-            {/* =========================
-                MAIN ONE-PAGE WEBSITE
-            ========================== */}
-            <Route
-                path="/"
-                element={
-                    <>
-                        <Navbar />
+                {/* =========================
+                    MAIN ONE-PAGE WEBSITE
+                ========================== */}
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Navbar />
 
-                        <main>
-                            <Hero />
-                            <Services />
-                            <ShipmentCommand />
-                            <WhyFastDrop />
-                            <GlobalNetwork />
-                            <Testimonials />
-                            <FAQ />
-                            <CTA />
-                            <Contact />
-                        </main>
+                            <main>
+                                <Hero />
+                                <Services />
+                                <ShipmentCommand />
+                                <WhyFastDrop />
+                                <GlobalNetwork />
+                                <Testimonials />
+                                <FAQ />
+                                <CTA />
+                                <Contact />
+                            </main>
 
-                        <Footer />
-                    </>
-                }
-            />
+                            <Footer />
+                        </>
+                    }
+                />
 
-            {/* =========================
-                ABOUT
-            ========================== */}
-            <Route
-                path="/about"
-                element={<About />}
+                {/* =========================
+                    ABOUT
+                ========================== */}
+                <Route
+                    path="/about"
+                    element={<About />}
 
-            />
+                />
 
-            {/* =========================
-                GET A QUOTE
-            ========================== */}
-            <Route
-                path="/quote"
-                element={<Quote />}
-            />
-
-
-            {/* =========================
-                PRIVACY POLICY
-            ========================== */}
-            <Route
-                path="/privacy"
-                element={<PrivacyPolicy />}
-            />
+                {/* =========================
+                    GET A QUOTE
+                ========================== */}
+                <Route
+                    path="/quote"
+                    element={<Quote />}
+                />
 
 
-            {/* =========================
-                TERMS OF SERVICE
-            ========================== */}
-            <Route
-                path="/terms"
-                element={<TermsOfService />}
-            />
+                {/* =========================
+                    PRIVACY POLICY
+                ========================== */}
+                <Route
+                    path="/privacy"
+                    element={<PrivacyPolicy />}
+                />
 
-        </Routes>
+
+                {/* =========================
+                    TERMS OF SERVICE
+                ========================== */}
+                <Route
+                    path="/terms"
+                    element={<TermsOfService />}
+                />
+
+            </Routes>
+        </>
     );
 }
 
