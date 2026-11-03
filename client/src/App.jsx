@@ -25,14 +25,56 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 
 
+// function ScrollToSection() {
+
+//     const { pathname, hash } = useLocation();
+
+//     useEffect(() => {
+
+//         // Navigate to the top when opening the homepage
+//         if (pathname === "/" && !hash) {
+//             window.scrollTo({
+//                 top: 0,
+//                 behavior: "instant"
+//             });
+//             return;
+//         }
+
+//         // Scroll to the requested section
+//         if (!hash) return;
+
+//         const sectionId = decodeURIComponent(hash.slice(1));
+
+//         const frame = requestAnimationFrame(() => {
+
+//             const section = document.getElementById(sectionId);
+
+//             if (section) {
+//                 section.scrollIntoView({
+//                     behavior: "smooth",
+//                     block: "start"
+//                 });
+//             }
+
+//         });
+
+//         return () => cancelAnimationFrame(frame);
+
+//     }, [pathname, hash]);
+
+//     return null;
+// }
+
+
 function ScrollToSection() {
 
-    const { pathname, hash } = useLocation();
+    const { pathname, search, hash } = useLocation();
 
     useEffect(() => {
 
-        // Navigate to the top when opening the homepage
-        if (pathname === "/" && !hash) {
+        // If there is no section hash,
+        // always start the new page at the top.
+        if (!hash) {
             window.scrollTo({
                 top: 0,
                 behavior: "instant"
@@ -40,9 +82,7 @@ function ScrollToSection() {
             return;
         }
 
-        // Scroll to the requested section
-        if (!hash) return;
-
+        // If there is a hash, scroll to that section.
         const sectionId = decodeURIComponent(hash.slice(1));
 
         const frame = requestAnimationFrame(() => {
@@ -60,10 +100,11 @@ function ScrollToSection() {
 
         return () => cancelAnimationFrame(frame);
 
-    }, [pathname, hash]);
+    }, [pathname, search, hash]);
 
     return null;
 }
+
 
 function App() {
     return (
